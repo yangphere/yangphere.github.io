@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160216-30-46%E4%B8%AA%E9%9D%9E%E5%B8%B8%E6%9C%89%E7%94%A8%E7%9A%84PHP%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</loc>
+    <lastmod>2018-02-26T02:28:23.327Z</lastmod>
+    <data>
+        <display>
+        <title>46个非常有用的PHP代码片段</title>
+        <pubTime>2018-02-26T02:09:38.017Z</pubTime>
+        
+        <tag>php</tag>
+         
+         
+           
+             
+              <breadCrumb title="php" url="http://codingfarmer.me/categories/php/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160213-29-%E4%BD%BF%E7%94%A8acme-tiny%E5%B7%A5%E5%85%B7%E7%94%9F%E6%88%90Let's%20Encrypt%E7%9A%84%E5%85%8D%E8%B4%B9SSL%E8%AF%81%E4%B9%A6/</loc>
+    <lastmod>2018-02-26T02:28:02.363Z</lastmod>
+    <data>
+        <display>
+        <title>使用acme-tiny工具生成Let's Encrypt的免费SSL证书</title>
+        <pubTime>2018-02-26T02:09:38.013Z</pubTime>
+        
+        <tag>ssl</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160129-28-Google%20Java%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97%E4%B8%AD%E6%96%87%E7%89%88/</loc>
+    <lastmod>2018-02-26T02:27:20.697Z</lastmod>
+    <data>
+        <display>
+        <title>Google Java编程风格指南中文版</title>
+        <pubTime>2018-02-26T02:09:38.011Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://codingfarmer.me/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160116-26-CentOS%20v6.7%20%E6%96%B0%E8%A3%85%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2018-02-26T02:26:33.434Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS v6.7 新装配置</title>
+        <pubTime>2018-02-26T02:09:38.007Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>git</tag>
+         
+        <tag>node</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160114-25-%E9%98%B2%E6%AD%A2%E9%87%8D%E5%A4%8D%E5%8F%91%E9%80%81%20Ajax%20%E8%AF%B7%E6%B1%82%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2018-02-26T02:26:07.059Z</lastmod>
+    <data>
+        <display>
+        <title>防止重复发送 Ajax 请求的解决方案</title>
+        <pubTime>2018-02-26T02:09:38.005Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+        <tag>ajax</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://codingfarmer.me/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160112-24-centos6.4%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85git/</loc>
+    <lastmod>2018-02-26T02:25:44.753Z</lastmod>
+    <data>
+        <display>
+        <title>centos6.4源码安装git</title>
+        <pubTime>2018-02-26T02:09:38.003Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160112-23-centos%206.4%E5%8D%87%E7%BA%A7%E9%BB%98%E8%AE%A4python2.6%E5%88%B02.7/</loc>
+    <lastmod>2018-02-26T02:25:22.052Z</lastmod>
+    <data>
+        <display>
+        <title>centos 6.4升级默认python2.6到2.7</title>
+        <pubTime>2018-02-26T02:09:38.001Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160110-22-PHP%E5%B0%8F%E7%89%88%E6%9C%AC%E8%B7%A8%E5%BA%A6%E4%BD%BF%E7%94%A8config.nice%E7%BC%96%E8%AF%91%E5%8D%87%E7%BA%A7%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2018-02-26T02:24:53.084Z</lastmod>
+    <data>
+        <display>
+        <title>PHP小版本跨度使用config.nice编译升级方法</title>
+        <pubTime>2018-02-26T02:09:37.999Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>php</tag>
+         
+         
+           
+             
+              <breadCrumb title="php" url="http://codingfarmer.me/categories/php/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160107-21-Gulp%204%20%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</loc>
+    <lastmod>2018-02-26T02:24:24.108Z</lastmod>
+    <data>
+        <display>
+        <title>Gulp 4 入门指南</title>
+        <pubTime>2018-02-26T02:09:37.997Z</pubTime>
+        
+        <tag>glup</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://codingfarmer.me/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160107-20-GitHub%20%E9%A3%8E%E6%A0%BC%E7%9A%84%20Markdown%20%E8%AF%AD%E6%B3%95/</loc>
+    <lastmod>2018-02-26T02:24:03.307Z</lastmod>
+    <data>
+        <display>
+        <title>GitHub 风格的 Markdown 语法</title>
+        <pubTime>2018-02-26T02:09:37.996Z</pubTime>
+        
+        <tag>github</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160107-19-GitHub%20%E4%B8%8A%E7%9A%84%E4%B9%A6%E5%86%99%E6%96%B9%E5%BC%8F/</loc>
+    <lastmod>2018-02-26T02:23:41.463Z</lastmod>
+    <data>
+        <display>
+        <title>GitHub 上的书写方式</title>
+        <pubTime>2018-02-26T02:09:37.994Z</pubTime>
+        
+        <tag>github</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160107-18-%E5%A6%82%E4%BD%95%E5%9C%A8%20GitHub%20%E6%AD%A3%E7%A1%AE%E5%90%90%E6%A7%BD/</loc>
+    <lastmod>2018-02-26T02:23:13.224Z</lastmod>
+    <data>
+        <display>
+        <title>如何在 GitHub 正确吐槽</title>
+        <pubTime>2018-02-26T02:09:37.992Z</pubTime>
+        
+        <tag>github</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160107-17-%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E6%8E%A5%E6%94%B6%20GitHub%20%E7%9A%84%E6%B6%88%E6%81%AF%E9%82%AE%E4%BB%B6/</loc>
+    <lastmod>2018-02-26T02:21:15.390Z</lastmod>
+    <data>
+        <display>
+        <title>如何正确接收 GitHub 的消息邮件</title>
+        <pubTime>2018-02-26T02:09:37.991Z</pubTime>
+        
+        <tag>github</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160107-16-%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF%EF%BC%9A%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A/</loc>
+    <lastmod>2018-02-26T02:20:47.350Z</lastmod>
+    <data>
+        <display>
+        <title>前端进阶之路：点击事件绑定</title>
+        <pubTime>2018-02-26T02:09:37.989Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://codingfarmer.me/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160107-15-%E5%A6%82%E4%BD%95%E5%86%99%E5%B0%B1%E5%AE%8C%E7%BE%8E%20Pull%20Request/</loc>
+    <lastmod>2018-02-26T02:20:10.901Z</lastmod>
+    <data>
+        <display>
+        <title>如何写就完美 Pull Request</title>
+        <pubTime>2018-02-26T02:09:37.987Z</pubTime>
+        
+        <tag>git</tag>
+         
+        <tag>github</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160104-14-2015%20%E5%B9%B4%E6%9C%80%E7%83%AD%E9%97%A8%E7%9A%84%E5%9B%BD%E4%BA%BA%E5%BC%80%E5%8F%91%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%20TOP%2050/</loc>
+    <lastmod>2018-02-26T02:19:30.279Z</lastmod>
+    <data>
+        <display>
+        <title>2015 年最热门的国人开发开源软件 TOP 50</title>
+        <pubTime>2018-02-26T02:09:37.986Z</pubTime>
+        
+        <tag>开源软件</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://codingfarmer.me/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160103-13-%E9%85%8D%E7%BD%AECentOS-7-x86_64-Minimal%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E7%9A%84%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2018-02-26T02:19:07.068Z</lastmod>
+    <data>
+        <display>
+        <title>配置CentOS-7-x86_64-Minimal镜像文件安装的系统</title>
+        <pubTime>2018-02-26T02:09:37.984Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160102-12-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/</loc>
+    <lastmod>2018-02-26T02:18:48.027Z</lastmod>
+    <data>
+        <display>
+        <title>服务端技术选型</title>
+        <pubTime>2018-02-26T02:09:37.981Z</pubTime>
+        
+        <tag>server</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://codingfarmer.me/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160102-11-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%20Java%20%E7%89%88/</loc>
+    <lastmod>2018-02-26T02:18:27.531Z</lastmod>
+    <data>
+        <display>
+        <title>服务端工程师入门与进阶 Java 版</title>
+        <pubTime>2018-02-26T02:09:37.979Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://codingfarmer.me/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160102-10-Mac%E4%B8%8B%E5%90%8C%E6%97%B6%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84JDK/</loc>
+    <lastmod>2018-02-26T02:18:06.946Z</lastmod>
+    <data>
+        <display>
+        <title>Mac下同时安装多个版本的JDK</title>
+        <pubTime>2018-02-26T02:09:37.977Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>mac</tag>
+         
+         
+           
+             
+              <breadCrumb title="mac" url="http://codingfarmer.me/categories/mac/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160102-9-Mac%E4%B8%8AWebStorm%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87%E6%A0%87%E7%82%B9/</loc>
+    <lastmod>2018-02-26T02:17:43.457Z</lastmod>
+    <data>
+        <display>
+        <title>Mac上WebStorm无法输入中文标点</title>
+        <pubTime>2018-02-26T02:09:37.975Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>mac</tag>
+         
+         
+           
+             
+              <breadCrumb title="mac" url="http://codingfarmer.me/categories/mac/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160102-8-java%20Servlet+mysql%20%E8%B0%83%E7%94%A8%E5%B8%A6%E6%9C%89%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</loc>
+    <lastmod>2018-02-26T02:17:11.342Z</lastmod>
+    <data>
+        <display>
+        <title>java Servlet+mysql 调用带有输入参数和返回值的存储过程</title>
+        <pubTime>2018-02-26T02:09:37.974Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>javaweb</tag>
+         
+        <tag>servlet</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://codingfarmer.me/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160101-7-%E5%8F%97%E7%94%A8%E4%B8%8D%E5%B0%BD%E7%9A%84Gradle%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2018-02-26T02:16:40.157Z</lastmod>
+    <data>
+        <display>
+        <title>受用不尽的Gradle使用方法与技巧</title>
+        <pubTime>2018-02-26T02:09:37.972Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>gradle</tag>
+         
+         
+           
+             
+              <breadCrumb title="android" url="http://codingfarmer.me/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20160101-6-JAVA%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B9%8B%E4%B8%80%EF%BC%9A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%EF%BC%88GC%EF%BC%89%E6%9C%BA%E5%88%B6/</loc>
+    <lastmod>2018-02-26T02:15:50.229Z</lastmod>
+    <data>
+        <display>
+        <title>JAVA虚拟机之一：垃圾回收（GC）机制</title>
+        <pubTime>2018-02-26T02:09:37.970Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>jvm</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://codingfarmer.me/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20151230-5-%E6%9C%89%E4%BA%86tldr%E5%A6%88%E5%A6%88%E5%86%8D%E4%B9%9F%E4%B8%8D%E7%94%A8%E6%8B%85%E5%BF%83%E6%88%91%E8%AE%B0%E4%B8%8D%E4%BD%8F%E5%91%BD%E4%BB%A4%E4%BA%86/</loc>
+    <lastmod>2018-02-26T02:15:23.653Z</lastmod>
+    <data>
+        <display>
+        <title>有了tldr，妈妈再也不用担心我记不住命令了</title>
+        <pubTime>2018-02-26T02:09:37.968Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20151229-4-%E7%94%B1%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%8D%E8%BD%AC(%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92)%E5%BC%95%E7%94%B3%E5%87%BA%E6%9D%A5%E4%B8%80%E9%81%93Java%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    <lastmod>2018-02-26T02:14:43.884Z</lastmod>
+    <data>
+        <display>
+        <title>由字符串反转(使用递归)引申出来一道Java面试题</title>
+        <pubTime>2018-02-26T02:09:37.966Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://codingfarmer.me/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20151229-3-Stackoverflow%EF%BC%9AJava%20Servlet%20%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E9%97%AE%E7%AD%94/</loc>
+    <lastmod>2018-02-26T02:14:11.526Z</lastmod>
+    <data>
+        <display>
+        <title>【译】Stackoverflow：Java Servlet 工作原理问答</title>
+        <pubTime>2018-02-26T02:09:37.964Z</pubTime>
+        
+        <tag>javaweb</tag>
+         
+        <tag>servlet</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://codingfarmer.me/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20151229-2-Linux%20TOP%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2018-02-26T02:13:29.402Z</lastmod>
+    <data>
+        <display>
+        <title>Linux TOP命令</title>
+        <pubTime>2018-02-26T02:09:37.962Z</pubTime>
+        
+        <tag>linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://codingfarmer.me/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/20151229-1-Java%208%20%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2018-02-26T02:13:04.269Z</lastmod>
+    <data>
+        <display>
+        <title>Java 8 简明教程</title>
+        <pubTime>2018-02-26T02:09:37.960Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>java8</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://codingfarmer.me/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://codingfarmer.me/2018/02/26/hello-world/</loc>
+    <lastmod>2018-02-26T00:57:30.279Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2018-02-26T00:19:11.405Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+    
+    
+    
+</urlset>
