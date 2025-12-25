@@ -1,0 +1,452 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <div class="main-content">
+        <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+
+        <div class="post-list-container">
+    <div class="post-inner">
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160107-18-如何在 GitHub 正确吐槽/">
+                            <span class="post-title gt-c-content-color-first">如何在 GitHub 正确吐槽</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        背景
+在几年前，百姓网几乎所有项目的开发流程就已经迁到 GitHub 上了。将 GitHub flow 作为日常开发流程，有一个很大的好处，pull request 很自然地成为 code review 的平台——每个人的代码都必须经过 review 之后，才会合并到主干。
+因此，各个项目的 pull request 也逐渐成为一座座金矿，新人可以在历史 PR 中汲取经验，高手也常常通过 PR 追查疑难杂症的来龙去脉。而对我这个吐槽狂来说，PR 也是一个非常重要的阵地……
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tag">
+                                # github
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160107-17-如何正确接收 GitHub 的消息邮件/">
+                            <span class="post-title gt-c-content-color-first">如何正确接收 GitHub 的消息邮件</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        背景
+我厂的开发流程通常都是基于 GitHub 的。在 GitHub 上 review 代码，也是我日常工作的重要组成部分。对我来说，在 code review 过程中最讨厌的莫过于，我在 pull request 或 commit 下面评论或 @ 人，往往石沉大海，没有回音。我事后追问当事人，他们的回复往往是 “不知道你 @ 我了呀～”。
+这让我非常恼火。所以，我决定写篇文档给所有人看，避免他们漏看重要的 GitHub 消息。此后在 GitHub 不回复我的人，差不多也可以绝交了罢！
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tag">
+                                # github
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160107-16-前端进阶之路：点击事件绑定/">
+                            <span class="post-title gt-c-content-color-first">前端进阶之路：点击事件绑定</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        引言
+前端之所以被称为前端，是因为它是整个 Web 技术栈中距离用户最近、直接与用户进行交互的一环。而网页界面与用户的交互通常是通过各种事件来达成的；在各种事件之中，点击事件 往往又是最常见、最通用的一种界面事件。
+本文将介绍我在 “点击事件绑定” 这一场景下的进阶之路。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/2g3NMUUoFI/" class="post-tag">
+                                # javascript
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/">
+                            <span class="post-title gt-c-content-color-first">如何写就完美 Pull Request</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        
+译注：Github Blog 发表了一篇文章 How to write the perfect pull request，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！
+随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。
+
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/02yIJhftyy/" class="post-tag">
+                                # git
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tag">
+                                # github
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160104-14-2015 年最热门的国人开发开源软件 TOP 50/">
+                            <span class="post-title gt-c-content-color-first">2015 年最热门的国人开发开源软件 TOP 50</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        开源中国在 2015 年得到了快速的发展，单开源软件收藏量就接近 40000 款，其中不乏优质的国产开源项目。本文从软件的收藏、下载、访问等多角度挑选出了 2015 年最热门的国产开源软件前五十名，让各位对过去一年国产开源项目发展有所了解。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/JQWObyZUUK/" class="post-tag">
+                                # 开源软件
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160103-13-配置CentOS-7-x86_64-Minimal镜像文件安装的系统/">
+                            <span class="post-title gt-c-content-color-first">配置CentOS-7-x86_64-Minimal镜像文件安装的系统</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        更新系统，并且安装wget
+yum update
+yum install wget -y
+
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/R1GQS0ZrGd/" class="post-tag">
+                                # linux
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160102-9-Mac上WebStorm无法输入中文标点/">
+                            <span class="post-title gt-c-content-color-first">Mac上WebStorm无法输入中文标点</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        Mac上JDK_1.8.51或以上版本存在无法输入中文标点的bug，需要删除这个JDK，重新安装JDK_1.8.45版本。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/aXGJKXaJnU/" class="post-tag">
+                                # mac
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/">
+                            <span class="post-title gt-c-content-color-first">java Servlet+mysql 调用带有输入参数和返回值的存储过程</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        原文:http://www.cnblogs.com/xiaoliao/p/5094151.html
+这个数据访问的功能，我在.NET+Mysql .NET+Sqlserver  PHP+Mysql上都实现过，并且都发布在了我博客园里面，因为我觉得这个功能实在是太重要，会让你少写很多SQL语句不说，还能提高程序的执行效率。
+今天在JAVA+Mysql上也实现了这个功能下面我贴出代码，这次我会讲详细点，让看的朋友能更加清楚它的好处在哪里。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/DvfVuAWucY/" class="post-tag">
+                                # javaweb
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/de5lyPztjR/" class="post-tag">
+                                # servlet
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160102-12-服务端技术选型/">
+                            <span class="post-title gt-c-content-color-first">服务端技术选型</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        服务框架
+MVC Framework：Rose 框架简单易用，并且我米内部服务和工具都优先支持 Rose 项目，默认使用 Rose 框架是很好的选择。文艺一点想做个异步化 web 服务，可以选择 Spring MVC 3.2 以上版本，并搭配高版本 Resin/Jetty 服务器，该方案已有线上服务使用，只是搭项目时会稍复杂些。
+RPC：我们线上使用的是 Apache Thrift，是 0.5.0 版本。我们计划下一步升级并完善他。具体可以访问我们的 Thrift RoadMap 页面。
+Javascript Library：随大流用 JQuery，也可以申请前端支持。
+CSS Framework：用 Bootstrap。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/zKh-kAPsjj/" class="post-tag">
+                                # server
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160102-11-服务端工程师入门与进阶 Java 版/">
+                            <span class="post-title gt-c-content-color-first">服务端工程师入门与进阶 Java 版</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        前言
+欢迎加入我们。这是一份针对实习生/毕业生的服务端开发入门与进阶指南。遇到问题及时问你的 mentor 或者直接问我。 建议：
+
+尽量用google查找技术资料。
+有问题在stackoverflow找找，大部分都已经有人回答。
+多看官方的技术文档。
+ibm developerworkers的文章质量整体上有保障。
+平时花一些时间在github上阅读优秀项目源码。
+
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+    </div>
+</div>
+
+        <div class="pagination-container">
+    
+        <a href="https://blog.coolcode.dev/page/2/" class="prev-page gt-a-link">上一页</a>
+    
+    
+        <a href="https://blog.coolcode.dev/page/4/" class="prev-page gt-a-link">下一页</a>
+    
+</div>
+
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

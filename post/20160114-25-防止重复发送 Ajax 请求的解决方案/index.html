@@ -1,0 +1,291 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>防止重复发送 Ajax 请求的解决方案 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    防止重复发送 Ajax 请求的解决方案
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/2g3NMUUoFI/" class="post-tags">
+                            # javascript
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/RkJ4sPn8GUp/" class="post-tags">
+                            # ajax
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h3 id="问题描述">问题描述</h3>
+<p>在页面中有多个按钮，点击该按钮可以异步的去服务端读取数据，然后在前端将数据展示出来。 每个按钮点击请求的页面都是同一个，但是请求的参数不同，所以返回的内容就不同。 在连续点击多个按钮的时候就会发出多个异步请求。那么根据请求返回的快慢(因为不同按钮参数不同，返回内容不同，所以会有快慢之分），数据会依次的展示出来，那么就会出现一个先点击的按钮，由于他请求的数据量比较大，导致数据被后显示出来。</p>
+<!--more-->
+<h3 id="问题解决">问题解决</h3>
+<p>解决这种问题有两种方式：</p>
+<ol>
+<li>当连续进行多个请求，并且请求的url地址相同时。放弃前面的所有请求，只执行最后一次请求。</li>
+<li>当连续进行多个请求，并且请求的url地址相同时。放弃后面的所有请求，只执行第一次请求。</li>
+</ol>
+<h3 id="解决方案">解决方案</h3>
+<p>一、将ajax请求的async设置为false</p>
+<pre><code class="language-javascript">$.ajax({
+    async: false,
+    type : &quot;POST&quot;,
+    url : defaultPostData.url,
+    dataType : 'json',
+    success : function(data) {
+
+    }
+});
+</code></pre>
+<p><strong>async</strong></p>
+<blockquote>
+<p>类型：Boolean</p>
+<p>默认值: true。默认设置下，所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为 false。</p>
+<p>注意，同步请求将锁住浏览器，用户其它操作必须等待请求完成才可以执行。</p>
+</blockquote>
+<p>二、利用jquery ajaxPrefilter中断请求</p>
+<p>由于第一种方案只是一种曲线救国的方式，其实没能真正的解决上面的问题。所以，建议使用这种方式。</p>
+<pre><code class="language-javascript">var pendingRequests = {};
+$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+    var key = options.url;
+    console.log(key);
+    if (!pendingRequests[key]) {
+        pendingRequests[key] = jqXHR;
+    }else{
+        //jqXHR.abort();    //放弃后触发的提交
+        pendingRequests[key].abort();   // 放弃先触发的提交
+    }
+
+    var complete = options.complete;
+    options.complete = function(jqXHR, textStatus) {
+        pendingRequests[key] = null;
+        if ($.isFunction(complete)) {
+        complete.apply(this, arguments);
+        }
+    };
+});
+</code></pre>
+<p>Prefilters是一个预过滤器，在每个请求之前被发送和$.ajax()处理它们前处理。</p>
+<blockquote>
+<p>options 是请求的选项</p>
+<p>originalOptions 值作为提供给Ajax方法未经修改的选项，因此，没有ajaxSettings设置中的默认值</p>
+<p>jqXHR 是请求的jqXHR对象</p>
+</blockquote>
+<p>以上内容的核心思想是维护一个队列，发送请求时，将请求加入队列，请求响应后，从队列中清除，这就保证了在任一时刻只能有一个同样的请求发送.</p>
+<p><strong>局限性</strong>：仅仅是前台防止jquery的ajax请求。对于非jquery的ajax请求，不起作用。因为使用的是jquery的ajaxPreFilter函数，仅仅对jquery的ajax请求有作用。</p>
+<p>调用abort后jquery会执行error的方法，抛出abort的异常信息。可以使用以下方式区分出该类型的异常。</p>
+<pre><code class="language-javascript">var ajax = $.ajax({
+    'error':function(jqXHR, textStatus, errorThrown){
+        if(errorThrown != 'abort'){
+            //ajax被调用abort后执行的方法
+            alert('您的ajax方法被停止了');
+        }
+    }
+})
+</code></pre>
+<p><strong>Demo</strong></p>
+<p>按钮每次点击都会向后端发送请求，下面的demo实现了多次点击按钮之后，只保证最后一次点击的请求能够成功。</p>
+<pre><code class="language-html">&lt;button id=&quot;button1&quot;&gt;button1&lt;/button&gt;
+&lt;button id=&quot;button2&quot;&gt;button2&lt;/button&gt;
+&lt;button id=&quot;button3&quot;&gt;button3&lt;/button&gt;
+&lt;script&gt;
+        var pendingRequests = {};
+        jQuery.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+            var key = options.url;
+            console.log(key);
+            if (!pendingRequests[key]) {
+                pendingRequests[key] = jqXHR;
+            }else{
+                //jqXHR.abort();    //放弃后触发的提交
+                pendingRequests[key].abort();   // 放弃先触发的提交
+            }
+
+            var complete = options.complete;
+            options.complete = function(jqXHR, textStatus) {
+                pendingRequests[key] = null;
+                if (jQuery.isFunction(complete)) {
+                complete.apply(this, arguments);
+                }
+            };
+        });
+        &lt;!-- 异步加载应用列表开始 --&gt;
+
+        $(&quot;#button1&quot;).live(&quot;click&quot;, function() {
+              $.ajax('config/ajax/appinfoListFetcher.json', {
+                type:'POST',
+                data:   {param1:value1,
+                         param2:value2,
+                      },
+                success: function(res){
+                        //后端数据回写到页面中
+                },
+                error:function(jqXHR, textStatus, errorThrown){
+                    if(errorThrown != 'abort'){
+                        alert('应用加载失败！');
+                    }
+                }
+              });
+              &lt;!-- 异步加载应用列表结束 --&gt;
+         });
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>转自：<a href="http://www.hollischuang.com/archives/931">http://www.hollischuang.com/archives/931</a></p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160112-24-centos6.4源码安装git/" class="post-title gt-a-link">
+                    centos6.4源码安装git
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

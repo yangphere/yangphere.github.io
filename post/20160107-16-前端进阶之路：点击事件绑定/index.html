@@ -1,0 +1,281 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>前端进阶之路：点击事件绑定 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    前端进阶之路：点击事件绑定
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/2g3NMUUoFI/" class="post-tags">
+                            # javascript
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="引言">引言</h2>
+<p>前端之所以被称为前端，是因为它是整个 Web 技术栈中距离用户最近、直接与用户进行交互的一环。而网页界面与用户的交互通常是通过各种事件来达成的；在各种事件之中，<strong>点击事件</strong> 往往又是最常见、最通用的一种界面事件。<br>
+本文将介绍我在 “点击事件绑定” 这一场景下的进阶之路。</p>
+ <!--more-->
+<h2 id="背景">背景</h2>
+<p>我是一个前端小兵，我在一家互联网公司做做一些简单的业务开发。<br>
+某一天，我接到了一个需求，做一个抽奖功能。公司里的前辈们已经完成了业务逻辑，而且已经提供了业务功能的接口，只需要我制作页面并完成事件绑定即可。</p>
+<h2 id="实践">实践</h2>
+<h3 id="开动">开动</h3>
+<p>我写好了页面，页面中有一个 ID 为 lucky-draw 的按钮元素。接下来，我需要为它绑定点击事件。我是这样写的：</p>
+<pre><code class="language-javascript">var btn = document.getElementById('lucky-draw') btn.onclick = function () { BX.luckyDraw() }
+</code></pre>
+<p>这其中 BX.luckyDraw() 就是前辈们提供的业务接口，执行它就可以运行后续的抽奖功能。<br>
+我测试了一下，代码工作正常，于是很开心地准备上线。</p>
+<h3 id="第一关">第一关</h3>
+<p>然而前辈们告诉我，这些重要功能的按钮是需要加统计的。这也难不倒我，因为我很熟悉统计系统的 API。于是我修改了一下事件绑定的代码：</p>
+<pre><code class="language-javascript">btn.onclick = function () { BX.luckyDraw() BX.track('lucky-draw') }
+</code></pre>
+<p>这样做是有效的，但前辈们又告诉我，因为某些原因，统计代码和业务代码是分布在不同位置的，以上代码需要拆开。于是我尝试这样修改：</p>
+<pre><code class="language-javascript">btn.onclick = function () { BX.luckyDraw() } // other codes... btn.onclick = function () { BX.track('lucky-draw') }
+</code></pre>
+<p>结果发现点击按钮时的抽奖功能失效了。原来，使用 .onclick 这样的事件属性来绑定事件有一个非常大的缺点，重复赋值会覆盖旧值。也就是说，这种方式只能绑定最后一次赋值的事件处理函数。<br>
+我硬着头皮去请教前辈，才知道原来这种方式早已经不推荐使用了，应该使用 DOM 标准的事件绑定 API 来处理（在旧版 IE 下有一些兼容性问题，这里不展开）。因此我的代码改成了这样：</p>
+<pre><code class="language-javascript">btn.addEventListener('click', function () { BX.luckyDraw() }, false) // other codes... btn.addEventListener('click', function () { BX.track('lucky-draw') }, false)
+</code></pre>
+<p>所有功能终于又正常了，我很开心地准备上线。</p>
+<h3 id="第二关">第二关</h3>
+<p>事实证明我还是太天真了，PM 是不会一次性把所有需求都告诉你的。原来，这个抽奖功能还需要做 A/B 测试，也就是说，只有一半的用户会看到这个抽奖功能。<br>
+这意味着用户的页面上可能根本没有 btn 这个元素，那么 btn.addEventListener(...) 这一句直接就抛错了。因此，在为按钮绑定事件处理函数之前，我不得不先判断一下：</p>
+<pre><code class="language-javascript">if (btn) { btn.addEventListener('click', function () { BX.luckyDraw() }, false) } // other codes... if (btn) { btn.addEventListener('click', function () { BX.track('lucky-draw') }, false) }
+</code></pre>
+<p>虽然这样的代码在所有用户的页面上都可以正常工作，但这些预先判断看起来很蛋疼啊。我再次带着疑惑向前辈请教。前辈慈祥地看着我，说出了一句经典名言：</p>
+<blockquote>
+<p>傻瓜，为什么不用万能的 jQuery 呢？<br>
+原来，神奇的 jQuery 允许我们忽略很多细节，比如这种没有取到元素的情况会被它默默地消化掉。而且 jQuery 的事件绑定方法也不存在兼容性问题，API 也比较好看。不错不错，不管网上的大神们怎么喷 jQuery，但它简直是我的救星啊！<br>
+于是，我的代码变成了以下这样：</p>
+</blockquote>
+<pre><code class="language-javascript">var $btn = $('#lucky-draw') $btn.on('click', function () { BX.luckyDraw() }) // other codes... $btn.on('click', function () { BX.track('lucky-draw') })
+</code></pre>
+<p>我的代码看起来像那么回事了，我很开心地准备上线。</p>
+<h3 id="第三关">第三关</h3>
+<p>当然，我的故事不会这么快结束。要知道，对一个有追求的前端团队来说，不断提升用户体验是永恒的目标。比如，我们网站使用了一些方法来提升页面加载性能，部分页面内容并不是原本存在于页面中的，而是在用户需要时，由 JavaScript 动态生成的。<br>
+拿这个抽奖功能来说，抽奖按钮存在于一个名为 “惊喜” 的 tab 中，而这个 tab 在初始状态下是没有内容的，只有当用户切换到这个 tab 时，才会由 JS 填充其内容。示意代码是这样的：</p>
+<pre><code class="language-javascript">$('.tabs &gt; .surprise').on('click', function () { var htmlSurpriseTab = [ '&lt;div&gt;', '&lt;button id=&quot;lucky-draw&quot;&gt;Lucky Draw&lt;/button&gt;', '&lt;/div&gt;' ].join('') $('.tab-panels &gt; .surprise').html(htmlSurpriseTab) // BTN READY })
+</code></pre>
+<p>这意味着，我写的事件绑定代码需要写在 // BTN READY 处。这种深层的耦合看起来很不理想，我需要想办法解决它。<br>
+我想起来，我在阅读 jQuery 文档时看到有一种叫作 “事件委托” 的方法，可以在元素还未添加到页面之前就为它绑定事件。于是，我尝试这样来写：</p>
+<pre><code class="language-javascript">$(document.body).on('click', '#lucky-draw', function () { BX.luckyDraw() })
+</code></pre>
+<p>果然，我成功了！好事多磨啊，这个需求终于开心地上线了。<br>
+经过进一步的研究，我了解到 “事件委托” 的本质是利用了事件冒泡的特性。把事件处理函数绑定到容器元素上，当容器内的元素触发事件时，就会冒泡到容器上。此时可以判断事件的源头是谁，再执行对应 的事件处理函数。由于事件处理函数是绑定在容器元素上的，即使容器为空也没有关系；只要容器的内容添加进来，整个功能就是准备就绪的。<br>
+虽然事件委托的原理听起来稍有些复杂，但由于 jQuery 对事件委托提供了完善的支持，我的代码并没有因此变得很复杂。</p>
+<h3 id="多想一步">多想一步</h3>
+<p>经过这一番磨炼，我收获了很多经验值；同时，我也学会了更进一步去发现问题和思考问题。比如，在我们的网页，通常会有多个按钮，那为它们绑定事件的脚本代码可能就是这样的：</p>
+<pre><code class="language-javascript">$body = $(document.body) $body.on('click', '#lucky-draw', function () { BX.luckyDraw() }) $body.on('click', '#some-btn', function () { // do something... }) $body.on('click', '#another-btn', function () { // do something else... })
+</code></pre>
+<p>我隐隐觉得这样不对劲啊！虽然这些代码可以正常工作，但每多一个按钮就要为 body 元素多绑定一个事件处理函数；而且根据直觉，这样一段段长得差不多的代码是需要优化的。因此，如果我可以把这些类似的代码整合起来，那不论是在资源消耗方面，还是在代码组织方面，都是有益的。<br>
+于是，我尝试把所有这些事件委托的代码合并为一次绑定。首先，为了实现合并，我需要为这些按钮找到共同点。很自然地，我让它们具有相同的 class：</p>
+<pre><code class="language-html">&lt;button class=&quot;action&quot; id=&quot;lucky-draw&quot;&gt;Lucky Draw&lt;/button&gt; &lt;button class=&quot;action&quot; id=&quot;some-action&quot;&gt;Button&lt;/button&gt; &lt;a href=&quot;#&quot; class=&quot;action&quot; id=&quot;another-action&quot;&gt;Link&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;action&quot; id=&quot;another-action-2&quot;&gt;Link&lt;/a&gt;
+</code></pre>
+<p>然后，我试图通过一次事件委托来处理所有这些按钮：</p>
+<pre><code class="language-javascript">$body.on('click', '.action', function () { // WHEN CLICK ANY '.action', WE COME HERE. })
+</code></pre>
+<p>很显然，所有具有 action 类名的元素被点击后都会触发上面这个事件处理函数。那么，接下来，我们在这里区分一下事件源头，并执行对应的任务：</p>
+<pre><code class="language-javascript">$body.on('click', '.action', function () { switch (this.id) { case 'lucky-draw': BX.luckyDraw() break case 'some-btn': // do something... break // ... } })
+</code></pre>
+<p>这样一来，所有分散的事件委托代码就被合并为一处了。在这个统一的事件处理函数中，我们使用 ID 来区分各个按钮。<br>
+但 ID 有一些问题，由于同一页面上不能存在同名的元素，相信前端工程师们都对 ID 比较敏感，在日常开发中都尽量避免滥用。此外，如果多个按钮需要执行的任务相同，但它的 ID 又必须不同，则这些 ID 和它们对应的任务之间的对应关系就显得不够明确了。<br>
+于是，我改用 HTML5 的自定义属性来标记各个按钮：</p>
+<pre><code class="language-html">&lt;button class=&quot;action&quot; data-action=&quot;lucky-draw&quot;&gt;Lucky Draw&lt;/button&gt; &lt;button class=&quot;action&quot; data-action=&quot;some-action&quot;&gt;Button&lt;/button&gt; &lt;a href=&quot;#&quot; class=&quot;action&quot; data-action=&quot;another-action&quot;&gt;Link&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;action&quot; data-action=&quot;another-action-2&quot;&gt;Link&lt;/a&gt;
+</code></pre>
+<p>我在这里使用了 data-action 这个属性来标记各个按钮元素被点击时所要执行的动作。回过头看，由于各个按钮都使用了这个属性，它们已经具备了新的共同点，而 class 这个共同点就不必要了，于是我们的 HTML 代码可以简化一些：</p>
+<pre><code class="language-html">&lt;button data-action=&quot;lucky-draw&quot;&gt;Lucky Draw&lt;/button&gt; &lt;button data-action=&quot;some-action&quot;&gt;Button&lt;/button&gt; &lt;a href=&quot;#&quot; data-action=&quot;another-action&quot;&gt;Link&lt;/a&gt; &lt;a href=&quot;#&quot; data-action=&quot;another-action-2&quot;&gt;Link&lt;/a&gt;
+</code></pre>
+<p>同时 JS 代码也需要做相应调整：</p>
+<pre><code class="language-javascript">$body.on('click', '[data-action]', function () { var actionName = $(this).data('action') switch (actionName) { case 'lucky-draw': BX.luckyDraw() break case 'some-btn': // do something... break // ... } })
+</code></pre>
+<p>我们的代码看起来已经挺不错了，但我已经停不下来了，还要继续改进。那个长长的 switch 语句看起来有点臃肿。通常优化 switch 的方法就是使用对象的键名和键值来组织这种对应关系。于是我继续改：</p>
+<pre><code class="language-javascript">var actionList = { 'lucky-draw': function () { BX.luckyDraw() }, 'some-btn': function () { // do something... } // ... } $body.on('click', '[data-action]', function () { var actionName = $(this).data('action') var action = actionList[actionName] if ($.isFunction(action)) action() })
+</code></pre>
+<p>经过这样的调整，我发现代码的嵌套变浅了，而且按钮们的标记和它们要做的事情也被组织成了 actionList 这个对象，看起来更清爽了。<br>
+在这样的组织方式下，如果页面需要新增一个按钮，也很容易做扩展：</p>
+<pre><code class="language-javascript">// HTML $body.append('&lt;a href=&quot;#&quot; data-action=&quot;more-action&quot;&gt;Link&lt;/a&gt;') // JS $.extend(actionList, { 'more-action': function () { // ... } })
+</code></pre>
+<p>到这里，这一整套实践终于像那么回事了！</p>
+<h2 id="开源">开源</h2>
+<p>我自己用这一套方法参与了很多项目的开发，在处理事件绑定时，它节省了我很多的精力。我忽然意识到，它可能还适合更多的人、更多的项目。那不妨把它开源吧！<br>
+于是我发布了 <a href="https://github.com/cssmagic/action">Action</a> 这个项目。这个小巧的类库帮助开发者轻松随意地绑定点击事件，它使用 “动作” 这个概念来标记按钮和它被点击后要做的事情；它提供的 API 可以方便地定义一些动作：</p>
+<pre><code class="language-javascript">action.add({ 'my-action': function () { // ... } })
+</code></pre>
+<p>也可以手动触发已经定义的动作：</p>
+<pre><code class="language-javascript">action.trigger('my-action')
+</code></pre>
+<h2 id="应用">应用</h2>
+<p>Action 这个类库已经被移动 Web UI 框架 CMUI 采用，作为全局的基础服务。CMUI 内部的各个 UI 组件都是基于 Action 的事件绑定机制来实现的。我们这里以对话框组件为例，来看看 Action 在 CMUI 中的应用（示意代码）：</p>
+<pre><code class="language-javascript">CMUI.dialog = { template: [ '&lt;div class=&quot;dialog&quot;&gt;', '&lt;a href=&quot;#&quot; data-action=&quot;close-dialog&quot;&gt;×&lt;/a&gt;', '&lt;h2&gt;&lt;%= data.title %&gt;&lt;/h2&gt;', '&lt;div class=&quot;content&quot;&gt;&lt;%- data.html %&gt;&lt;/div&gt;', '&lt;/div&gt;' ].join(''), init: function () { action.add({ 'close-dialog': function () { $(this).closest('.dialog').hide() } }) }, open: function (config) { var html = render(this.template, config) $(html).appendTo('body').show() } } CMUI.dialog.init()
+</code></pre>
+<p>只要当 CMUI.dialog.init() 方法执行后，对话框组件就准备就绪了。我们在业务中直接调用 CMUI.dialog.open() 方法、传入构造对话框所需要的一些配置信息，这个对话框即可创建并打开。<br>
+大家可以发现，在构造对话框的过程中，我们没有做任何事件绑定的工作，对话框的关闭按钮就自然具备了点击关闭功能！原因就在于关闭按钮（<a href="#" data-action="close-dialog">×</a>）自身已经通过 data-action 属性声明了它被点击时所要执行的动作（'close-dialog'），而这个动作早已在组件初始化时（CMUI.dialog.init()）定义好了。</p>
+<h2 id="结语">结语</h2>
+<p>希望本文对你有所启发，也希望 Action 能在实际开发中帮到你。<br>
+关于更多细节，欢迎继续阅读：</p>
+<ul>
+<li><a href="https://github.com/cssmagic/action/wiki">Action 的更多介绍</a></li>
+<li><a href="https://github.com/CMUI/CMUI">CMUI 项目</a></li>
+<li><a href="http://api.jquery.com/on/">jQuery 的事件绑定 API</a></li>
+</ul>
+<blockquote>
+<p>转自： <a href="https://github.com/cssmagic/blog/issues/48" title="前端进阶之路：点击事件绑定">cssmagic/blog#48</a></p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/" class="post-title gt-a-link">
+                    如何写就完美 Pull Request
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>java Servlet+mysql 调用带有输入参数和返回值的存储过程 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    java Servlet+mysql 调用带有输入参数和返回值的存储过程
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tags">
+                            # java
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/DvfVuAWucY/" class="post-tags">
+                            # javaweb
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/de5lyPztjR/" class="post-tags">
+                            # servlet
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>原文:<a href="http://www.cnblogs.com/xiaoliao/p/5094151.html">http://www.cnblogs.com/xiaoliao/p/5094151.html</a></p>
+<p>这个数据访问的功能，我在.NET+Mysql .NET+Sqlserver  PHP+Mysql上都实现过，并且都发布在了我博客园里面，因为我觉得这个功能实在是太重要，会让你少写很多SQL语句不说，还能提高程序的执行效率。</p>
+<p>今天在JAVA+Mysql上也实现了这个功能下面我贴出代码，这次我会讲详细点，让看的朋友能更加清楚它的好处在哪里。</p>
+<!--more-->
+<h4 id="一-封装的代码存储过过程调用方法">一、封装的代码存储过过程调用方法</h4>
+<p>关于返回类CallableStatement的解释: CallableStatement 对象为所有的DBMS提供了一种以标准形式调用已储存过程的方法。已储存过程储存在数据库中。对已储存过程的调用是CallableStatement对象所含的内容。这种调用是用一种换码语法来写的，有两种形式：一种形式带结果参，另一种形式不带结果参数。结果参数是一种输出 (OUT) 参数，是已储存过程的返回值。两种形式都可带有数量可变的输入（IN 参数）、 输出（OUT 参数）或输入和输出（INOUT 参数）的参数。问号将用作参数的<a href="http://baike.baidu.com/view/873819.htm">占位符 </a>。</p>
+<pre><code class="language-java">// 调用带有输入参数且有返回值的存储过程
+public static CallableStatement callProcInputAndOutPut(String sql, String[] inparameters) {
+    try {
+        conn = getConnection();
+        cs = conn.prepareCall(sql);
+        if(inparameters!=null)
+            for(int i=0;i&lt;inparameters.length;i++)
+            {
+                //if中循环的参数是我们，在存储过程需要使用到的参数
+                 if (i&lt;inparameters.length-1) {
+                     cs.setObject(i+1, inparameters[i]);
+                }
+                 //else中的参数是我们存储过程执行完毕后返回给我们的值，它会被保存在CallableStatement这个类里面，
+                 //然后我们可以根据传入参数时所在的位置,这个位置就是传入的数组参下标+1去取存储过程返回给我们的值
+                 else {
+                     cs.registerOutParameter(2, java.sql.Types.VARCHAR);
+
+                }
+
+            }
+
+        cs.execute();
+    }
+    catch (Exception e) {
+        e.printStackTrace();
+        throw new RuntimeException(e.getMessage());
+    }finally{
+
+    }
+    return cs;
+}
+</code></pre>
+<h4 id="二-调用方法的代码">二、调用方法的代码</h4>
+<pre><code class="language-java">/*调用带output参数的存储过程*/
+//下面就是我们组合的参数,其中第一个是存储过程所需参数，第二个&quot;&quot;没有赋值的参数就对应存储过程中的输出参数，就是我们需要的返回值
+ String[] sqlParameter=new String[]{&quot;hellow&quot;,&quot;&quot;};
+ //调用存储过程的的字符串
+String  executString=&quot;call outputProcudure(?,?)&quot;;
+//调用存储过程的的字符串  outPutProcudure就是我们的存储过程名称，然后两个?表示两个参数，1是我们参数的参数，第二是我们存储过程处理完后返回的值
+CallableStatement  proReturnData=MySqlHepler.callProcInputAndOutPut(executString, sqlParameter);
+try {
+     //取值 由于带OUT参数的返回值在我们存储过程中参数的位置是第二位所以我们 使用GETINT(2),接着我会贴存储过程
+    int returnValue= proReturnData.getInt(2);
+    if (returnValue==1) {
+         String groupAlertString=&quot;返回值是:&quot;+returnValue+&quot;---&gt;插入成功.&quot;;
+         out.println(groupAlertString);
+    }
+    else
+    {
+     String groupAlertString=&quot;返回值是:&quot;+returnValue+&quot;---&gt;插入失败，该用户名已经存在.&quot;;
+        out.println(groupAlertString);
+    }
+
+} catch (SQLException e) {
+
+    e.printStackTrace();
+}
+</code></pre>
+<h4 id="三存储过程">三:存储过程</h4>
+<p>这里我详细说下:这个调用的存储过程执行的步骤很简单，就是传入一个名称，然后判断数据库中是否有相同名称的人员，如果有就返回2（不插入)，如果没就返回1(表示我们以hellow为名称给数据库中增加了一条数据。<br>
+这个步骤如果是直接写SQL语句是必须写两条的，但是这里用到了存储过程，就只需要如此简单一步就处理了...<br>
+也许你觉得我这个例子举得不正确,也许你还会想，我们可以将这个名称字段设置个主键啊，不就一个SQL语句就行了吗，呵呵不过我这里说了。<br>
+我只是举了这么一简单的例子，SQL操作复杂逻辑的地方太多了。。...也许连带操作的有10步如果你写SQL语句就需要10次访问数据，那么这时候你再来看这个例子。</p>
+<p>下面贴存储过程的图:<br>
+<img src="http://images2015.cnblogs.com/blog/490713/201601/490713-20160101230955245-851417743.png" alt="" loading="lazy"></p>
+<h4 id="四执行效果">四:执行效果</h4>
+<p>第一次调用存储过程截图<br>
+<img src="http://images2015.cnblogs.com/blog/490713/201601/490713-20160101232226729-474694964.png" alt="" loading="lazy"></p>
+<p>第二次调用存储过程截图<br>
+<img src="http://images2015.cnblogs.com/blog/490713/201601/490713-20160101232252651-101540208.png" alt="" loading="lazy"></p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160102-12-服务端技术选型/" class="post-title gt-a-link">
+                    服务端技术选型
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

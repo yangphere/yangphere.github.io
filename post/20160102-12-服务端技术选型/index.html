@@ -1,0 +1,205 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>服务端技术选型 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    服务端技术选型
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/zKh-kAPsjj/" class="post-tags">
+                            # server
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="服务框架">服务框架</h2>
+<p><strong>MVC Framework</strong>：Rose 框架简单易用，并且我米内部服务和工具都优先支持 Rose 项目，默认使用 Rose 框架是很好的选择。文艺一点想做个异步化 web 服务，可以选择 Spring MVC 3.2 以上版本，并搭配高版本 Resin/Jetty 服务器，该方案已有线上服务使用，只是搭项目时会稍复杂些。<br>
+<strong>RPC</strong>：我们线上使用的是 Apache Thrift，是 0.5.0 版本。我们计划下一步升级并完善他。具体可以访问我们的 Thrift RoadMap 页面。<br>
+<strong>Javascript Library</strong>：随大流用 JQuery，也可以申请前端支持。<br>
+<strong>CSS Framework</strong>：用 Bootstrap。</p>
+<!--more-->
+<h2 id="database">Database</h2>
+<p><strong>ORM Framwork</strong>：自然是 paoding-rose-jade，成熟好用，无论是简单的数据表操作，或者是“高大上”的分表分库都不在话下。更集成了 perfcouter 功能，可以实时查看和监控 MySQL 语句执行效率。<br>
+<strong>数据库连接池</strong>：jade 使用 Apache DBCP。Tomcat JDBC 声称更快更强，还没测试过，暂时还是继续 Apache DBCP 吧。<br>
+<strong>No SQL</strong>：Hadoop, Hive, HBase。<br>
+<strong>Cache</strong>：本地 cache 使用 Ehcache，Guava 的 cache 也可以使用。中央式缓存，用 Memcached。<br>
+<strong>传统数据库</strong>：MySQL。线上业务先和 DBA 确认服务器磁盘是否是 SSD。</p>
+<h2 id="utilizes">Utilizes</h2>
+<p><strong>General</strong>：Apache Commons 必备。必须使用 3.0 以上版本。Guava 是 Google 推出的产品，新鲜的功能更多一些。<br>
+<strong>JSON</strong>：<a href="https://github.com/FasterXML/jackson-databind/">Jackon</a>功能强大。<br>
+<strong>XML</strong>：据说 JDK 自带的 JAXB 就很好。<br>
+<strong>Email</strong>：直接用 Spring 的封装。<br>
+<strong>Logging</strong>：Slf4j + Log4j + Scribe + Kafka。新同学掌握 Slf4j 和 Log4j 就好。<br>
+<strong>Schedule</strong>：使用 Spring 的 Schedule。Spring Cook Book 部分有演示代码。<br>
+<strong>时间日期</strong>：JodaTime。请看我们的代码示例自学。<br>
+<strong>io</strong>：简单的文件 io 用 apache commons 或者 google guava。zip 文件处理用 zip4j。<br>
+<strong>读取命令行参数</strong>：<a href="http://jcommander.org/">JCommander</a>是一个简单好用的命令行参数解析框架。</p>
+<h2 id="test">Test</h2>
+<p><strong>Spring测试框架</strong>：Spring Test 配合 JUnit 非常顺畅，需要确认项目中使用 Spring 版本 3.0 以上版本。<br>
+<strong>Mock</strong>：Mockito 是现在最优雅简洁的 mock 框架了，强烈推荐使用。Mockito 搞不定的部分，比如static 函数，搭配 PowerMock。<br>
+<strong>数据库测试</strong>：使用 H2 Database 内存数据库。还是怕慢？用 maven-surefire-plugin 多线程执行测试任务。<br>
+<strong>功能测试</strong>：在 onebox 环境测试，一遍遍发布部署太麻烦，使用 jetty-maven-plugin，一键就可以把服务启动起来。<br>
+<strong>Performance/Stability Test</strong>：Jmeter 是成熟的工具。</p>
+<h2 id="development-environment">Development Environment</h2>
+<p><strong>JDK</strong>：线上大多数项目使用 JDK6，JDK8 版本会从离线服务开始用，Maven 编译的包需要保证 JDK6 源码与二进制兼容。<br>
+<strong>版本控制</strong>：用 Git，先阅读我们的 Git 文档。如果想深入了解Git，推荐阅读《Git权威指南》。<br>
+<strong>构建工具</strong>：用 Maven。需要熟练掌握以下技巧：1.使用 Maven 打包，比如 Jar、War、Jar with dependency、distribution 包；2.使用 Maven 发布包；3.熟知 Maven依赖管理原理。推荐阅读《Maven权威指南》。<br>
+<strong>应用服务器</strong>：Nginx + Resin，Nginx 作为反向代理，Resin 承担应用服务器和 Java 容器的角色。需要注意，线上服务记得要调优 JVM，线程数等参数。测试环境用 Jetty 插件就好。</p>
+<p><a href="http://xielong.me/2015/04/17/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/">查看原文</a></p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160102-11-服务端工程师入门与进阶 Java 版/" class="post-title gt-a-link">
+                    服务端工程师入门与进阶 Java 版
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

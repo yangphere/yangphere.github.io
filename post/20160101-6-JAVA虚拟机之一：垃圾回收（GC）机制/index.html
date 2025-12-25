@@ -1,0 +1,264 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>JAVA虚拟机之一：垃圾回收（GC）机制 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    JAVA虚拟机之一：垃圾回收（GC）机制
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tags">
+                            # java
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/FpnVmgegbz/" class="post-tags">
+                            # jvm
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>原文: <a href="http://alaric.iteye.com/blog/2262566">http://alaric.iteye.com/blog/2262566</a></p>
+<h2 id="引言">引言</h2>
+<p>java对于其它语言（c/c++）来说，创建一个对象使用后，不用显式的delete/free，且能在一定程度上保证系统内存资源及时回收，这要功归于java的自动垃圾回收机制（Garbage Collection，GC），但也是因为自动回收机制存在，一旦系统内泄漏或存溢出时，排查问题比较困难，因此java程序开发者深入理解java虚拟机GC机制变得重要。</p>
+<!--more-->
+<p>要掌握GC机制，需要搞清楚下面几个问题：</p>
+<ol>
+<li>运行时有哪些内存区域？</li>
+<li>运行时怎么给类、对象分配内存？</li>
+<li>哪些区域的内存需要回收？</li>
+<li>内存中的哪些对象可以回收？</li>
+<li>如何回收？</li>
+</ol>
+<h2 id="一-运行时有哪些内存区域">一、运行时有哪些内存区域？</h2>
+<p>根据java虚拟机规范规定，java虚拟机所管理的运行时内存包括以下区域，如下图：<br>
+<img src="http://dl2.iteye.com/upload/attachment/0113/6288/5e219a27-c063-3f39-b121-4c8c25be3087.png" alt="" loading="lazy"></p>
+<ol>
+<li>程序计数器：每一条java线程都有一个独立的程序计数器，我们把线程相互独立隔离的区域叫线程私有的，它的作用可以看作是当前线程所执行的字节码的行号指示器，它是一块较小的空间区域，如果执行的是java方法，这个计数器记录的是正在执行的虚拟机字节码的指令地址，如果是native的方法，这个计数器的值为空（undefined）。</li>
+<li>java虚拟机栈：java虚拟机栈与程序计数器一样，也是一条线程私有的，java虚拟机栈描述的是java方法执行的内存模型，每个方法被执行的时候都会同时创建一个栈帧（Stack Frame）用于存储局部变量表，操作数栈，动态链路，方法出口等信息。每一个方法被调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程。</li>
+<li>本地方法栈：本地方法栈和虚拟机栈作用非常相似，不同的是java虚拟机栈是为执行的是java方法服务的，而本地方法栈是为native的方法执行服务的。</li>
+<li>java堆：java堆（heap）是java虚拟机所管理的内存中最大的一块。java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例以及数组都要在堆上分配内存。在堆上的内存是分代管理的，分为新生代和老年代，新生代又细分为：Eden，From Survivor，To Survivor，它们空间大小比例为8:1:1。</li>
+<li>方法区：方法区与java堆一样，是各个线程共享的内存区域，它用用于存储已被虚拟机加载的类信息，常量，静态变量、即时编译器编译后的代码等数据。虽然java虚拟机规范把方法区描述为堆得一个逻辑部分，但是它却有一个别名叫Non-Heap（非堆），目的应该是与java堆区分开来，也称“永久代”（Permanent Generation）。hotspot虚拟机永久代已经完全在JDK 8移除，用Native Memory来的实现，命名为metaSpace，<a href="https://blogs.oracle.com/poonam/entry/about_g1_garbage_collector_permanent">https://blogs.oracle.com/poonam/entry/about_g1_garbage_collector_permanent</a>。在下图左右是分别是jdk6，jdk8中jvisualvm的运行时数据内存的监控。</li>
+<li>运行时常量池：运行时常量池是方法区的一部分。用于存放编译期生成的各种字面量和符号引用。<br>
+<img src="http://dl2.iteye.com/upload/attachment/0113/6292/89080f8a-ae08-3292-86cc-31c77305fd7e.png" alt="" loading="lazy"></li>
+</ol>
+<h2 id="二-运行时怎么给类-对象分配内存">二、运行时怎么给类、对象分配内存？</h2>
+<p>要了解java垃圾回收机制前必须知道java怎么分配给对象内存的，根据上面运行时数据区域的划分可以知道，几乎所有的对象都在堆上分配，而类信息、常量、静态变量在方法区分配。堆内存是分代管理的，对象优先在Eden分配；大对象（所谓的大对象是指需要连续内存空间的java对象，如很长的字符串或者数组）直接进入老年代；长期存活的对象将进入老年代，在垃圾回收时在Survivor中每熬过一次youngGC，他的年龄就增加1，直到到达指定的年龄就会被放入老年代。</p>
+<h2 id="三-那些区域的内存需要回收">三、那些区域的内存需要回收？</h2>
+<p>根据运行时数据区域的各个部分，程序计数器、虚拟机栈、本地方法栈三个区域随着线程而生，随线程灭而灭。栈中的栈帧随着方法的进入和退出而进栈出栈。每个栈帧分配多少内存在类结构确定下来的时候就基本已经确定。所以这个三个区域内存回收时方法或者线程结束而回收的，不需要太多关注；而java堆和方法区则不一样，一个接口不同实现类，一个方法中不同的分支，在具体运行的时候才能确定创建那些对象，所以这部分内存是动态的，也是需要垃圾回收机制来回收处理的。</p>
+<h2 id="四-内存中的哪些对象可以回收">四、内存中的哪些对象可以回收？</h2>
+<ol>
+<li>
+<p>堆内存：判断堆内的对象是否可以回收，要判断这个对象实例是否确实没用，判断算法有两种：引用计数法和根搜索算法。引用计数法：就是给每个对象加一个计数器，如果有一个地方引用就加1，当引用失效就减1；当计数器为0，则认为对象是无用的。这种算法最大的问题在于不能解决相互引用的对象，如：A.b=B;B.a=A，在没有其他引用的情况下，应该回收；但按照引用计数法来计算，他们的引用都不为0，显然不能回收。根搜索算法：这个算法的思路是通过一系列名为“GC Roots”的对象作为起点，从这个节点向下搜索，搜索所经过的路径称为引用链（Reference Chain），当一个对象到GC Roots没有任何引用链相连(图论的不可达)时，则证明该对象不可用。java等一大部分商用语言是用根搜索算法来管理内存的，java中可以做为GC Roots的对象有如下几种：- 虚拟机栈（栈帧中的本地变量表）中的引用的对象；</p>
+<ul>
+<li>方法区中的类静态属性引用的对象；</li>
+<li>方法区中常量引用的对象；</li>
+<li>本地方法栈JNI(Native)的引用对象；</li>
+</ul>
+</li>
+<li>
+<p>方法区：方法区回收主要有两部分：废弃的常量和无用的类。废弃的常量判断方法和堆中的对象类似，只要判断没有地方引用就可以回收。相比之下，判断一个类是否无用，条件就比较苛刻，需要同事满足下面3个条件才能算是“无用的类”：- 该类的所有实例都已经被回收，也就是java堆中不存在该类的任何实例；</p>
+<ul>
+<li>加载该类的ClassLoader已经被回收；</li>
+<li>该类对应的java.lang.Class对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。</li>
+</ul>
+</li>
+</ol>
+<p>虚拟机可以对于满足上面三个条件的无用类进行回收，仅仅是可以回收，具体能否回收，JVM提供了-Xnoclassgc参数进行控制。</p>
+<h2 id="五-如何回收">五、如何回收？</h2>
+<p>gc有多种算法，根据不同的算法实现了不同的垃圾回收器，每种收集器在可以在不同的应用场景使用。</p>
+<ol>
+<li>
+<p>回收算法：- 标记-清除（Mark-Sweep）算法：如它的名字一样，算法分“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收掉被标记的对象。主要有两个缺点：一个是效率问题，标记和清除效率都不高；另一个是空间问题：标记清除后会产生大量空间碎片。</p>
+<ul>
+<li>复制（Copying）算法：它将内存按容量分成大小相等的两块，每次只用一块，当这一块内存用完后，就将可用的对象复制到另外一块上面，然后一次性清除已用过那块的内存空间。优点是实现简单，运行效率高，缺点是内存缩小为原来的一半。</li>
+<li>标记整理（Mark-Compact）算法：此算法仍然与标记-清除算法一样，第一步标记，第二步不是对无用对象清理，而是，让所有可用对象都向一端移动，然后直接清理掉端边界以外的内存。标记整理算法的优点是不会产生空间碎片。</li>
+<li>分代收集（Generation Collection）算法：分代收集算法根据对象存活周期的不同将内存划为几块，一般把java堆分为新生代和老年代，这样就可以根据各个年代的特点采用最合适的收集算法。在新生代中，每次垃圾回收时都发现大批对象死去，只有少量存活，那就选用复制算法，付出少量复制成本就可以完成收集。而老年代中对象存活率较高且没有空间进行担保（后面讲新生代的担保分配），就必须使用“标记-清除”或者“标记-整理”算法。</li>
+</ul>
+</li>
+<li>
+<p>垃圾回收器，垃圾回收器是垃圾回收算法的具体实现，一般不同的厂商或者不同版本的虚拟机都包含不同的垃圾收集器，并且一般会提供参数供用户选择在不用业务场景下组合出各个年代所使用的收集器。Hotspot虚拟机包含垃圾收集器如下图:<br>
+<img src="http://dl2.iteye.com/upload/attachment/0113/6294/83d60f3c-1eb2-3462-8c72-bd28b681935d.png" alt="" loading="lazy"></p>
+</li>
+</ol>
+<ul>
+<li>Serial(串行GC)收集器 ：Serial收集器是一个新生代收集器，单线程执行，使用复制算法。它在进行垃圾收集时，必须暂停其他所有的工作线程(用户线程)。是Jvm client模式下默认的新生代收集器。对于限定单个CPU的环境来说，Serial收集器由于没有线程交互的开销，专心做垃圾收集自然可以获得最高的单线程收集效率。</li>
+<li>ParNew(并行GC)收集器 ：ParNew收集器其实就是serial收集器的多线程版本，除了使用多条线程进行垃圾收集之外，其余行为与Serial收集器一样。</li>
+<li>Parallel Scavenge(并行回收GC)收集器 ：Parallel Scavenge收集器也是一个新生代收集器，它也是使用复制算法的收集器，又是并行多线程收集器。parallel Scavenge收集器的特点是它的关注点与其他收集器不同，CMS等收集器的关注点是尽可能地缩短垃圾收集时用户线程的停顿时间，而parallel Scavenge收集器的目标则是达到一个可控制的吞吐量。吞吐量= 程序运行时间/(程序运行时间 + 垃圾收集时间)，虚拟机总共运行了100分钟。其中垃圾收集花掉1分钟，那吞吐量就是99%。</li>
+<li>Serial Old(串行GC)收集器 ：Serial Old是Serial收集器的老年代版本，它同样使用一个单线程执行收集，使用“标记-整理”算法。主要使用在Client模式下的虚拟机。</li>
+<li>Parallel Old(并行GC)收集器 ：Parallel Old是Parallel Scavenge收集器的老年代版本，使用多线程和“标记-整理”算法。</li>
+<li>CMS(并发GC)收集器 ：CMS(Concurrent Mark Sweep)收集器是一种以获取最短回收停顿时间为目标的收集器。CMS收集器是基于“标记-清除”算法实现的，整个收集过程大致分为4个步骤：
+<ul>
+<li>初始标记(CMS initial mark)</li>
+<li>并发标记(CMS concurrenr mark)</li>
+<li>重新标记(CMS remark)</li>
+<li>并发清除(CMS concurrent sweep)</li>
+</ul>
+</li>
+</ul>
+<p>其中初始标记、重新标记这两个步骤任然需要停顿其他用户线程。初始标记仅仅只是标记出GC ROOTS能直接关联到的对象，速度很快，并发标记阶段是进行GC ROOTS 根搜索算法阶段，会判定对象是否存活。而重新标记阶段则是为了修正并发标记期间，因用户程序继续运行而导致标记产生变动的那一部分对象的标记记录，这个阶段的停顿时间会被初始标记阶段稍长，但比并发标记阶段要短。</p>
+<p>由于整个过程中耗时最长的并发标记和并发清除过程中，收集器线程都可以与用户线程一起工作，所以整体来说，CMS收集器的内存回收过程是与用户线程一起并发执行的。CMS收集器的优点：并发收集、低停顿，但是CMS还远远达不到完美，器主要有三个显著缺点：CMS收集器对CPU资源非常敏感。在并发阶段，虽然不会导致用户线程停顿，但是会占用CPU资源而导致引用程序变慢，总吞吐量下降。CMS默认启动的回收线程数是：(CPU数量+3) / 4。CMS收集器无法处理浮动垃圾，可能出现“Concurrent Mode Failure“，失败后而导致另一次Full  GC的产生。由于CMS并发清理阶段用户线程还在运行，伴随程序的运行自热会有新的垃圾不断产生，这一部分垃圾出现在标记过程之后，CMS无法在本次收集中处理它们，只好留待下一次GC时将其清理掉。这一部分垃圾称为“浮动垃圾”。也是由于在垃圾收集阶段用户线程还需要运行，即需要预留足够的内存空间给用户线程使用，因此CMS收集器不能像其他收集器那样等到老年代几乎完全被填满了再进行收集，需要预留一部分内存空间提供并发收集时的程序运作使用。在默认设置下，CMS收集器在老年代使用了68%的空间时就会被激活，也可以通过参数-XX:CMSInitiatingOccupancyFraction的值来提供触发百分比，以降低内存回收次数提高性能。要是CMS运行期间预留的内存无法满足程序其他线程需要，就会出现“Concurrent Mode Failure”失败，这时候虚拟机将启动后备预案：临时启用Serial Old收集器来重新进行老年代的垃圾收集，这样停顿时间就很长了。所以说参数-XX:CMSInitiatingOccupancyFraction设置的过高将会很容易导致“Concurrent Mode Failure”失败，性能反而降低。最后一个缺点，CMS是基于“标记-清除”算法实现的收集器，使用“标记-清除”算法收集后，会产生大量碎片。空间碎片太多时，将会给对象分配带来很多麻烦，比如说大对象，内存空间找不到连续的空间来分配不得不提前触发一次Full  GC。为了解决这个问题，CMS收集器提供了一个-XX:UseCMSCompactAtFullCollection开关参数，用于在Full  GC之后增加一个碎片整理过程，还可通过-XX:CMSFullGCBeforeCompaction参数设置执行多少次不压缩的Full  GC之后，跟着来一次碎片整理过程。</p>
+<p><code>G1收集器</code>：在G1中，堆被划分成 许多个连续的区域(region)。每个区域大小相等，在1M~32M之间。JVM最多支持2000个区域，可推算G1能支持的最大内存为2000*32M=62.5G。区域(region)的大小在JVM初始化的时候决定，也可以用-XX:G1HeapReginSize设置。在G1中没有物理上的Yong(Eden/Survivor)/Old Generation，它们是逻辑的，使用一些非连续的区域(Region)组成的。</p>
+<p><code>垃圾收集</code>（Garbage Collection），新生代的GC叫YongGC，也叫MinorGC，指发生在新生代的垃圾回收动作，因为java具备朝生夕灭特性，所以YongGC非常频繁，一般回收集比较快；老年代GC叫FullGC，也叫Major GC，一般都伴有YongGC，GC的速度一般比YongGC慢10倍以上。目前虚拟机实现都是分代收集(G1物理上是不连续的，是逻辑分代，这里主要以jdk1.7之前为例)，当要给对象分配空间时，在Eden上分配空间，如果空间不够，则触发一次YongGC，如果空间够，则分配空间，如果还不够则直接进入老年代；当一次YongGC后，从Eden，From Survivor的对象放入To Survivor，如果放不下，则进入老年代；每次Yong GC 后还留在Survivor中的对象，对象的年龄Age加1，达到一定年龄（默认为15，可用参数-XX:MaxTenuringThreshold设置）后自动进入老年代；在发生Yong GC时，虚拟机会检测之前每次晋升到老年代的平均大小是否大于老年代的剩余空间大小，如果大于，则改为直接进行一次Full GC。如果小于则看HandlePromotionFailure设置是否允许担保失败，如果允许，那只会进行Minor GC；如果不允许，则也要改为进行一次Full GC。</p>
+<h2 id="总结">总结：</h2>
+<p>java GC主要主要指java堆和方法区的对象回收，哪些对象可以回收是通过根搜索算法来判断的，在堆中是分代收集的，怎么回收是由具体的垃圾收集器来完成的，在不同的应用场景下，开发者可以选择不同的收集器来满足业务需求，达到最佳性能。</p>
+<h2 id="参考资料">参考资料：</h2>
+<ol>
+<li>深入理解java虚拟机-周志民</li>
+<li>The Java® Virtual Machine Specification Java SE 8 Edition</li>
+</ol>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20151230-5-有了tldr妈妈再也不用担心我记不住命令了/" class="post-title gt-a-link">
+                    有了tldr，妈妈再也不用担心我记不住命令了
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>告别 Terminal！IDEA 也可以爽用 Claude Code 惹 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    告别 Terminal！IDEA 也可以爽用 Claude Code 惹
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2025-12-26 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/vUxABHff4e/" class="post-tags">
+                            # ai
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/uHD8T4u7ax/" class="post-tags">
+                            # claude
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>原文：https://linux.do/t/topic/1362218</p>
+<p>想必各位 Vide Coding Master 在使用 JetBrains 家 IDE 的时候总有一些苦恼： 如果想要使用 Claude Code、Codex、Gemini CLI 这类终端工具，就要在 IDEA 的命令行中使用它们， 这缺少了一些 UI 交互，也有很大概率会出现终端工具的内容疯狂闪屏的问题（点名批评 Claude Code）。<br>
+而现在！AI Assistant 插件更新了对自定义 ACP 的配置支持，现在你可以配置任何支持 ACP 的 Agent 到你的 AI Assistant 中啦！</p>
+<figure data-type="image" tabindex="1"><img src="https://img.weiblogs.com/img/20251226000358581.png" alt="image-20251226000357223" loading="lazy"></figure>
+<h2 id="什么是-acp">什么是 ACP？</h2>
+<p><a href="https://agentclientprotocol.com/">Agent Client Protocol (ACP)</a>, 是一个由 Zed 和 JetBrains 发起的、<br>
+用于规范<strong>代码编辑器</strong>、<strong>集成开发环境</strong>与<strong>编码代理</strong> (也就是常说的 AI Agent) 之间的通讯的协议。</p>
+<p>简单来说，就是一个专门为了让 AI Agent 与各类 IDE 友好协作的通用协议。</p>
+<p>在佬友们面前我就不班门弄斧了，更多有关 ACP 的信息可以前往 ACP 的官方网站 <a href="https://agentclientprotocol.com/">https://agentclientprotocol.com</a> 了解更多信息。</p>
+<h2 id="配置">配置</h2>
+<p>如上文所配的图所示，你可以在 AI Assistant 插件右上角的下拉菜单中找到「配置 ACP 智能体」的功能，<br>
+点击后会打开一个 <code>acp.json</code> 文件，此时即可配置 ACP 了。</p>
+<p>这里我会展示一个已经配置完 Claude Code 和 Codex 之后的 <code>acp.json</code> 文件内容</p>
+<p>下面是 MacOS上的配置：</p>
+<pre><code class="language-JSON">{
+    &quot;agent_servers&quot;: {
+        &quot;Claude Code&quot;: {
+            &quot;command&quot;: &quot;claude-code-acp&quot;
+        },
+        &quot;Codex&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;@zed-industries/codex-acp&quot;
+            ]
+        }
+    }
+}
+</code></pre>
+<p>Windows上的配置需要加上命令的后缀：</p>
+<pre><code class="language-json">{
+    &quot;agent_servers&quot;: {
+        &quot;Claude Code&quot;: {
+            &quot;command&quot;: &quot;claude-code-acp.cmd&quot;
+        },
+        &quot;Codex&quot;: {
+            &quot;command&quot;: &quot;npx.cmd&quot;,
+            &quot;args&quot;: [
+                &quot;-y&quot;,
+                &quot;@zed-industries/codex-acp&quot;
+            ]
+        }
+    }
+}
+</code></pre>
+<p>之后会继续简单介绍二者具体的配置过程。</p>
+<h3 id="claude-code">Claude Code</h3>
+<p>Zed 提供了一个针对 Claude Code 的 ACP 适配器：<a href="https://github.com/zed-industries/claude-code-acp">claude-code-acp</a>，<br>
+根据文档的描述，我们使用 <code>npm</code> 安装它即可：</p>
+<pre><code class="language-Bash">npm install -g @zed-industries/claude-code-acp
+</code></pre>
+<blockquote>
+<p>需要注意的是，这里实际上是需要 <code>-g</code> 来安装到全局的，不知道为什么官方的文档里没有添加它。</p>
+</blockquote>
+<p>安装成功后，上述的配置就可以正常生效啦，现在你可以在 AI Assistant 的选项里看到它了：</p>
+<figure data-type="image" tabindex="2"><img src="https://img.weiblogs.com/img/20251226000613971.png" alt="image-20251226000611095" loading="lazy"></figure>
+<p>而且包括模式选择和模型选择也都有：</p>
+<figure data-type="image" tabindex="3"><img src="https://img.weiblogs.com/img/20251226000641202.png" alt="image-20251226000639351" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://img.weiblogs.com/img/20251226000706858.png" alt="image-20251226000704304" loading="lazy"></figure>
+<p>我们可以尝试对个话，看看是否可用：</p>
+<figure data-type="image" tabindex="5"><img src="https://img.weiblogs.com/img/20251226000746397.png" alt="image-20251226000744692" loading="lazy"></figure>
+<p>嗯～ 一切正常，而且这里有一个很明显与 AI Assistant 中内置的 Claude Agent 之间的区别：<br>
+使用自己配置的 ACP 可以完整识别到你的所有全局配置，包括配置的第三方中转站地址、MCP 之类的工具调用。<br>
+而内置的 Claude Agent 模式，最多只能识别到第三方地址，而 MCP 是无法被读取识别使用的。</p>
+<p>终于可以不用看CC CLI那闪花眼的超级闪屏BUG了<img src="https://linux.do/images/emoji/twemoji/sob.png?v=15" alt=":sob:" loading="lazy"></p>
+<h3 id="codex">Codex</h3>
+<p>Zed 也同样实现了一个 Codex 的 ACP 适配器：<a href="https://github.com/zed-industries/codex-acp">codex-acp</a>。</p>
+<p>不过它不使用 <code>npm i -g</code> 安装，而是使用 <code>npx</code>。</p>
+<pre><code class="language-bash">npx -g @zed-industries/codex-acp
+</code></pre>
+<p>就像上面所展示的 <code>acp.json</code> 里配置的那样，直接配置 npx 命令即可：</p>
+<pre><code class="language-JSON">{
+    &quot;agent_servers&quot;: {
+        &quot;Codex&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;@zed-industries/codex-acp&quot;
+            ]
+        }
+    }
+}
+</code></pre>
+<p>同样的，配置完成后就可以选择并使用了：</p>
+<figure data-type="image" tabindex="6"><img src="https://img.weiblogs.com/img/20251226000825089.png" alt="image-20251226000823713" loading="lazy"></figure>
+<p>我本身也没给 Codex 配置太多 MCP，所以看上去不是很多的样子。<br>
+它也有部分可选择的选项，例如模式和模型：</p>
+<figure data-type="image" tabindex="7"><img src="https://img.weiblogs.com/img/20251226000852438.png" alt="image-20251226000851136" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://img.weiblogs.com/img/20251226000913559.png" alt="image-20251226000912139" loading="lazy"></figure>
+<p>按需选择即可。</p>
+<h2 id="总结">总结</h2>
+<p>如果你是 JetBrains 家 IDE 的重度使用者，又苦于 Claude Code 原生 CLI 那闪瞎眼的超级闪屏 BUG，<br>
+或者你希望在任何支持 ACP 的 IDE 中得到更好的 AI Agent UX 体验，那么现在就是动手尝试的时候啦～</p>
+<p>我也是刚刚才配置的，在元旦假期开始之前，我打算再深度体验几天，<br>
+看看通过 ACP 带来的 UX 体验是否能给我带来全面的提升和身心的愉悦～</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/claude-code-zhong-mcp-zai-windows-shang-jing-gao-xin-xi/" class="post-title gt-a-link">
+                    Claude Code 中 MCP 在Windows上警告信息
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

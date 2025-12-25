@@ -1,0 +1,242 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Mac系统爬取所有M3U8视频下载方法-FFmpeg | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Mac系统爬取所有M3U8视频下载方法-FFmpeg
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-03-24 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/aXGJKXaJnU/" class="post-tags">
+                            # mac
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="前言">前言</h1>
+<p>由于有的网站不允许下载视频，到了有效期就不能看了，但是我想以后反复看，怎么办呢？</p>
+<h1 id="前提准备">前提准备</h1>
+<ul>
+<li>操作系统：Mac</li>
+<li>浏览器：谷歌浏览器</li>
+<li>抓取m3u8工具：猫爪</li>
+<li>视频处理工具：ffmpeg</li>
+<li>需要安装工具：homebrew</li>
+</ul>
+<h1 id="步骤">步骤</h1>
+<h2 id="1-安装ffmpeg">1、安装ffmpeg</h2>
+<p>安装命令ffmpeg：</p>
+<pre><code>brew install ffmpeg
+</code></pre>
+<p>用brew命令，需要安装homebrew请参考下面的文章：</p>
+<p>《【Mac + Python】苹果系统之安装Python3.6.x环境》</p>
+<h2 id="2-查看ffmpeg安装信息">2、查看ffmpeg安装信息</h2>
+<pre><code>brew info ffmpeg
+</code></pre>
+<p>有红叉的代表是没有这个库，有绿色的对勾的表示此库已经安装上了。</p>
+<h2 id="3-抓取m3u8地址">3、抓取M3U8地址</h2>
+<p>首先在谷歌浏览器中安装猫爪插件，具体安装步骤自行百度</p>
+<p>首先打开视频后，查看</p>
+<pre><code>https://1258712167.vod2.myqcloud.com/fb8e6c92vodtranscq1258712167/d2d290e45285890788294575847/drm/voddrm.token.dWluPTE0NDExNTIxMjI1NDUyMzk0OTt2b2RfdHlwZT0wO2NpZD0xNzc4Njc7dGVybV9pZD0xMDAyMDkyMTY7ZXh0PWM5MGNiZDExNDNkOWZjNTgzN2U5MjdlZDg4MjlhN2VlN2Q0YjRlNDZiZTc0OTdiMGU3MmI0MmRjZDZlYmM5NzdiMTlmMDgyYjM1NGJiYmIzNDY0MGFhYjFkNDZiYTEwN2YwYWRkMWVmNmQ4NTkwZDNiOGE3NGZlNjczYzYzODUyZGUzOWVjODAwOGUxYTYwZQ==.v.f30741.m3u8?exper=0&amp;sign=32c5411352762a9ad7716df57da546d3&amp;t=60672ebf&amp;us=8985634549565757842
+</code></pre>
+<h2 id="4-视频转换">4、视频转换</h2>
+<p>输入命令：</p>
+<pre><code>ffmpeg -i  
+https://1258712167.vod2.myqcloud.com/fb8e6c92vodtranscq1258712167/d2d290e45285890788294575847/drm/voddrm.token.dWluPTE0NDExNTIxMjI1NDUyMzk0OTt2b2RfdHlwZT0wO2NpZD0xNzc4Njc7dGVybV9pZD0xMDAyMDkyMTY7ZXh0PWM5MGNiZDExNDNkOWZjNTgzN2U5MjdlZDg4MjlhN2VlN2Q0YjRlNDZiZTc0OTdiMGU3MmI0MmRjZDZlYmM5NzdiMTlmMDgyYjM1NGJiYmIzNDY0MGFhYjFkNDZiYTEwN2YwYWRkMWVmNmQ4NTkwZDNiOGE3NGZlNjczYzYzODUyZGUzOWVjODAwOGUxYTYwZQ==.v.f30741.m3u8?exper=0&amp;sign=32c5411352762a9ad7716df57da546d3&amp;t=60672ebf&amp;us=8985634549565757842 -c copy 【下载本地路径】/video.mp4
+</code></pre>
+<p>下载合成视频转换：</p>
+<p>最后下载成功啦~~~??ヽ(°▽°)ノ?</p>
+<p>还有一种情况，另一台Mac电脑上一直报错，安装不了，查询信息也出不来。</p>
+<p>参考如下方法即可解决：</p>
+<pre><code># 1）执行
+brew tap homebrew-ffmpeg/ffmpeg
+
+# 2）执行
+brew install homebrew-ffmpeg/ffmpeg/ffmpeg
+
+# 3）执行如下命令，看此仓库支持哪些options。
+brew options homebrew-ffmpeg/ffmpeg/ffmpeg
+
+# 4）根据第3）步得到的options，替换下面命令中的option,然后执行
+brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-&lt;option1&gt; --with-&lt;option2&gt; ...
+</code></pre>
+<p>运行完上述步骤后，即可安装ffmpeg成功。</p>
+<p>安装过程中，可能会出现下面的问题：</p>
+<p>brew安装报错 “cp: utimes: /usr/local/Cellar/jemalloc/.: Operation not permitted cp: chmod: /usr/local/C”</p>
+<pre><code>cp: utimes: /usr/local/Cellar/jemalloc/.: Operation not permitted 
+cp: chmod: /usr/local/Cellar/jemalloc/.: Operation not permitted
+</code></pre>
+<p>解决办法：</p>
+<pre><code>sudo chown -R $(whoami) /usr/local/Cellar
+</code></pre>
+<p>继续安装就可以成功了。</p>
+<p>输入命令：</p>
+<pre><code>ffmpeg
+</code></pre>
+<h1 id="附录">附录</h1>
+<p>①感谢阳光的大男孩儿的：《Mac 配置FFmpeg环境》*****</p>
+<p>②感谢花逢春Tim的：《转载：腾讯课堂直播视频下载》*****</p>
+<p>③感谢jameswhale的：《Mac OS上使用ffmpeg的“血泪”总结》*****</p>
+<p>④感谢芥焉丶的：《brew安装报错 “cp: utimes: /usr/local/Cellar/jemalloc/.: Operation not permitted cp: chmod: /usr/local/C”》***</p>
+<h1 id="其他参考文章">其他参考文章</h1>
+<p>①《[原创工具] M3U8多线程下载器 V1.0.3 ，支持Windows、MacOS》</p>
+<p>②《腾讯课堂在线视频下载》</p>
+<p>③《怎么下载腾讯课堂M3U8格式的视频》</p>
+<p>④kervias的文章：《Python爬虫下载腾讯课堂回放视频》</p>
+<p>⑤kervias的github：https://github.com/kerviasx</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/OpenJDK Providers and Comparison-openjdkprovidersandcomparison/" class="post-title gt-a-link">
+                    OpenJDK Providers and Comparison
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

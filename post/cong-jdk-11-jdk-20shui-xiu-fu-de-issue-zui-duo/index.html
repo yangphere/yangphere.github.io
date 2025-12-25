@@ -1,0 +1,179 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>从 JDK 11-JDK 20，谁修复的 issue 最多？ | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    从 JDK 11-JDK 20，谁修复的 issue 最多？
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-03-24 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tags">
+                            # java
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p><a href="https://www.oschina.net/news/233548/jdk-20-ga">JDK/Java 20 已正式 GA</a>。根据 Oracle 披露的信息<a href="https://www.oschina.net/action/GoToLink?url=https%3A%2F%2Ftwitter.com%2FOpenJDK%2Fstatus%2F1638287657682755588">显示</a>，在为 JDK 20 修复的 issue 数量上，位列全球前五位的厂商分别为：甲骨文（Oracle）、红帽（Red Hat）、思爱普（SAP）、ARM 和腾讯（Tencent）。其中，来自国内的积极贡献厂商除腾讯外，还有阿里巴巴、华为和龙芯。</p>
+<p>“我们感谢许多审查提议更改的经验丰富的开发人员、尝试早期访问构建并报告问题的早期采用者，以及在 OpenJDK 邮件列表上提供反馈的敬业的专业人员。”</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303242218343.png" alt="img" loading="lazy"></figure>
+<p>公告<a href="https://www.oschina.net/action/GoToLink?url=https%3A%2F%2Finside.java%2F2023%2F03%2F21%2Fthe-arrival-of-java-20%2F">指出</a>，在 Java 20 中，被标记为已修复的 2314 个 JIRA issue 里面，有 1595 个由 Oracle 的雇员修复，其余的 719 个由 Java 社区的其他个人开发者和组织开发者贡献修复。</p>
+<p>Oracle 感谢了阿里巴巴、亚马逊、ARM、谷歌、华为、IBM、英特尔、ISCAS、红帽、SAP 和腾讯等组织的开发者做出的显著贡献，以及来自 Bellsoft、龙芯等小型组织独立开发者的贡献，他们总计为 Java 20 中 7% 的 issue 贡献了修复。</p>
+<p>而从 Java 11 到 Java 20 GA 发布，在被标记为已修复的 21604 个 JIRA issue 中；Oracle 的雇员修复了 15420 个，剩余的 6184 个由个人开发者和其他组织的开发者贡献修复。其中，修复数量排在前五位的厂商分别为：Oracle、Red Hat、SAP、Google 和腾讯。通过检查 issue 并整理来自指派者结果的组织数据后，可以得出以下组织在 Java 中的开发贡献图表：</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303242218391.png" alt="img" loading="lazy"></figure>
+<p>此外，Oracle 还特别感谢了开发者 Rick Hillegas 和 Apache Derby 团队，“感谢他们多年来在每个 JDK 版本的抢先体验测试周期中提供的可靠且定期的反馈”。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160213-29-使用acme-tiny工具生成Let&#39;s Encrypt的免费SSL证书/" class="post-title gt-a-link">
+                    使用acme-tiny工具生成Let&#39;s Encrypt的免费SSL证书
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

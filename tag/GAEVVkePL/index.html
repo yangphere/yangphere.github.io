@@ -1,0 +1,445 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>java | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <div class="main-content">
+        <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+        <div class="current-tag-container">
+            <h2 class="title gt-c-content-color-first">
+                #java
+            </h2>
+        </div>
+        <div class="post-list-container">
+    <div class="post-inner">
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/cong-jdk-11-jdk-20shui-xiu-fu-de-issue-zui-duo/">
+                            <span class="post-title gt-c-content-color-first">从 JDK 11-JDK 20，谁修复的 issue 最多？</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2023-03-24 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160129-28-Google Java编程风格指南中文版/">
+                            <span class="post-title gt-c-content-color-first">Google Java编程风格指南中文版</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        作者：Hawstein
+前言
+这份文档是Google Java编程风格规范的完整定义。当且仅当一个Java源文件符合此文档中的规则， 我们才认为它符合Google的Java编程风格。
+与其它的编程风格指南一样，这里所讨论的不仅仅是编码格式美不美观的问题， 同时也讨论一些约定及编码标准。然而，这份文档主要侧重于我们所普遍遵循的规则， 对于那些不是明确强制要求的，我们尽量避免提供意见。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160102-9-Mac上WebStorm无法输入中文标点/">
+                            <span class="post-title gt-c-content-color-first">Mac上WebStorm无法输入中文标点</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        Mac上JDK_1.8.51或以上版本存在无法输入中文标点的bug，需要删除这个JDK，重新安装JDK_1.8.45版本。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/aXGJKXaJnU/" class="post-tag">
+                                # mac
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/">
+                            <span class="post-title gt-c-content-color-first">java Servlet+mysql 调用带有输入参数和返回值的存储过程</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        原文:http://www.cnblogs.com/xiaoliao/p/5094151.html
+这个数据访问的功能，我在.NET+Mysql .NET+Sqlserver  PHP+Mysql上都实现过，并且都发布在了我博客园里面，因为我觉得这个功能实在是太重要，会让你少写很多SQL语句不说，还能提高程序的执行效率。
+今天在JAVA+Mysql上也实现了这个功能下面我贴出代码，这次我会讲详细点，让看的朋友能更加清楚它的好处在哪里。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/DvfVuAWucY/" class="post-tag">
+                                # javaweb
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/de5lyPztjR/" class="post-tag">
+                                # servlet
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160102-11-服务端工程师入门与进阶 Java 版/">
+                            <span class="post-title gt-c-content-color-first">服务端工程师入门与进阶 Java 版</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        前言
+欢迎加入我们。这是一份针对实习生/毕业生的服务端开发入门与进阶指南。遇到问题及时问你的 mentor 或者直接问我。 建议：
+
+尽量用google查找技术资料。
+有问题在stackoverflow找找，大部分都已经有人回答。
+多看官方的技术文档。
+ibm developerworkers的文章质量整体上有保障。
+平时花一些时间在github上阅读优秀项目源码。
+
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160102-10-Mac下同时安装多个版本的JDK/">
+                            <span class="post-title gt-c-content-color-first">Mac下同时安装多个版本的JDK</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        JDK8 GA之后，小伙伴们喜大普奔，纷纷跃跃欲试，想体验一下Java8的Lambda等新特性，可是目前Java企业级应用的主打版本还是JDK6， JDK7。因此，我需要在我的电脑上同时有JDK8，JDK7，JDK6。JDK6和JDK7主要是做一些产品代码的验证，以及自己玩一些开源项目，JDK8则纯属尝鲜，谁叫咱是喜新厌旧的程序员呢。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/aXGJKXaJnU/" class="post-tag">
+                                # mac
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/">
+                            <span class="post-title gt-c-content-color-first">JAVA虚拟机之一：垃圾回收（GC）机制</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        原文: http://alaric.iteye.com/blog/2262566
+引言
+java对于其它语言（c/c++）来说，创建一个对象使用后，不用显式的delete/free，且能在一定程度上保证系统内存资源及时回收，这要功归于java的自动垃圾回收机制（Garbage Collection，GC），但也是因为自动回收机制存在，一旦系统内泄漏或存溢出时，排查问题比较困难，因此java程序开发者深入理解java虚拟机GC机制变得重要。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/FpnVmgegbz/" class="post-tag">
+                                # jvm
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20151229-4-由字符串反转(使用递归)引申出来一道Java面试题/">
+                            <span class="post-title gt-c-content-color-first">由字符串反转(使用递归)引申出来一道Java面试题</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        如何面试一个从事编程工作的开发人员既困难又乏味，幸好还有很多值得参考的指南，比如：《Joel Guerilla Guide to interviewing》，但最后雇佣与否，还得由你自己决定。为了快速地了解他们的编程能力，我想到了一个关于字符串反转的问题，有人用这道题取得不错的效果，这道题的答案有很多种，因此这给了你足够的空间去考察候选者的技能，我自己思考了会儿，找到好几种答案如何用Java实现字符串的反转。候选者的答案正好是面试官了解他们如何思考的一种方式。你可以用相关的接口来定义这道题，里面有一个未实现的方法。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20151229-1-Java 8 简明教程/">
+                            <span class="post-title gt-c-content-color-first">Java 8 简明教程</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        “Java并没有没落，人们很快就会发现这一点”
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/R8vIlrOkgV/" class="post-tag">
+                                # java8
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/OpenJDK Providers and Comparison-openjdkprovidersandcomparison/">
+                            <span class="post-title gt-c-content-color-first">OpenJDK Providers and Comparison</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2020-04-11 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/GAEVVkePL/" class="post-tag">
+                                # java
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+    </div>
+</div>
+        <div class="pagination-container">
+    
+    
+</div>
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>如何在 GitHub 正确吐槽 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    如何在 GitHub 正确吐槽
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tags">
+                            # github
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="背景">背景</h2>
+<p>在几年前，百姓网几乎所有项目的开发流程就已经迁到 GitHub 上了。将 GitHub flow 作为日常开发流程，有一个很大的好处，pull request 很自然地成为 code review 的平台——每个人的代码都必须经过 review 之后，才会合并到主干。<br>
+因此，各个项目的 pull request 也逐渐成为一座座金矿，新人可以在历史 PR 中汲取经验，高手也常常通过 PR 追查疑难杂症的来龙去脉。而对我这个吐槽狂来说，PR 也是一个非常重要的阵地……</p>
+ <!--more-->
+<h2 id="一个吐槽狂的日常">一个吐槽狂的日常</h2>
+<p>我叫魔法哥，我是一个吐槽狂。每当我在公司项目中看到不靠谱的代码，总是忍不住一吐为快。我相信，吐槽使人进步，吐槽改变世界。<br>
+吐槽很爽，但也有风险。即使某段代码看起来不太对劲，我也要再三确认，因为一旦搞错了，会很没面子。接下来，我会告诉你，我如何安全、优雅、正确地在 GitHub 吐槽别人的代码。</p>
+<h3 id="这行代码是谁写的">“这行代码是谁写的？”</h3>
+<p>看到不靠谱的代码，我们的第一反应通常是这个疑问。怨有头债有主，先要弄清楚喷谁。<br>
+我厂推荐使用 JetBrains 系列 IDE 来干活（公司出钱买正版），因此这里以 PhpStorm 为例，来还原一下我的工作场景。<br>
+对于启用了版本控制的项目，PhpStorm 允许我们查看每一行代码的作者信息。在行号处点击右键，选中 Annotate，即可开启此功能。（图一）<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820311/b75e82aa-d308-11e4-9e5d-475e13e4c887.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820311/b75e82aa-d308-11e4-9e5d-475e13e4c887.png" alt="01 ide-annotate" loading="lazy"></a><br>
+行号栏会扩展出一条作者信息栏，显示出每行代码所属的 commit 版本号、更新日期、作者等信息。当鼠标悬停在此栏时，还会显示每行的详细信息，包括完整的 commit 版本号、精确的更新时间、commit 的标题等。（图二）<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820831/6fff4908-d30d-11e4-9495-60dd9ac58cda.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820831/6fff4908-d30d-11e4-9495-60dd9ac58cda.png" alt="02 ide-annotate-open" loading="lazy"></a></p>
+<h3 id="它是怎么变成现在这样的">“它是怎么变成现在这样的？”</h3>
+<p>根据上面的方法，我们就通常可以找到吐槽的对象了。但这还不够。有些时候这里显示出的作者可能是只重排了一下代码格式，并非真凶；又或者我们需要了解清楚代码是怎么一步步改成现在这样的，涉案人员都不能放过。所以接下来，我们要捋一遍这个文件的历史。<br>
+选择菜单 VCS → Git → Show History，PhpStorm 会在 Version Control 面板显示出当前文件的所有相关 commit 历史。（图三）<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820329/d1105f20-d308-11e4-8955-d8807092bc52.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820329/d1105f20-d308-11e4-8955-d8807092bc52.png" alt="03 ide-vcs" loading="lazy"></a><br>
+在这个历史记录中，双击任何一条 commit 即可查看它的 diff 视图。这样就可以深入分析某段代码的更改过程、定位到相应的 check-in 节点。（图四）<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820401/9ed9683e-d309-11e4-82d1-65d7ae6bf0b6.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820401/9ed9683e-d309-11e4-82d1-65d7ae6bf0b6.png" alt="04 ide-diff" loading="lazy"></a></p>
+<h3 id="手边没有-ide-怎么查">手边没有 IDE 怎么查？</h3>
+<p>如果自己的电脑不在手边，也可以用浏览器登录 GitHub 网站，通过网页界面来一步步追查。我们进入项目 repo 的主页，打开某个文件的详情页面，在顶部可以发现 “Blame” 和 “History” 两个按钮（图五）：<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820426/e03da63c-d309-11e4-9afb-d2e92b10bfb5.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820426/e03da63c-d309-11e4-9afb-d2e92b10bfb5.png" alt="05 github-file-detail-page" loading="lazy"></a><br>
+其中，进入 Blame 页面可以查看文件内每行代码的作者信息（图六），其功能相当于图一。<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6819987/279c7c38-d305-11e4-942b-e0606a51080b.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6819987/279c7c38-d305-11e4-942b-e0606a51080b.png" alt="06 github-blame" loading="lazy"></a><br>
+而进入 History 页面可以查看这个文件的所有修改记录（图七），类似于图三。<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820462/3d2c6d7e-d30a-11e4-9ca2-b3adbc10542e.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820462/3d2c6d7e-d30a-11e4-9ca2-b3adbc10542e.png" alt="07 github-history" loading="lazy"></a><br>
+在 History 页面点击任何一条 commit 即可查看该 commit 各文件的 diff 视图（图八），相当于图四。<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820539/4e3289c2-d30b-11e4-894e-049cf1288012.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820539/4e3289c2-d30b-11e4-894e-049cf1288012.png" alt="08 github-diff" loading="lazy"></a></p>
+<h3 id="吐槽-commit">吐槽 Commit</h3>
+<p>追查到问题代码真正的 check-in 节点后，就可进入相关 commit 的详情页面开始吐槽了。慢着，如何找到某个 commit 在 GitHub 上的详情页？<br>
+如果你在 GitHub 网站进行追查，那么图八其实就是 commit 的详情页。此外，在图六 Blame 页面的左栏可以点击 commit 的标题或版本号直达该 commit 的详情页；图七中的每一行都链向每个 commit 的详情页。<br>
+如果你正在用 PhpStorm，且你的 PhpStorm 安装了 GitHub 插件，也比较好办。在类似图二的作者信息栏展开的状态下，右击任一 commit，在弹出菜单中选择 Open on GitHub，即可打开浏览器进入该 commit 的详情页。（图九）<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820502/d7db3210-d30a-11e4-9004-4d679d1bc3ca.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820502/d7db3210-d30a-11e4-9004-4d679d1bc3ca.png" alt="09 ide-github-plugin" loading="lazy"></a><br>
+（需要注意的是，由于我们的工作 repo 都是 fork，所以这个操作打开的页面是你的 fork 中的这个 commit。你需要手动修改一下页面 URL 来进入项目 upstream 的对应的 commit 页面。）<br>
+如果你的 PhpStorm 没有安装 GitHub 插件，也可以试试另一种方法。在图九的右键菜单中选择 Copy revision number，即可得到该 commit 的版本号。然后使用以下模式手工构造一个 URL 打开即可：</p>
+<pre><code>https://github.com/{org}/{project}/commit/{revision}
+</code></pre>
+<p>好了，在 commit 详情页的底部，我们可以发现一个评论框。（图十）<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820778/02e7036a-d30d-11e4-9927-ca8da1172755.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820778/02e7036a-d30d-11e4-9927-ca8da1172755.png" alt="10 github-commit-comment" loading="lazy"></a><br>
+憋了这么半天，终于可以畅快地吐槽了！这个评论框具备完整的 GitHub 评论功能，我们可以使用 <a href="https://github.com/cssmagic/blog/issues/13">GitHub 风格的 Markdown 语法</a> 书写富文本，可以引用其它 commit 或 PR、@ 别人、拖拽图片上传，很方便。</p>
+<h3 id="更优雅一点吐槽-pr">更优雅一点，吐槽 PR</h3>
+<p>在 GitHub 吐槽 commit 看起来很拉风，但这还不够，还可以更优雅一点。<br>
+上面说过，PR 是一座金矿，那里有很多讨论。找到某个 commit 所属的 PR，有助于我们更好地了解背景，避免喷错（安全第一啊）。<br>
+另一方面，当不良代码被合并到主干时，我们固然可以怪罪代码作者，但这更多是 review 者的责任。因为帮别人 review 代码的往往是有经验的资深工程师，帮助新人纠错和成长是他们的重要职责。因此，找到 PR 再吐槽，还可以揪出那些不认真 review 代码、“毁” 人不倦的导师们，直接打脸，岂不快哉！<br>
+那么，如何通过 commit 找到它所属的 PR 呢？<br>
+在上一节我们已经找到了 commit 的版本号，接下来，我们登录项目 upstream repo 的主页，在页面顶部有一个搜索框，填入 commit 的版本号，搜索。（图十一）<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820656/312f884c-d30c-11e4-8f0c-d18a02ea7a07.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820656/312f884c-d30c-11e4-8f0c-d18a02ea7a07.png" alt="11 github-search" loading="lazy"></a><br>
+（请留意此时搜索框的状态是 “This repository”，否则你可能进错了的页面。）<br>
+搜索结果往往为空。别着急，在页面左侧的搜索类型栏可以发现 “Issues” 有 1 条搜索结果，点击之。（图十二）<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820665/5034d120-d30c-11e4-839a-99d4ad8fc1b9.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820665/5034d120-d30c-11e4-839a-99d4ad8fc1b9.png" alt="12 github-search-issue" loading="lazy"></a><br>
+此时就可以找到这个 commit 是在哪个 PR 被合并到主干的啦（图十三）。尽情开动吧！<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6820745/a2ede37a-d30c-11e4-940c-4efc0c41391a.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6820745/a2ede37a-d30c-11e4-940c-4efc0c41391a.png" alt="13 github-search-pr" loading="lazy"></a></p>
+<h2 id="做一个有情怀的吐槽狂">做一个有情怀的吐槽狂</h2>
+<p>要知道，总会有一些害羞的同学不敢直面我的吐槽，他们总是假装没有收到我在 GitHub 的评论。为此，我写了这篇教程<a href="https://github.com/baixing/FE-Blog/issues/3">《如何正确接收 GitHub 的消息邮件》</a>，并发给每个人，这样应该可以防止大家装睡了吧。<br>
+另外，在日常的吐槽工作中，我还会把一些典型的错误汇总起来，并招集大家听我当面吐槽一遍。虽然大家都很嫌弃我，但我丝毫不为所动，因为我是一个有情怀的吐槽狂，天生骄傲！</p>
+<blockquote>
+<p>转自： <a href="https://github.com/cssmagic/blog/issues/51">cssmagic/blog#51</a></p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160107-17-如何正确接收 GitHub 的消息邮件/" class="post-title gt-a-link">
+                    如何正确接收 GitHub 的消息邮件
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

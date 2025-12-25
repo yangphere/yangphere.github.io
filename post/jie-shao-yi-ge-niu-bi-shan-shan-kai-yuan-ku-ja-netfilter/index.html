@@ -1,0 +1,236 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>介绍一个”牛逼闪闪”开源库：ja-netfilter | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    介绍一个”牛逼闪闪”开源库：ja-netfilter
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2025-10-31 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/9Z_4tnqpc2/" class="post-tags">
+                            # ja-netfilter
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/e6ug0V2bTiF/" class="post-tags">
+                            # Java
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/OvFHeCRxkx4/" class="post-tags">
+                            # Javaagent
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件了！</p>
+<p>所以没错，IDE Eval Resetter这个项目我已经弃坑，因为我觉得我插件已经写得很好了（手动狗头，以下很多用词默认手动加了狗头），得玩点其他好玩的东西。</p>
+<p>这次要来玩个正经的、通用的、高大上的东西。</p>
+<p>0x0. 项目背景<br>
+首先还是基于上述内容。</p>
+<p>我们日常使用的软件中有很多有意或无意被加入网络访问的代码。有些并非恶意，有些则是。<br>
+并非恶意的像一些软件的在线激活验证，如dbeaver、smartgit等。<br>
+恶意的像有些软件本身就有盗取用户隐私数据的情况，有些软件则是被一些别有用心的人二次加工放入偷取用户数据的代码。</p>
+<p>我们通常会使用防火墙来阻断这些软件的恶意访问。但防火墙也不是万能的，比如：跨平台问题、https下无法精准阻断某个url访问、部分防火墙不能阻断dns访问。<br>
+于是就有了我今天开源的这个项目：通用的、针对java程序的、灵活的、精准基于规则的、基于AOP思想的牛逼哄哄防火墙（无数狗头）：ja-netfilter！</p>
+<p>0x1. 如何安装<br>
+1). 下载安装：<br>
+直接到项目仓库的Releases页面下载我打包好的文件包。<br>
+按照项目README.md所写的方式来配置-javaagent参数。某些软件像dbeaver和smartgit等软件都支持直接编辑配置文件来配置，你可以参考我之前写的agent帮助文件来配置，这里不赘述。<br>
+编辑config目录下的对应配置文件，配置希望阻断的规则。具体见下面的配置文件部分。<br>
+1). 编译安装：<br>
+直接到项目仓库页面下载源文件，编译出目标jar文件即可。<br>
+同下载安装部分。<br>
+0x2. 如何使用<br>
+按照上述安装配置好后直接启动目标程序即可。<br>
+你甚至能跟你的tomcat或jetty一起使用，来防止你项目依赖包中的一些恶意请求。<br>
+0x3. 如何更新<br>
+关注上述的开源项目即可获取最新的代码和编译好的包。<br>
+0x4. 配置文件<br>
+在ja-netfilter.jar同目录中有个conf文件夹，其内存放了所有插件的配置文件，命名为：插件名(小写).conf<br>
+至于配置文件的编写，项目帮助文档中已经写出，这里不再重复说明了。只是简单列举几个例子：</p>
+<h1 id="dbeaver-阻断激活验证的-urlconf-配置文件">DBEaver 阻断激活验证的 url.conf 配置文件</h1>
+<p>[URL]<br>
+PREFIX,https://dbeaver.com/lmp/checkLicense</p>
+<h1 id="smartgit-的-urlconf-配置文件">SmartGit 的 url.conf 配置文件</h1>
+<p>[URL]<br>
+PREFIX,https://store.smartgit.com/check</p>
+<h1 id="jb-的-dnsconf-配置文件">jb 的 dns.conf 配置文件</h1>
+<p>[DNS]<br>
+EQUAL,jetbrains.com</p>
+<h1 id="jb-的-urlconf-配置文件">jb 的 url.conf 配置文件</h1>
+<p>[URL]<br>
+PREFIX,https://account.jetbrains.com/lservice/rpc/validateKey.action</p>
+<p>0x5. 开源信息<br>
+插件是学习研究项目，源代码是开放的。源码仓库地址：ja-netfilter。<br>
+这是个通用的软件包，配置文件灵活自由，请不要过度想象。<br>
+请不要试图结合IDE Eval Resetter一文中所说热心大佬的key来使用本项目。赶快入正！赶快入正！赶快入正！<br>
+如果你有更好的想法，欢迎给我提Pull Request来共同研究完善。<br>
+插件源码使用：GPL-3.0开源协议发布。<br>
+插件使用PHP编写，毕竟PHP是世界上最好的编程语言！<br>
+Telegram group: ja-netfilter<br>
+Telegram channel: ja-netfilter channel<br>
+QQ Group: 638451028<br>
+0x6. 支持的产品<br>
+本防火墙基于javaagent，所以目前只有基于java的程序能够使用。更通用的防火墙，等我学习更多知识。<br>
+0x7. 插件机制<br>
+新版本ja-netfilter已经支持插件机制，各位可以给它开发各种各样有趣的插件了。<br>
+插件开发请见这个脚手架项目。<br>
+插件丢进ja-netfilter.jar所在的plugins子目录即可加载。<br>
+Power插件应用：搞定YouTrack和Upsource<br>
+下面是国际惯例：</p>
+<p>本项目只做个人学习研究之用，不得用于商业用途！</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/jie-jue-host-key-verification-failed/" class="post-title gt-a-link">
+                    解决Host key verification failed
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

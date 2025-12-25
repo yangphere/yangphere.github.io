@@ -1,0 +1,305 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>受用不尽的Gradle使用方法与技巧 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    受用不尽的Gradle使用方法与技巧
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/UkEAnROKAH/" class="post-tags">
+                            # android
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/3DkBi7iOrn/" class="post-tags">
+                            # gradle
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>原文：<a href="http://geek.csdn.net/news/detail/48955">http://geek.csdn.net/news/detail/48955</a></p>
+<p><a href="http://www.gradle.org/">Gradle</a>尽管比<a href="https://developer.android.com/sdk/installing/studio.html">Android Studio</a>早出现，但直到成了官方IDE之后，Gradle才逐渐流行起来。然而，我们是否将这个强大的自动化构建系统的优势发挥地淋漓尽致了呢？</p>
+<!--more-->
+<h2 id="项目与build的特定全局变量">项目与build的特定全局变量</h2>
+<p>用gradle可以自动生成BuildConfig类，其中能够生成附加字段。这对配置服务器URL之类的工作十分有用，使用它也能轻松开启或关闭功能。</p>
+<pre><code class="language-java">defaultConfig {
+    buildConfigField &quot;String&quot;, &quot;TWITTER_TOKEN&quot;, '&quot;SDASJHDKAJSK&quot;'
+}
+buildTypes {
+    debug {
+      buildConfigField &quot;String&quot;, &quot;API_URL&quot;, '&quot;http://api.dev.com/&quot;'
+      buildConfigField &quot;boolean&quot;, &quot;REPORT_CRASHES&quot;, &quot;true&quot;
+    }
+    release {
+      buildConfigField &quot;String&quot;, &quot;API_URL&quot;, '&quot;http://api.prod.com/&quot;'
+      buildConfigField &quot;boolean&quot;, &quot;REPORT_CRASHES&quot;, &quot;false&quot;
+    }
+}
+</code></pre>
+<p>可以从BuildConfig的final类BuildConfig.TWITTER_TOKEN，BuildConfig.REPORT_CRASHES与BuildConfig.API_URL进行访问，后两个根据所在的build类不同也会有差异。</p>
+<h2 id="每个buildtype的名字-版本与app-id都不同">每个buildtype的名字、版本与app id都不同</h2>
+<p>这样一来使用者就能同时安装发布版与debug版了（切记，在安卓系统中无法安装同名的不同应用）。用户可以在崩溃报告工具中以不同的版本名筛选问题与崩溃。通过查看应用名很容易找到目前所运行的版本。</p>
+<pre><code class="language-java">android {
+    buildTypes {
+        debug {
+            applicationIdSuffix &quot;.debug&quot;
+            versionNameSuffix &quot;-debug&quot;
+            resValue &quot;string&quot;, &quot;app_name&quot;, &quot;CoolApp (debug)&quot;
+            signingConfig signingConfigs.debug
+        }
+        release {
+            resValue &quot;string&quot;, &quot;app_name&quot;, &quot;CoolApp&quot;
+            signingConfig signingConfigs.release
+        }
+    }
+</code></pre>
+<h2 id="隐私信息">隐私信息</h2>
+<p>在Android系统中，所有应用都必须经过证书数字签名才能安装，以便系统能够识别应用的作者。而其中有些属于敏感信息，不应被别人看到。<br>
+使用者永远不该将这类信息check in到源代码管理工具中。<br>
+有些人主张，每个人都应当有自己的本地配置文件，甚至用全局的~/.gradle/build.gradle，不过如果你要执行持续集成（CI）或部署，特别是没有自己CI服务器的情况下，不应在CVS系统里存放任何类型的纯文本凭证。</p>
+<pre><code class="language-java">signingConfigs {
+    release {
+        storeFile     &quot;${System.env.COOL_APP_PRIVATE_KEY}&quot;
+        keyAlias      &quot;${System.env.COOL_APP_ALIAS}&quot;
+        storePassword &quot;${System.env.COOL_APP_STORE_PW}&quot;
+        keyPassword   &quot;${System.env.COOL_APP_PW}&quot;
+    }
+}
+</code></pre>
+<p>因此，可以通过环境变量将敏感信息提供给自己的持续集成服务器，而无需担心将任何“危险”信息check in到公司了。</p>
+<h2 id="自动生成版本名称versionname与版本号versioncode">自动生成版本名称（versionName）与版本号（versionCode）</h2>
+<p>将你的版本拆分成逻辑组件，分别管理。不用再考虑版本号修改的是否正确，也不用担心版本名更新的是否合适了。</p>
+<pre><code class="language-java">def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 0
+android {
+    defaultConfig {
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName &quot;${versionMajor}.${versionMinor}.${versionPatch}&quot;
+    }
+}
+</code></pre>
+<h2 id="给buildconfig增加git-hash与build时间">给BuildConfig增加git hash与build时间</h2>
+<pre><code class="language-java">def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+def buildTime = new Date().format(&quot;yyyy-MM-dd'T'HH:mm:ss'Z'&quot;, TimeZone.getTimeZone(&quot;UTC&quot;))
+android {
+    defaultConfig {
+        buildConfigField &quot;String&quot;, &quot;GIT_SHA&quot;, &quot;\&quot;${gitSha}\&quot;&quot;
+        buildConfigField &quot;String&quot;, &quot;BUILD_TIME&quot;, &quot;\&quot;${buildTime}\&quot;&quot;
+    }
+}
+</code></pre>
+<p>现在有两个可用变量：BuildConfig.GIT_SHA和BuildConfig.BUILD_TIME，用来结合日志与提交信息或者build时间再好不过。</p>
+<h2 id="扣紧安全带">扣紧安全带</h2>
+<p>想要快速完成部署，只需创建dev类型，将minSdkVersion设定为21。注意：这样做的话，就无法获得针对真实minSdk的合适linting了。因此很明显只能用在日常工作中，而不能用在发布时。这样一来，安卓gradle插件可以将应用程序的每个模块构建为不同的dex文件（pre-dex），并生成可以在Android Lollipop及以上系统中测试的APK包，而无需再耗费大量时间进行dex合并进程。</p>
+<pre><code class="language-java">android {
+    productFlavors 
+        dev {
+            minSdkVersion 21
+        }
+        prod {
+            // The actual minSdkVersion for the application.
+            minSdkVersion 14
+        }
+    }
+</code></pre>
+<h2 id="直接将单元测试结果输出到console中">直接将单元测试结果输出到console中</h2>
+<p>使用这个小技巧，我们可以实时看到安卓单元测试的记录结果。</p>
+<pre><code class="language-java">android {
+  ...
+
+  testOptions.unitTests.all {
+    testLogging {
+      events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+      outputs.upToDateWhen { false }
+      showStandardStreams = true
+    }
+  }
+}
+</code></pre>
+<p>现在运行测试时，输出结果如下：<br>
+<img src="http://img.blog.csdn.net/20151231145250256" alt="图片描述" loading="lazy"></p>
+<h2 id="gradletell-me-im-pretty">Gradle，tell me I’m pretty</h2>
+<p>全部放在一起的话，顺序如下：</p>
+<pre><code class="language-java">android {
+    ...
+    buildTypes {
+        def BOOLEAN = &quot;boolean&quot;
+        def TRUE = &quot;true&quot;
+        def FALSE = &quot;false&quot;
+        def LOG_HTTP_REQUESTS = &quot;LOG_HTTP_REQUESTS&quot;
+        def REPORT_CRASHES = &quot;REPORT_CRASHES&quot;
+        def DEBUG_IMAGES = &quot;DEBUG_IMAGES&quot;
+
+        debug {
+            ...
+            buildConfigField BOOLEAN, LOG_HTTP_REQUESTS, TRUE
+            buildConfigField BOOLEAN, REPORT_CRASHES, FALSE
+            buildConfigField BOOLEAN, DEBUG_IMAGES, TRUE
+        }
+
+        release {
+            ...
+            buildConfigField BOOLEAN, LOG_HTTP_REQUESTS, FALSE
+            buildConfigField BOOLEAN, REPORT_CRASHES, TRUE
+            buildConfigField BOOLEAN, DEBUG_IMAGES, FALSE
+        }
+    }
+}
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/" class="post-title gt-a-link">
+                    JAVA虚拟机之一：垃圾回收（GC）机制
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

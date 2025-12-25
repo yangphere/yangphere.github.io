@@ -1,0 +1,198 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>ja-netfilter 适配 Java25 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    ja-netfilter 适配 Java25
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2025-10-31 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/9Z_4tnqpc2/" class="post-tags">
+                            # ja-netfilter
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/e6ug0V2bTiF/" class="post-tags">
+                            # Java
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/OvFHeCRxkx4/" class="post-tags">
+                            # Javaagent
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>咱们长话短说，Java 25 移除了内置的 ASM 包，所以 ja-netfilter 的有些插件在 Java 25 版本用不起了。</p>
+<p>解决起来也很简单，不用内置的 ASM 包就好了，把 ASM 包直接打进 ja-netfilter。如此各插件也就都能用上。</p>
+<p>这样做有一个额外的好处，不用添加额外的模块依赖，比如之前我们在 Java 17 加进去的：</p>
+<p>--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED<br>
+--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED<br>
+现在可以移除了。不过也有缺点，那就是因为额外把 ASM 打进去了，导致 ja-netfilter 包的大小多了 200K 的样子。但我想 2025 年了，谁也不缺这 200K 的硬盘吧。</p>
+<p>代码我已经提交到仓库，也打好包方便各位使用：https://gitee.com/ja-netfilter/ja-netfilter/releases/tag/2025.3.0 。将对应的 ja-netfilter.jar 和插件都替换即可。</p>
+<p>请各位在非官方仓库下载包时，一定一定记得到官方仓库比对 sha1sum 值！<br>
+据闻有坏种使用篡改的 jar 包在植入木马了！<br>
+我直接将 ja-netfilter 2025.3.0 相关文件的 sha1sum 公布在博文中吧：</p>
+<p>488126a2eb9ddf87e2092a3cdf39cdc6762306cd  ja-netfilter.jar<br>
+c6757d325d86fbf6f64fa76e84c5dfb9ef8381ba  plugins/dns.jar<br>
+c3e3b71d6c5cab0172f05c465aabedaf6594fb26  plugins/env.jar<br>
+e99ea3b8884a373c08a08eb51bccd88a8d29df0a  plugins/hideme.jar<br>
+14edc0d7e30238ec9f779c0ff12a64ada5f72a7a  plugins/native.jar<br>
+6519162355edecde54c4dfc21afdd523be0a7b5a  plugins/power.jar<br>
+f8518727b7d36e0e55825175d0a1e9a583153a63  plugins/url.jar<br>
+6afbd2bbb5d03ed0947ca313e000af44d4aea389  README.pdf<br>
+我不想产生额外的联想，但这篇博文还是值得大家去看的：https://zhile.io/2024/09/05/jetbrains-2024-2-region.html</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/jetbrains-xin-ban-ben-qu-yu-xuan-ze-de-keng/" class="post-title gt-a-link">
+                    JetBrains新版本区域选择的坑
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

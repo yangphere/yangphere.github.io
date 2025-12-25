@@ -1,0 +1,283 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>CentOS v6.7 新装配置 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    CentOS v6.7 新装配置
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/R1GQS0ZrGd/" class="post-tags">
+                            # linux
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/02yIJhftyy/" class="post-tags">
+                            # git
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/-dM8FHTGIEK/" class="post-tags">
+                            # node
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>从网上下载到 CentOS-6.7-x86_64-bin-DVD1.iso 完整版，并通过 Mac OSX 上的虚拟机应用 Parallels Desktop 安装 Basic Server后，根据自己的需要进行如下环境的配置：</p>
+<ul>
+<li>安装 git 版本控制工具</li>
+<li>安装 nvm 和 node.js</li>
+<li>安装 nginx</li>
+</ul>
+<!--more-->
+<h2 id="启用网络">启用网络</h2>
+<p>但是刚装完的系统，发现无法解析域名，于是输入 ifconfig 来查看网络信息：</p>
+<pre><code class="language-bash">lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+</code></pre>
+<p>只有 loopback，看来是网口没有启动，于是我们去到代表我们网口设备的文件 /etc/sysconfig/network-scripts/ifcfg-eth0 （ eth0 代表第一个网口）。</p>
+<p>发现其中 ONBOOT 为 false，我们把它该为 true，让它启用这个网口。随后 service network restart 来重启网络服务，待 ip 被分配好后，即可上网。</p>
+<h2 id="开始安装-git">开始安装 git</h2>
+<p>先从 git 开始，我们用 yum install git 来快速安装 git，不过查看下版本，是 v1.7.1，我希望可以升级到最新版本，那么我们需要做的是下载 git 源码包并编译。</p>
+<p>源码包可以到这里下载：https://www.kernel.org/pub/software/scm/git/，选择一个自己想要的版本即可。</p>
+<p>下载并解压：</p>
+<pre><code class="language-bash">wget https://www.kernel.org/pub/software/scm/git/git-2.7.0.tar.gz
+tar -zxvf git-2.7.0.tar.gz
+</code></pre>
+<p>接下来安装编译时需要的依赖：</p>
+<pre><code class="language-bash">yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel asciidoc
+yum install gcc perl-ExtUtils-MakeMaker
+</code></pre>
+<p>进入到 git 源码的目录中，开始编译：</p>
+<pre><code class="language-bash">cd git-2.7.0
+make configure
+./configure
+make all doc
+make install install-doc install-html
+</code></pre>
+<p>git 升级完成，现在已经是 v2.7.0 的版本了。</p>
+<h2 id="安装-nvm-和-nodejs">安装 nvm 和 node.js</h2>
+<p>git 安装完成后开始装 node.js，为了更好的控制和切换 node.js 的版本，我们首先安装 nvm。</p>
+<p>根据在 <a href="https://github.com/creationix/nvm#install-script">github 上的说明</a>，我们执行以下命令即可完成安装。</p>
+<pre><code class="language-bash">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
+</code></pre>
+<p>之后我们分别安装 node.js v4 和 v5 的最新版本。</p>
+<pre><code class="language-bash">nvm install 4
+nvm install 5
+</code></pre>
+<p>node.js 安装完毕，之后统一使用 nvm 来做 node.js 的版本管理。</p>
+<h2 id="安装-nginx">安装 nginx</h2>
+<p>直接使用 yum install nginx 并不能安装，需要手动添加 nginx 的源，这个在<a href="http://nginx.org/en/linux_packages.html">官网的文档</a>中有说明，我们在这里选择 CentOS 6 下的稳定版：</p>
+<p>创建文件 /etc/yum.repos.d/nginx.repo 并填入以下内容：</p>
+<pre><code class="language-nginx">[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/6/$basearch/
+gpgcheck=0
+enabled=1
+</code></pre>
+<p>然后使用 yum install nginx 安装即可。完成后查看版本，安装的是 v1.8.0。直接输入 nginx 来开启 nginx 服务，监听 80 端口请求。</p>
+<h2 id="配置防火墙">配置防火墙</h2>
+<p>在启动 nginx 后，发现在本机的浏览器中输入虚拟机 ip 并不能访问，于是想到防火墙的问题。我们先查看防火墙的信息：</p>
+<pre><code class="language-bash">service iptables status
+</code></pre>
+<p>我们发现只有 22 端口是被打开的：</p>
+<pre><code class="language-vim">Table: filter
+Chain INPUT (policy ACCEPT)
+num  target     prot opt source               destination
+1    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED
+2    ACCEPT     icmp --  0.0.0.0/0            0.0.0.0/0
+3    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0
+4    ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22
+5    REJECT     all  --  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited
+
+Chain FORWARD (policy ACCEPT)
+num  target     prot opt source               destination
+1    REJECT     all  --  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited
+
+Chain OUTPUT (policy ACCEPT)
+num  target     prot opt source         destination
+</code></pre>
+<p>于是我们修改文件 /etc/sysconfig/iptables，添加上 80 和 443 端口。</p>
+<pre><code class="language-vim"># Firewall configuration written by system-config-firewall
+# Manual customization of this file is not recommended.
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+</code></pre>
+<p>然后重启防火墙服务即可：</p>
+<pre><code class="language-bash">service iptables restart
+</code></pre>
+<p>好了，到这里，基本的环境配置就完成了。</p>
+<blockquote>
+<p>转自<a href="https://leozdgao.me/centos-v6-7-config/">https://leozdgao.me/centos-v6-7-config/</a></p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20151229-1-Java 8 简明教程/" class="post-title gt-a-link">
+                    Java 8 简明教程
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

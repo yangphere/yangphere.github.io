@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://blog.coolcode.dev</id>
+    <title>酷码</title>
+    <updated>2025-12-25T16:12:27.786Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://blog.coolcode.dev"/>
+    <link rel="self" href="https://blog.coolcode.dev/atom.xml"/>
+    <subtitle>个人技术博客</subtitle>
+    <logo>https://blog.coolcode.dev/images/avatar.png</logo>
+    <icon>https://blog.coolcode.dev/favicon.ico</icon>
+    <rights>All rights reserved 2025, 酷码</rights>
+    <entry>
+        <title type="html"><![CDATA[告别 Terminal！IDEA 也可以爽用 Claude Code 惹]]></title>
+        <id>https://blog.coolcode.dev/post/gao-bie-terminalidea-ye-ke-yi-shuang-yong-claude-code-re/</id>
+        <link href="https://blog.coolcode.dev/post/gao-bie-terminalidea-ye-ke-yi-shuang-yong-claude-code-re/">
+        </link>
+        <updated>2025-12-25T16:11:30.000Z</updated>
+        <content type="html"><![CDATA[<p>原文：https://linux.do/t/topic/1362218</p>
+<p>想必各位 Vide Coding Master 在使用 JetBrains 家 IDE 的时候总有一些苦恼： 如果想要使用 Claude Code、Codex、Gemini CLI 这类终端工具，就要在 IDEA 的命令行中使用它们， 这缺少了一些 UI 交互，也有很大概率会出现终端工具的内容疯狂闪屏的问题（点名批评 Claude Code）。<br>
+而现在！AI Assistant 插件更新了对自定义 ACP 的配置支持，现在你可以配置任何支持 ACP 的 Agent 到你的 AI Assistant 中啦！</p>
+<figure data-type="image" tabindex="1"><img src="https://img.weiblogs.com/img/20251226000358581.png" alt="image-20251226000357223" loading="lazy"></figure>
+<h2 id="什么是-acp">什么是 ACP？</h2>
+<p><a href="https://agentclientprotocol.com/">Agent Client Protocol (ACP)</a>, 是一个由 Zed 和 JetBrains 发起的、<br>
+用于规范<strong>代码编辑器</strong>、<strong>集成开发环境</strong>与<strong>编码代理</strong> (也就是常说的 AI Agent) 之间的通讯的协议。</p>
+<p>简单来说，就是一个专门为了让 AI Agent 与各类 IDE 友好协作的通用协议。</p>
+<p>在佬友们面前我就不班门弄斧了，更多有关 ACP 的信息可以前往 ACP 的官方网站 <a href="https://agentclientprotocol.com/">https://agentclientprotocol.com</a> 了解更多信息。</p>
+<h2 id="配置">配置</h2>
+<p>如上文所配的图所示，你可以在 AI Assistant 插件右上角的下拉菜单中找到「配置 ACP 智能体」的功能，<br>
+点击后会打开一个 <code>acp.json</code> 文件，此时即可配置 ACP 了。</p>
+<p>这里我会展示一个已经配置完 Claude Code 和 Codex 之后的 <code>acp.json</code> 文件内容</p>
+<p>下面是 MacOS上的配置：</p>
+<pre><code class="language-JSON">{
+    &quot;agent_servers&quot;: {
+        &quot;Claude Code&quot;: {
+            &quot;command&quot;: &quot;claude-code-acp&quot;
+        },
+        &quot;Codex&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;@zed-industries/codex-acp&quot;
+            ]
+        }
+    }
+}
+</code></pre>
+<p>Windows上的配置需要加上命令的后缀：</p>
+<pre><code class="language-json">{
+    &quot;agent_servers&quot;: {
+        &quot;Claude Code&quot;: {
+            &quot;command&quot;: &quot;claude-code-acp.cmd&quot;
+        },
+        &quot;Codex&quot;: {
+            &quot;command&quot;: &quot;npx.cmd&quot;,
+            &quot;args&quot;: [
+                &quot;-y&quot;,
+                &quot;@zed-industries/codex-acp&quot;
+            ]
+        }
+    }
+}
+</code></pre>
+<p>之后会继续简单介绍二者具体的配置过程。</p>
+<h3 id="claude-code">Claude Code</h3>
+<p>Zed 提供了一个针对 Claude Code 的 ACP 适配器：<a href="https://github.com/zed-industries/claude-code-acp">claude-code-acp</a>，<br>
+根据文档的描述，我们使用 <code>npm</code> 安装它即可：</p>
+<pre><code class="language-Bash">npm install -g @zed-industries/claude-code-acp
+</code></pre>
+<blockquote>
+<p>需要注意的是，这里实际上是需要 <code>-g</code> 来安装到全局的，不知道为什么官方的文档里没有添加它。</p>
+</blockquote>
+<p>安装成功后，上述的配置就可以正常生效啦，现在你可以在 AI Assistant 的选项里看到它了：</p>
+<figure data-type="image" tabindex="2"><img src="https://img.weiblogs.com/img/20251226000613971.png" alt="image-20251226000611095" loading="lazy"></figure>
+<p>而且包括模式选择和模型选择也都有：</p>
+<figure data-type="image" tabindex="3"><img src="https://img.weiblogs.com/img/20251226000641202.png" alt="image-20251226000639351" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://img.weiblogs.com/img/20251226000706858.png" alt="image-20251226000704304" loading="lazy"></figure>
+<p>我们可以尝试对个话，看看是否可用：</p>
+<figure data-type="image" tabindex="5"><img src="https://img.weiblogs.com/img/20251226000746397.png" alt="image-20251226000744692" loading="lazy"></figure>
+<p>嗯～ 一切正常，而且这里有一个很明显与 AI Assistant 中内置的 Claude Agent 之间的区别：<br>
+使用自己配置的 ACP 可以完整识别到你的所有全局配置，包括配置的第三方中转站地址、MCP 之类的工具调用。<br>
+而内置的 Claude Agent 模式，最多只能识别到第三方地址，而 MCP 是无法被读取识别使用的。</p>
+<p>终于可以不用看CC CLI那闪花眼的超级闪屏BUG了<img src="https://linux.do/images/emoji/twemoji/sob.png?v=15" alt=":sob:" loading="lazy"></p>
+<h3 id="codex">Codex</h3>
+<p>Zed 也同样实现了一个 Codex 的 ACP 适配器：<a href="https://github.com/zed-industries/codex-acp">codex-acp</a>。</p>
+<p>不过它不使用 <code>npm i -g</code> 安装，而是使用 <code>npx</code>。</p>
+<pre><code class="language-bash">npx -g @zed-industries/codex-acp
+</code></pre>
+<p>就像上面所展示的 <code>acp.json</code> 里配置的那样，直接配置 npx 命令即可：</p>
+<pre><code class="language-JSON">{
+    &quot;agent_servers&quot;: {
+        &quot;Codex&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;@zed-industries/codex-acp&quot;
+            ]
+        }
+    }
+}
+</code></pre>
+<p>同样的，配置完成后就可以选择并使用了：</p>
+<figure data-type="image" tabindex="6"><img src="https://img.weiblogs.com/img/20251226000825089.png" alt="image-20251226000823713" loading="lazy"></figure>
+<p>我本身也没给 Codex 配置太多 MCP，所以看上去不是很多的样子。<br>
+它也有部分可选择的选项，例如模式和模型：</p>
+<figure data-type="image" tabindex="7"><img src="https://img.weiblogs.com/img/20251226000852438.png" alt="image-20251226000851136" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://img.weiblogs.com/img/20251226000913559.png" alt="image-20251226000912139" loading="lazy"></figure>
+<p>按需选择即可。</p>
+<h2 id="总结">总结</h2>
+<p>如果你是 JetBrains 家 IDE 的重度使用者，又苦于 Claude Code 原生 CLI 那闪瞎眼的超级闪屏 BUG，<br>
+或者你希望在任何支持 ACP 的 IDE 中得到更好的 AI Agent UX 体验，那么现在就是动手尝试的时候啦～</p>
+<p>我也是刚刚才配置的，在元旦假期开始之前，我打算再深度体验几天，<br>
+看看通过 ACP 带来的 UX 体验是否能给我带来全面的提升和身心的愉悦～</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Claude Code 中 MCP 在Windows上警告信息]]></title>
+        <id>https://blog.coolcode.dev/post/claude-code-zhong-mcp-zai-windows-shang-jing-gao-xin-xi/</id>
+        <link href="https://blog.coolcode.dev/post/claude-code-zhong-mcp-zai-windows-shang-jing-gao-xin-xi/">
+        </link>
+        <updated>2025-12-21T05:51:22.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="问题说明">问题说明</h3>
+<p>在 Windows 上,直接执行 npx 命令可能无法正常工作,需要通过 cmd /c 来包装执行</p>
+<h3 id="解决方法">解决方法</h3>
+<p>打开你的配置文件 C:\Users\rog.claude.json,将 MCP 服务器的配置修改为:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;context7&quot;: {
+      &quot;command&quot;: &quot;cmd&quot;,
+      &quot;args&quot;: [
+        &quot;/c&quot;,
+        &quot;npx&quot;,
+        &quot;-y&quot;,
+        &quot;@upstash/context7-mcp&quot;
+      ],
+      &quot;type&quot;: &quot;stdio&quot;
+    },
+    &quot;fetch&quot;: {
+      &quot;command&quot;: &quot;uvx&quot;,
+      &quot;args&quot;: [
+        &quot;mcp-server-fetch&quot;
+      ],
+      &quot;type&quot;: &quot;stdio&quot;
+    },
+    &quot;memory&quot;: {
+      &quot;command&quot;: &quot;cmd&quot;,
+      &quot;args&quot;: [
+        &quot;/c&quot;,
+        &quot;npx&quot;,
+        &quot;-y&quot;,
+        &quot;@modelcontextprotocol/server-memory&quot;
+      ],
+      &quot;type&quot;: &quot;stdio&quot;
+    },
+    &quot;sequential-thinking&quot;: {
+      &quot;command&quot;: &quot;cmd&quot;,
+      &quot;args&quot;: [
+        &quot;/c&quot;,
+        &quot;npx&quot;,
+        &quot;-y&quot;,
+        &quot;@modelcontextprotocol/server-sequential-thinking&quot;
+      ],
+      &quot;type&quot;: &quot;stdio&quot;
+    }
+  }
+}
+</code></pre>
+<p>主要改动<br>
+context7, memory, sequential-thinking: 将 &quot;command&quot;: &quot;npx&quot; 改为 &quot;command&quot;: &quot;cmd&quot;,并在 args 数组开头添加 &quot;/c&quot;, &quot;npx&quot;<br>
+fetch: 保持不变,因为它使用的是 uvx 而不是 npx</p>
+<p>修改完成后,保存文件并重启 Claude Code,警告就会消失。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ja-netfilter 适配 Java25]]></title>
+        <id>https://blog.coolcode.dev/post/ja-netfilter-gua-pei-java25/</id>
+        <link href="https://blog.coolcode.dev/post/ja-netfilter-gua-pei-java25/">
+        </link>
+        <updated>2025-10-31T10:16:30.000Z</updated>
+        <content type="html"><![CDATA[<p>咱们长话短说，Java 25 移除了内置的 ASM 包，所以 ja-netfilter 的有些插件在 Java 25 版本用不起了。</p>
+<p>解决起来也很简单，不用内置的 ASM 包就好了，把 ASM 包直接打进 ja-netfilter。如此各插件也就都能用上。</p>
+<p>这样做有一个额外的好处，不用添加额外的模块依赖，比如之前我们在 Java 17 加进去的：</p>
+<p>--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED<br>
+--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED<br>
+现在可以移除了。不过也有缺点，那就是因为额外把 ASM 打进去了，导致 ja-netfilter 包的大小多了 200K 的样子。但我想 2025 年了，谁也不缺这 200K 的硬盘吧。</p>
+<p>代码我已经提交到仓库，也打好包方便各位使用：https://gitee.com/ja-netfilter/ja-netfilter/releases/tag/2025.3.0 。将对应的 ja-netfilter.jar 和插件都替换即可。</p>
+<p>请各位在非官方仓库下载包时，一定一定记得到官方仓库比对 sha1sum 值！<br>
+据闻有坏种使用篡改的 jar 包在植入木马了！<br>
+我直接将 ja-netfilter 2025.3.0 相关文件的 sha1sum 公布在博文中吧：</p>
+<p>488126a2eb9ddf87e2092a3cdf39cdc6762306cd  ja-netfilter.jar<br>
+c6757d325d86fbf6f64fa76e84c5dfb9ef8381ba  plugins/dns.jar<br>
+c3e3b71d6c5cab0172f05c465aabedaf6594fb26  plugins/env.jar<br>
+e99ea3b8884a373c08a08eb51bccd88a8d29df0a  plugins/hideme.jar<br>
+14edc0d7e30238ec9f779c0ff12a64ada5f72a7a  plugins/native.jar<br>
+6519162355edecde54c4dfc21afdd523be0a7b5a  plugins/power.jar<br>
+f8518727b7d36e0e55825175d0a1e9a583153a63  plugins/url.jar<br>
+6afbd2bbb5d03ed0947ca313e000af44d4aea389  README.pdf<br>
+我不想产生额外的联想，但这篇博文还是值得大家去看的：https://zhile.io/2024/09/05/jetbrains-2024-2-region.html</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JetBrains新版本区域选择的坑]]></title>
+        <id>https://blog.coolcode.dev/post/jetbrains-xin-ban-ben-qu-yu-xuan-ze-de-keng/</id>
+        <link href="https://blog.coolcode.dev/post/jetbrains-xin-ban-ben-qu-yu-xuan-ze-de-keng/">
+        </link>
+        <updated>2025-10-31T10:16:00.000Z</updated>
+        <content type="html"><![CDATA[<p>好久不见啊，朋友们！</p>
+<p>JetBrains新版本(2024.2)在设置里添加了区域选择，具体在：Appearance &amp; Behavior -&gt; System Settings -&gt; Language and Region -&gt; Region 中设置。如果你选择 China Mainland 将会有一个比较坑的地方：激活许可验证走 account.jetbrains.com.cn 这个域名，而不是默认的 account.jetbrains.com 。<br>
+这将导致一个问题：热佬的整合包里，没有对这个域名的拦截，会联机然后发现许可被吊销。</p>
+<p>热佬可能打仗太忙，尚未发布新包。不过这个问题解决起来也很简单，找到你的jetbra目录，编辑 config-jetbrains\url.conf 文件，新增以下内容保存即可：</p>
+<p>[URL]<br>
+PREFIX,https://account.jetbrains.com.cn/lservice/rpc/validateKey.action<br>
+也就是把新的域名也拦截咯。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于ja-netfilter适配Java17的问题]]></title>
+        <id>https://blog.coolcode.dev/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/</id>
+        <link href="https://blog.coolcode.dev/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/">
+        </link>
+        <updated>2025-10-31T10:15:20.000Z</updated>
+        <content type="html"><![CDATA[<p>这两天总有人私信或评论跟我说：大事不好了，ja-netfilter在Java17里用不起了！</p>
+<p>这事听着就新鲜！我心想早在5月20日的提交中，我就兼容了Java17并且写在README里了。<br>
+所以，这个事情我本没当回事，直到问的人越来越多。细问之下，原来是JB家所有IDE2022.2版本默认启用Java17。<br>
+故有写此短文专门来解释一下。</p>
+<p>首先，请看项目的README.md，自认为写的是非常清楚了：</p>
+<p>for Java 17 you have to add at least these JVM Options:<br>
+--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED<br>
+--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED<br>
+简单来说就是要在Java17中使用ja-netfilter，你需要：</p>
+<p>你需用5月20日发布的ja-netfilter-v2022.2.0版本，否则可能无法启动。<br>
+你需添加这两条JVM参数，否则ja-netfilter无法访问Java17内置的ASM包。<br>
+JVM参数是加在启动命令里，还是加在JVM参数文件里，都可以。<br>
+至于为什么Java17要加这个配置，这是JVM规定的。你不加，项目用到的某些类就访问不到。具体你可以看这里。</p>
+<p>最后，使用一个工具，请养成先通读README的习惯！</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[介绍一个”牛逼闪闪”开源库：ja-netfilter]]></title>
+        <id>https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/</id>
+        <link href="https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/">
+        </link>
+        <updated>2025-10-31T10:13:13.000Z</updated>
+        <content type="html"><![CDATA[<p>上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件了！</p>
+<p>所以没错，IDE Eval Resetter这个项目我已经弃坑，因为我觉得我插件已经写得很好了（手动狗头，以下很多用词默认手动加了狗头），得玩点其他好玩的东西。</p>
+<p>这次要来玩个正经的、通用的、高大上的东西。</p>
+<p>0x0. 项目背景<br>
+首先还是基于上述内容。</p>
+<p>我们日常使用的软件中有很多有意或无意被加入网络访问的代码。有些并非恶意，有些则是。<br>
+并非恶意的像一些软件的在线激活验证，如dbeaver、smartgit等。<br>
+恶意的像有些软件本身就有盗取用户隐私数据的情况，有些软件则是被一些别有用心的人二次加工放入偷取用户数据的代码。</p>
+<p>我们通常会使用防火墙来阻断这些软件的恶意访问。但防火墙也不是万能的，比如：跨平台问题、https下无法精准阻断某个url访问、部分防火墙不能阻断dns访问。<br>
+于是就有了我今天开源的这个项目：通用的、针对java程序的、灵活的、精准基于规则的、基于AOP思想的牛逼哄哄防火墙（无数狗头）：ja-netfilter！</p>
+<p>0x1. 如何安装<br>
+1). 下载安装：<br>
+直接到项目仓库的Releases页面下载我打包好的文件包。<br>
+按照项目README.md所写的方式来配置-javaagent参数。某些软件像dbeaver和smartgit等软件都支持直接编辑配置文件来配置，你可以参考我之前写的agent帮助文件来配置，这里不赘述。<br>
+编辑config目录下的对应配置文件，配置希望阻断的规则。具体见下面的配置文件部分。<br>
+1). 编译安装：<br>
+直接到项目仓库页面下载源文件，编译出目标jar文件即可。<br>
+同下载安装部分。<br>
+0x2. 如何使用<br>
+按照上述安装配置好后直接启动目标程序即可。<br>
+你甚至能跟你的tomcat或jetty一起使用，来防止你项目依赖包中的一些恶意请求。<br>
+0x3. 如何更新<br>
+关注上述的开源项目即可获取最新的代码和编译好的包。<br>
+0x4. 配置文件<br>
+在ja-netfilter.jar同目录中有个conf文件夹，其内存放了所有插件的配置文件，命名为：插件名(小写).conf<br>
+至于配置文件的编写，项目帮助文档中已经写出，这里不再重复说明了。只是简单列举几个例子：</p>
+<h1 id="dbeaver-阻断激活验证的-urlconf-配置文件">DBEaver 阻断激活验证的 url.conf 配置文件</h1>
+<p>[URL]<br>
+PREFIX,https://dbeaver.com/lmp/checkLicense</p>
+<h1 id="smartgit-的-urlconf-配置文件">SmartGit 的 url.conf 配置文件</h1>
+<p>[URL]<br>
+PREFIX,https://store.smartgit.com/check</p>
+<h1 id="jb-的-dnsconf-配置文件">jb 的 dns.conf 配置文件</h1>
+<p>[DNS]<br>
+EQUAL,jetbrains.com</p>
+<h1 id="jb-的-urlconf-配置文件">jb 的 url.conf 配置文件</h1>
+<p>[URL]<br>
+PREFIX,https://account.jetbrains.com/lservice/rpc/validateKey.action</p>
+<p>0x5. 开源信息<br>
+插件是学习研究项目，源代码是开放的。源码仓库地址：ja-netfilter。<br>
+这是个通用的软件包，配置文件灵活自由，请不要过度想象。<br>
+请不要试图结合IDE Eval Resetter一文中所说热心大佬的key来使用本项目。赶快入正！赶快入正！赶快入正！<br>
+如果你有更好的想法，欢迎给我提Pull Request来共同研究完善。<br>
+插件源码使用：GPL-3.0开源协议发布。<br>
+插件使用PHP编写，毕竟PHP是世界上最好的编程语言！<br>
+Telegram group: ja-netfilter<br>
+Telegram channel: ja-netfilter channel<br>
+QQ Group: 638451028<br>
+0x6. 支持的产品<br>
+本防火墙基于javaagent，所以目前只有基于java的程序能够使用。更通用的防火墙，等我学习更多知识。<br>
+0x7. 插件机制<br>
+新版本ja-netfilter已经支持插件机制，各位可以给它开发各种各样有趣的插件了。<br>
+插件开发请见这个脚手架项目。<br>
+插件丢进ja-netfilter.jar所在的plugins子目录即可加载。<br>
+Power插件应用：搞定YouTrack和Upsource<br>
+下面是国际惯例：</p>
+<p>本项目只做个人学习研究之用，不得用于商业用途！</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[解决Host key verification failed]]></title>
+        <id>https://blog.coolcode.dev/post/jie-jue-host-key-verification-failed/</id>
+        <link href="https://blog.coolcode.dev/post/jie-jue-host-key-verification-failed/">
+        </link>
+        <updated>2023-04-05T05:32:24.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-发现问题">一、发现问题</h2>
+<p>问题如下图代码：</p>
+<pre><code class="language-bash">$ ssh root@108.61.163.242
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:HDjXJvu0VYXWF+SKMZjSGn4FQmg/+w6eV9ljJvIXpx0.
+Please contact your system administrator.
+Add correct host key in /Users/wangdong/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /Users/wangdong/.ssh/known_hosts:46
+ECDSA host key for 108.61.163.242 has changed and you have requested strict checking.
+Host key verification failed.
+</code></pre>
+<p>这里面，有一句很关键。</p>
+<pre><code class="language-bash">ECDSA host key for 108.61.163.242 has changed and you have requested strict checking.
+Host key verification failed.
+</code></pre>
+<p>一般这个问题，是你重置过你的服务器后。你再次想访问会出现这个问题。</p>
+<h2 id="二-解决问题">二、解决问题</h2>
+<p>解决问题也很简单：</p>
+<pre><code class="language-bash">ssh-keygen -R 你要访问的IP地址
+</code></pre>
+<p>例如：</p>
+<pre><code class="language-bash">ssh-keygen -R 108.61.163.24
+</code></pre>
+<p>贴个图更直观</p>
+<figure data-type="image" tabindex="1"><img src="https://img.weiblogs.com/img/202304051329241.jpeg" alt="在这里插入图片描述" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[把git的默认分支master修改成main]]></title>
+        <id>https://blog.coolcode.dev/post/ba-git-de-mo-ren-fen-zhi-master-xiu-gai-cheng-main/</id>
+        <link href="https://blog.coolcode.dev/post/ba-git-de-mo-ren-fen-zhi-master-xiu-gai-cheng-main/">
+        </link>
+        <updated>2023-03-26T08:54:47.000Z</updated>
+        <content type="html"><![CDATA[<p>修改初始化项目时，默认使用main作为主分支</p>
+<pre><code class="language-bash">git config --global init.defaultBranch main
+</code></pre>
+<p>已经创建项目的主分支为master，切换到master分支，重命名main</p>
+<pre><code class="language-bash">git branch -M main
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2023年11款好用的笔记软件推荐]]></title>
+        <id>https://blog.coolcode.dev/post/2023-nian-11-kuan-hao-yong-de-bi-ji-ruan-jian-tui-jian/</id>
+        <link href="https://blog.coolcode.dev/post/2023-nian-11-kuan-hao-yong-de-bi-ji-ruan-jian-tui-jian/">
+        </link>
+        <updated>2023-03-25T03:04:02.000Z</updated>
+        <content type="html"><![CDATA[<p>如果说有什么软件适合所有人的，那么云笔记一定算一个，不管你是用来分享看法、记录灵感、总结知识等，都可以使用云笔记软件来完成，一款好用的笔记软件不仅能记录笔记，更能帮助你提升知识管理的效率，在本文中，我们就来推荐<strong>几款好用的笔记软件</strong></p>
+<h2 id="notion">Notion</h2>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251106090.png" alt="" loading="lazy"></figure>
+<p><a href="https://www.notion.so/">Notion</a> 是一款多合一的笔记软件，它把非常多的功能都做到了软件中，看板、日历、表格、列表等多种数据展现方式，你可以用这些来构建自己的知识库</p>
+<p>在Notion中，除了有非常多的功能样式外，最大的特色就是所有的区块都是可以联通的，你可以在一篇笔记中嵌入另一个笔记的内容，可以是看板、日历等多种格式，而且可以无限的嵌套；对于一些有固定格式的笔记，你可以添加自定义字段，保存成模版，方便后期添加更多相似内容；还可以在自己的笔记中嵌入其他的第三方服务比如视频、Github代码等，或者将自己的笔记分享给他人</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>模块化，可以随意调整笔记</li>
+<li>嵌套支持，在同一页面查看多个状态</li>
+<li>表格、看板、日历等多视图数据库，可任意切换</li>
+<li>笔记模版，支持制作和导入</li>
+<li>第三方嵌入支持，支持代码、视频等嵌入</li>
+<li>内容发布，可以发布、分享页面</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>没有中文语言，很多功能需要学习</li>
+</ul>
+<p>Notion是一个非常强大而且扩展性很强的笔记软件，你可以灵活的使用，将其变成自己需要的笔记软件，适合作为个人或者工作的管理工具，而且现在Notion针对个人计划已经完全免费了，无需升级就能使用无限Block，免费版大部分都足够了</p>
+<p><a href="https://www.v1tx.com/post/notion-tutorial/">Notion教程 如何用Notion记笔记</a></p>
+<h2 id="obsidian">Obsidian</h2>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251106574.png" alt="" loading="lazy"></figure>
+<p><a href="https://obsidian.md/">Obsidian</a> 是一款基于Markdown的笔记软件，它支持Windows、macOS、iOS和Android，它可以让你用Markdown文件构建起自己的知识库，不同于其他笔记使用自己的格式，Obsidian 中所有的笔记都是独立的Markdown文档，你可以使用Obsidian来撰写笔记，也可以使用其他的Markdown编辑器比如<a href="https://www.v1tx.com/post/typora/">Typora</a>、<a href="https://www.v1tx.com/post/ia-writer/">iA Writer</a>等来编辑，即使未来有一天你不再使用Obsidian，也能够轻松管理自己的笔记</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>基于<a href="https://www.v1tx.com/post/markdown/">Markdown语法</a>，可显示预览</li>
+<li>双向链接</li>
+<li>知识图谱</li>
+<li>插件系统</li>
+<li>本地管理且支持云同步</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>部分功能需付费</li>
+</ul>
+<p>对于喜欢Markdown的用户来说，Obsidian 是一款很值得使用的笔记工具</p>
+<p><a href="https://www.v1tx.com/post/obsidian/">Obsidian 基于Markdown的知识管理工具</a></p>
+<h2 id="remnote">RemNote</h2>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251107640.png" alt="" loading="lazy"></figure>
+<p><a href="https://www.v1tx.com/recommends/remnote/">RemNote</a> 是一款大纲形式的笔记软件，它专为学习者打造，能够让你记录和学习知识，在RemNote中有三大功能：大纲笔记、智能闪卡和文档标注，每个功能都有其用途，你可以用大纲笔记来记录知识和每天的想法，使用闪卡来复习之前记录的内容，使用文档标注功能来对PDF、网页等进行标注，每个功能都可以结合起来使用，让你不必再到多个应用中进行切换，还可以使用双向链接和知识图谱来链接笔记，将不同的知识联系起来方便管理和查阅</p>
+<p>RemNote 是一款非常好用的大纲笔记软件，而且很多功能都可以免费使用，如果你想要体验双向链接的大纲笔记的话，它是一个很好的选择</p>
+<h2 id="evernote">Evernote</h2>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251108121.png" alt="" loading="lazy"></figure>
+<p>作为一款老牌的笔记软件，<a href="https://evernote.com/">Evernote</a> 确实是一款适合每个人使用的软件，首先是其强大的笔记分类功能，可以通过笔记本和标签来对笔记进行分类，你还可以在笔记内添加表格、待办、代码等多种元素，对于信息收集，可以用它的剪藏插件快速收集信息，提升你的工作效率</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>服务稳定</li>
+<li>免费云同步</li>
+<li>网页剪藏</li>
+<li>离线支持</li>
+<li>可以轻松切换到大多数笔记</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>笔记界面不够简洁</li>
+<li>免费版每月60M的上传流量限制</li>
+<li>免费版限制2同步设备</li>
+</ul>
+<p>虽然笔记软件已经非常多了，但是Evernote仍然是值得使用的笔记软件，服务稳定，虽然不付费的话有一些限制，但是对于很多人来说，免费版的功能就足够使用了，另外即使你哪一天不再使用Evernote了，也可以轻松地切换到其他笔记软件</p>
+<h2 id="onenote">OneNote</h2>
+<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251108726.png" alt="" loading="lazy"></figure>
+<p><a href="https://www.onenote.com/">OneNote</a>是微软旗下的云笔记软件，在其他笔记中，不管是什么功能，大部分都是以文字记录为主，按照常规来记录，OneNote则有很大的不同</p>
+<p>首先在它的功能介绍中，就是以图片为主，它允许人们在笔记中进行勾画和书写，可以在白色的背景、或者带有网格的背景上进行写作，或者描绘。如果你大部分时间使用文字记录，或者刚刚使用OneNote，可能会非常不习惯它的记录方式，因为你可以在任何地方写作、记录、做标记等等，尤其在触屏设备中，给人的体验更像真实的记录一样，你还可以用Apple Pencil 把它当作一个<a href="https://www.v1tx.com/post/best-handwriting-apps-for-ipad/">手写笔记</a></p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>免费云同步</li>
+<li>手写支持好</li>
+<li>自由随意的笔记</li>
+<li>手写转文字、公式</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>新手可能使用起来不习惯</li>
+<li>不适合纯文字的记录</li>
+</ul>
+<p>OneNote这款软件最大特点就是自由，使用它你就像在使用一张白纸，所有的内容、位置、图片等都由你自己决定，不过它的缺点也是太自由，导致想要用OneNote写出规整的笔记并不容易，你需要面对各种对齐、文字大小、笔画等问题</p>
+<h2 id="craft">Craft</h2>
+<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251109099.png" alt="" loading="lazy"></figure>
+<p><a href="https://www.craft.do/">Craft</a> 是一款苹果平台的笔记软件，它和Notion非常类似，都采用了模块化的编辑器，你可以轻松插入不同格式的笔记，不过Craft这款笔记更注重性能，你可以更流畅地写作，操作和调整块，而且软件对离线有很好的支持，即使是没有网络，也能正常的记录和查看笔记</p>
+<p>Craft 非常适合作为文档写作，你可以灵活地组织页面，在页面中嵌入子页面，在页面间建立链接，添加图片和视频搭建起自己的知识库，还可以通过网页分享自己的文档知识库</p>
+<p><a href="https://www.v1tx.com/post/craft/">Craft Mac上原生的模块化笔记应用</a></p>
+<h2 id="simplenote">Simplenote</h2>
+<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251109840.png" alt="" loading="lazy"></figure>
+<p><a href="http://simplenote.com/">Simplenote</a> 是由Automattic推出的一款轻量级笔记软件，这款软件真的是就如它的名字一样，非常的简单，注册一个账号马上就可以写东西</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>界面简洁</li>
+<li>全平台支持</li>
+<li>免费云同步</li>
+<li>Markdown支持</li>
+<li>版本管理</li>
+<li>笔记分享</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>没有分类</li>
+</ul>
+<p>Simplenote非常简洁，而且软件完全免费，很适合那些单纯想写写文字的人</p>
+<p><a href="https://www.v1tx.com/post/simplenote/">Simplenote 免费实用的极简笔记软件</a></p>
+<h2 id="熊掌记">熊掌记</h2>
+<figure data-type="image" tabindex="8"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251109231.png" alt="" loading="lazy"></figure>
+<p><a href="https://bear.app/cn/">熊掌记</a>是一款MAC平台的笔记应用，以轻量和优雅为特色，适合于文字写作者</p>
+<p>相比于其他的笔记软件，熊掌记不仅有着非常高的颜值，在使用上也更为简洁与流畅，轻量的设计让其启动速度非常快，配合IOS设备，可以随时记录任何想法</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>轻量，软件打开速度快</li>
+<li>高颜值、界面简洁，专注文字记录</li>
+<li>所见即所得Markdown语法</li>
+<li>多样的标签用法</li>
+<li>多种主题可切换，还可以替换软件图标</li>
+<li>免费版除云同步外可使用大部分功能</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>仅有macOS和iOS版本</li>
+</ul>
+<p>熊掌记是非常好用的Markdown笔记软件，极简的设计，流畅的体验，很适合作为个人笔记软件使用，对于喜欢轻量和快捷笔记的人来说是一款值得选择的笔记软件</p>
+<p><a href="https://www.v1tx.com/post/bear/">熊掌记 轻量高颜值的笔记工具</a></p>
+<h2 id="day-one">Day One</h2>
+<figure data-type="image" tabindex="9"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251110567.png" alt="" loading="lazy"></figure>
+<p><a href="https://dayoneapp.com/">Day One</a> 是一款非常好用的日记软件，它支持Mac、iOS、Android，让你可以在任意的设备上随时记录。在 Day One 中，你可以插入各种形式的内容作为笔记，包括文字、照片、视频、音频、绘画等，而且在插入媒体的同时 Day One 会帮你处理很多东西，比如插入照片，它会自动识别照片的拍摄地点和时间，创建对应时间的笔记，还有一些特定的信息比如位置、使用的设备、写日记时的天气、创建和修改日期等，你可以用Day One 来帮助记录生活</p>
+<p>除了记录形式多样外，Day One 的回顾和查看也非常的方便。它有一个强大的过滤器，你可以根据照片、视频、日期、地点、标签、活动等多个维度结合进行筛选，比如你可以筛选出今年所有带音频的笔记，也可以查看在某个地方拍摄的所有视频。在回顾上，你可以查看自己的写作日历，拍摄的所有照片，甚至旅行路线等都可以直观地展示出来</p>
+<h2 id="roam-research">Roam Research</h2>
+<figure data-type="image" tabindex="10"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251110197.png" alt="" loading="lazy"></figure>
+<p><a href="https://roamresearch.com/">Roam Research</a> 是一款新型的笔记软件，它并没有使用传统的文件夹或标签形式来组织笔记，而是通过各种形式将你的知识连接起来建立网络，让你更灵活地管理自己的笔记，通过每天的点滴记录，你可以无压力地搭建起自己的个人知识库</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>大纲笔记，建立结构更清晰和易于编辑的笔记</li>
+<li>Markdown语法支持，可以快速创建各种形式的笔记</li>
+<li>双向链接，可以在链接的笔记中查看相关的引用，快速查找相关知识</li>
+<li>内容可视化，以图形的方式查看知识网络，预览笔记内容</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>价格略高</li>
+<li>上手需要一些时间</li>
+</ul>
+<p>相比其他软件，Roam Research 有很多创新性的功能，如果你想要体验与之前不同的记笔记方式，它是一个很好的选择</p>
+<h2 id="milanote">Milanote</h2>
+<figure data-type="image" tabindex="11"><img src="/Users/sky/Library/Application%20Support/typora-user-images/image-20230325111113614.png" alt="image-20230325111113614" loading="lazy"></figure>
+<p><a href="https://milanote.com/">Milanote</a> 是一款灵活且多功能的笔记工具，你可以将它作为一个白板使用，记录自己的各种内容，和传统的文字笔记相比，Milanote中的笔记非常灵活，可以是笔记、图片、视频、待办事项等，而且你可以随时调整这些卡片，使其帮助自己更好地思考，对于设计和创意工作者来说是一款非常值得使用的工具</p>
+<p><a href="https://www.v1tx.com/post/milanote/">Milanote 为创意工作者打造的笔记工具</a></p>
+<p>以上就是本文分享的几款云笔记软件，不管选择哪一款，基本都能实现大部分记录需求，不过要想更高效地使用笔记，还是要选择适合自己的，笔记软件一般都提供了免费版本，你可以使用后选择适合自己的笔记软件</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[最适合程序员的笔记软件]]></title>
+        <id>https://blog.coolcode.dev/post/zui-gua-he-cheng-xu-yuan-de-bi-ji-ruan-jian/</id>
+        <link href="https://blog.coolcode.dev/post/zui-gua-he-cheng-xu-yuan-de-bi-ji-ruan-jian/">
+        </link>
+        <updated>2023-03-25T03:02:15.000Z</updated>
+        <content type="html"><![CDATA[<p>作者： <a href="https://www.ruanyifeng.com/">阮一峰</a></p>
+<p>日期： <a href="https://www.ruanyifeng.com/blog/2021/08/">2021年8月26日</a></p>
+<p>程序员的笔记软件，应该满足下面几个条件。</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251058289.jpg" alt="img" loading="lazy"></figure>
+<blockquote>
+<p>（1）跨平台，同时支持桌面电脑（Windows，Mac，Linux）和手机（Android，iOS）。</p>
+<p>（2）随时同步，打开任何一台机器，都能接着上一次的工作继续写。</p>
+<p>（3）实时存储，如果软件突然关闭，也不会丢失内容。</p>
+<p>（4）支持 Markdown 格式，便于后期直接发布。</p>
+<p><strong>（5）支持推送到远程 Git 仓库，产生历史版本，同时作为远程备份。</strong></p>
+</blockquote>
+<p>我一直在寻找符合这些条件的工具，但是市场上大部分的笔记软件，都不支持上面的第5点，Git 集成要么没有，要么很弱。</p>
+<p>我用过 <a href="https://stackedit.io/">Stackedit.io</a> 和 <a href="https://hackmd.io/">HackMD.io</a>，都不是很理想。</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251058131.jpg" alt="" loading="lazy"></figure>
+<p>最近，我终于找到了最佳方案，那就是 GitHub 官方推出的 <a href="https://docs.github.com/en/codespaces/developing-in-codespaces/web-based-editor">github.dev</a>。</p>
+<p>只要访问下面的网址，你就能在浏览器里面，使用 VS Code 编辑指定仓库。可以点击<a href="https://github.dev/github/dev">这里</a>体验一下。</p>
+<pre><code>https://github.dev/[用户名]/[仓库名]
+</code></pre>
+<p>它实际上就是 VS Code 编辑器的 Web 版，并且与 Git 高度集成。这种组合，还有什么笔记软件会比它更强！</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251059321.jpg" alt="" loading="lazy"></figure>
+<p>使用时，首先在 GitHub 上面新建一个笔记仓库，公开或私密都可以。然后使用 github.dev 编辑完，再推送回仓库。换到其它机器时，就先从仓库获取文档的最新版本，简直是完美的解决方案。</p>
+<p>更棒的是，GitHub 提供了一个快捷入口。 <strong>打开 GitHub 仓库主页，按一下小数点（<code>.</code>）这个键，</strong> 页面就会自动跳转到 VS Code 编辑环境，真是太方便了。</p>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251059002.jpg" alt="" loading="lazy"></figure>
+<p>另外，还有一个非官方的 <a href="https://github1s.com/">github1s.com</a>，也提供类似功能。只要在仓库域名的里面，加上&quot;1s&quot;就可以了。但毕竟是非官方工具，这里就不推荐了。</p>
+<pre><code>https://github1s.com/[用户名]/[仓库名]
+</code></pre>
+<p>github.dev 针对的是桌面的&quot;键盘 + 鼠标&quot;环境，手机触摸屏可以使用，但终归很笨拙。</p>
+<p>如果你更希望使用手机原生 App，我推荐 <a href="https://obsidian.md/">Obsidian</a>。它有全平台的客户端，并且可以参考<a href="https://forum.obsidian.md/t/mobile-setting-up-ios-git-based-syncing-with-mobile-app-using-working-copy/16499">这篇文章</a>设置 Git 集成。</p>
+<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251059559.jpg" alt="" loading="lazy"></figure>
+<p>另外，<a href="https://fsnot.es/">FSNotes</a> 也不错，可惜只支持苹果设备。</p>
+<figure data-type="image" tabindex="6"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251100076.jpg" alt="" loading="lazy"></figure>
+<p>如果你不需要 Git 集成和 Markdown 支持，那就最简单了，几大软件巨头的官方笔记 App，就非常好用：<a href="https://keep.google.com/">Google keep</a>、<a href="https://support.apple.com/en-us/HT205773">Apple Notes</a>（只支持苹果设备）和<a href="https://www.microsoft.com/en-us/microsoft-365/onenote/digital-note-taking-app">微软 OneNote</a>。</p>
+<figure data-type="image" tabindex="7"><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303251100013.jpg" alt="" loading="lazy"></figure>
+<p>它们都是自动多端同步，缺点是不便于编写大型文档，以及导出数据很麻烦。</p>
+<p>（完）</p>
+]]></content>
+    </entry>
+</feed>

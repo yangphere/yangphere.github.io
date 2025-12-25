@@ -1,0 +1,223 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>如何写就完美 Pull Request | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    如何写就完美 Pull Request
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/02yIJhftyy/" class="post-tags">
+                            # git
+                        </a>
+                    
+                        <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tags">
+                            # github
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <blockquote>
+<p>译注：Github Blog 发表了一篇文章 <a href="https://github.com/blog/1943-how-to-write-the-perfect-pull-request">How to write the perfect pull request</a>，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！<br>
+随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。</p>
+</blockquote>
+<!--more-->
+<h2 id="撰写-pull-request">撰写 Pull Request</h2>
+<ul>
+<li>要涵盖此次 Pull Request 的目标，例如： 尝试用 XXX 方法实现…… 优化…… 修复在 XX 状态下对 XX 的异常处理</li>
+<li>可以提供一份关于这些工作起因的说明（包含上相关链接）。不要假定对方已经熟悉这些事情的前因后果。</li>
+<li>记住公司里任何人都有可能来阅读这个 Pull Request，所以内容和语气都需要面向那些未参与工作内容的人，现在和未来的。</li>
+<li>如果有的话，请详述你需要的反馈，如：快速过目一下代码/讨论某项技术实现/对设计的意见等等。</li>
+<li>明确你<em>何时</em>需要反馈。如果这个 PR 还在没有完成，就需要这么注明一下。给标题加上[WIP]（施工中）的前缀也是个简便快捷的方法。</li>
+<li><a href="https://github.com/blog/821">@艾特</a> 需要特别指明加入讨论的人，并说明原因（“/cc <a href="https://github.com/hax">@hax</a> 麻烦来看下这个逻辑对么？”）。</li>
+<li>同样的方法也可以艾特团队（“/cc @baixing/sa 这么做没安全问题吧？”）。</li>
+</ul>
+<h2 id="提供反馈">提供反馈</h2>
+<ul>
+<li>首先要了解下此 PR 的前情提要。</li>
+<li>如果你有强烈的反对意见，多花几分钟审视下自己的意见再做反馈。Think Twice。</li>
+<li>询问，不要指点。（“为什么你要……”而非“不要……”）</li>
+<li>解释你提出修改意见的原因。（和代码规范不符？个人喜好？）</li>
+<li>提供简化或改进代码的方法。</li>
+<li>在提到别人的工作成果时避免使用贬义词（愚蠢什么的）。</li>
+<li>谦逊。（“我不很确定，不过可以试试……”）</li>
+<li>不要夸张。（“任何时候绝对……”）</li>
+<li>评论旨在提高专业技能、产品质量，达成团队共识。</li>
+<li>在线交流时要当心负面歧义（如果文字内容中性，我们倾向认为语气偏负面），尽量使用积极的语气而非中性的。</li>
+<li>善用表情符号美化语气。（感受一下 “看起来不错。” 和 “<img src="https://assets-cdn.github.com/images/icons/emoji/unicode/2728.png" alt=":sparkles:" title=":sparkles:" loading="lazy"> <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/2728.png" alt=":sparkles:" title=":sparkles:" loading="lazy"> 看起来不错 <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png" alt=":+1:" title=":+1:" loading="lazy"> <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/2728.png" alt=":sparkles:" title=":sparkles:" loading="lazy"> <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/2728.png" alt=":sparkles:" title=":sparkles:" loading="lazy">”）</li>
+</ul>
+<h2 id="对反馈的回复">对反馈的回复</h2>
+<ul>
+<li>考虑以感激作为开场白，尤其是当反馈混杂了各种意见的时候。</li>
+<li>如有不明白的地方，请求进一步澄清。（“我不大明白，你能再解释一下么？”）</li>
+<li>提供澄清。解释对方询问的实现方案是如何决策的。</li>
+<li>尽量回复所有评论。</li>
+<li>链接到相关的后续提交。（“好建议！a1da2324ca 已搞定 😄”）</li>
+<li>如果疑惑和争论持续扩大，首先审视自己在前面的讨论中是否表达良好，尝试面对面做充分沟通，之后把线下沟通的内容汇总回复（便于其他人跟踪进展或未来了解详情）。</li>
+</ul>
+<p>这份指南部分受到了 ThoughtBot 的 <a href="https://github.com/thoughtbot/guides/tree/master/code-review">Code Review 指南</a>的启发。<br>
+这份指南很适合我们的工作方式，以及我们想要建立的协作文化，希望对你也有帮助。<br>
+沟通愉快！</p>
+<p>可以结合这篇一起看：<a href="http://www.infoq.com/cn/news/2015/02/pull-reques-ten-suggestion">http://www.infoq.com/cn/news/2015/02/pull-reques-ten-suggestion</a></p>
+<p>再加两条：</p>
+<ul>
+<li>如果有代码格式化整理，记得把格式化的操作作为独立的一次提交。不要和代码修改混在一起，以便 Review 的人能方便查看干净的代码修改 diff。</li>
+<li>注明所有修改内容。如果确有必要将几件事情（例如特别小、相互有依赖等）一起提交 PR，则需要列明具体每一件事情。</li>
+</ul>
+<p>原文: <a href="https://github.com/baixing/FE-Blog/issues/1">https://github.com/baixing/FE-Blog/issues/1</a></p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160104-14-2015 年最热门的国人开发开源软件 TOP 50/" class="post-title gt-a-link">
+                    2015 年最热门的国人开发开源软件 TOP 50
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

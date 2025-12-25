@@ -1,0 +1,236 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>如何正确接收 GitHub 的消息邮件 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    如何正确接收 GitHub 的消息邮件
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tags">
+                            # github
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="背景">背景</h2>
+<p>我厂的开发流程通常都是基于 GitHub 的。在 GitHub 上 review 代码，也是我日常工作的重要组成部分。对我来说，在 code review 过程中最讨厌的莫过于，我在 pull request 或 commit 下面评论或 @ 人，往往石沉大海，没有回音。我事后追问当事人，他们的回复往往是 “不知道你 @ 我了呀～”。<br>
+这让我非常恼火。所以，我决定写篇文档给所有人看，避免他们漏看重要的 GitHub 消息。此后在 GitHub 不回复我的人，差不多也可以绝交了罢！</p>
+<!--more-->
+<h2 id="github-的通知机制">GitHub 的通知机制</h2>
+<h3 id="通知的类型和方式">通知的类型和方式</h3>
+<p>在两种情况下，我们会收到 GitHub 的通知。</p>
+<ul>
+<li><strong>我关注的</strong>（Watching）：当我关注了某个项目之后，相当于订阅了这个项目的所有更新，即这个项目的新 release、新 issue、新 PR 及所有讨论都会通知我。</li>
+<li><strong>我参与的</strong>（Participating）：当我参与到某个 issue、PR 或 commit 的讨论，或被别人 @ 后，我都会持续收到这个讨论的后续更新。</li>
+</ul>
+<p>后面一种情况似乎对我更加重要一些。如果不需要密切跟进某个项目，我应该避免关注它。<br>
+另外，GitHub 会通过以下两种方式来通知我们：</p>
+<ul>
+<li>
+<p><strong>站内信</strong>（Web）：当我登录 GitHub 网站时，如果有新消息，在导航栏会看到一个小蓝点。点进去就可以看到详细通知。<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6727722/304a0ba2-ce5f-11e4-8a57-ee121ae54dd1.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6727722/304a0ba2-ce5f-11e4-8a57-ee121ae54dd1.png" alt="站内信收件箱" loading="lazy"></a></p>
+</li>
+<li>
+<p><strong>电子邮件</strong>（Email）：通知会直接发送到我的邮箱，而且我直接回复邮件的效果相当于登录到相关页面回复，非常方便。</p>
+</li>
+</ul>
+<p>可见，前者是被动方式，提醒能力太弱。而后者是主动推送，时效性好，但我需要注意的就是控制消息密度，避免被轰炸。因此，接下来，我们来了解一下 GitHub 的 “自动关注” 功能。</p>
+<h3 id="自动关注">自动关注</h3>
+<p>不错过重要的消息，首先意味着不能被无关紧要的消息湮没。如果你经常收到大量的 GitHub 消息，那你可能就全都不看了。因此，我们需要关掉 “自动关注” 功能。<br>
+登录 <a href="https://github.com/settings/notifications">GitHub 通知中心页面</a>，即可关闭这个功能：<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6727737/4c99f402-ce5f-11e4-99c0-a15c058283a1.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6727737/4c99f402-ce5f-11e4-99c0-a15c058283a1.png" alt="自动关注功能" loading="lazy"></a><br>
+为什么要关它？这个功能很有意思，每当你获得了一个 repo 的 push 权限之后，GitHub 就会帮你自动关注这个 repo。这在开源社区是很有用的，因为当你获得了这个权限时，往往意味着你成为了这个 repo 的核心维护者，你确实需要第一时间掌握这个项目的一举一动。<br>
+但这对于公司内部项目就不那么合适了。比如我们的主站项目是一个私有 repo，几乎公司内的每位工程师都会 fork 它；同时出于协作的需要，每个 fork 都需要向所有工程师开放读写权限。因此，你将自动关注这近百个 repo，而这些 repo 的任何风吹草动都会通知你，即使你并未真正在其它同事的 fork 上工作。<br>
+总之，为了避免无关消息对你的轰炸，请关掉自动关注功能。你可能已经关注了一堆无关紧要的 fork 了，请记得在你的 <a href="https://github.com/watching">关注列表页面</a> 逐一取消。（如果你不是核心管理员，建议你把主站项目的 upstream 也取消关注。）</p>
+<h2 id="个人设置">个人设置</h2>
+<p>了解完 GitHub 的特性之后，我们就可以针对性地做出配置和选择了。</p>
+<h3 id="设定-email">设定 Email</h3>
+<p>正常情况下，每个人在工作时间都会开着自己的工作邮箱。那么首先，需要确保 GitHub 的消息是发到这个邮箱的。由于每个人的 GitHub 账号往往并非是用工作邮箱注册的，我们需要把邮箱搞对。<br>
+登录 <a href="https://github.com/settings/emails">GitHub 的邮箱设置页面</a>，添加自己的工作邮箱。随后工作邮箱会收到一封验证邮件，完成验证之后，你的 GitHub 账号就绑定了两个邮箱。<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6727996/47d865be-ce61-11e4-84bd-4753f507dcfe.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6727996/47d865be-ce61-11e4-84bd-4753f507dcfe.png" alt="账号邮箱设置" loading="lazy"></a><br>
+（并不需要为把这个工作邮箱设置为 “primary”，只要验证通过就可以了。）<br>
+到这里我们就做好 Email 的准备工作。</p>
+<h3 id="通知中心">通知中心</h3>
+<p>接下来，我们进入 <a href="https://github.com/settings/notifications">GitHub 通知中心</a>，为两种不同类型的通知选择通知方式。请确保至少第一个 “Email” 是被选中的：<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6728458/e9077062-ce64-11e4-8873-ddecedd5eda1.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6728458/e9077062-ce64-11e4-8873-ddecedd5eda1.png" alt="通知方式设置" loading="lazy"></a><br>
+接下来，选择接收邮件通知的邮箱。选择我们刚刚添加的工作邮箱，保存。<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6728042/aa900b80-ce61-11e4-8b42-665745e8e66f.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6728042/aa900b80-ce61-11e4-8b42-665745e8e66f.png" alt="通知邮箱设置" loading="lazy"></a><br>
+（这里的邮箱设置只会影响消息的接收，不会影响账号身份。）<br>
+好了，大功告成。从此以后，所有重要的 GitHub 消息都会发送到你的工作邮箱。最后，再告诉你几个小技巧，相信你用得上。</p>
+<h2 id="减少干扰">减少干扰</h2>
+<h3 id="取消关注某个-repo">取消关注某个 Repo</h3>
+<p>前面已经提到过 <a href="https://github.com/watching">你的关注列表</a>，在那里，你可以随时清理不再重要的项目。同时，进入任何项目的页面，在右上角都可以选择对它的关注方式。<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6728063/cfc35c72-ce61-11e4-8765-deb00c8aca80.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6728063/cfc35c72-ce61-11e4-8765-deb00c8aca80.png" alt="Repo 的关注选项" loading="lazy"></a><br>
+“Not watching” 意味着取消关注，你将不会收到与你无关的通知。而与你有关的（你发起的、主动参与的或被 @ 的）讨论有新回复，你还是会收到通知的。<br>
+请注意不要选择 “Ignoring”，那意味着你连重要的消息也收不到了。</p>
+<h3 id="取消关注某个讨论">取消关注某个讨论</h3>
+<p>当某个讨论已经没你什么事了，但仍然不断有后续消息涌进来，那就果断屏蔽它吧。从消息邮件中的链接点到网页，找到如下所示的 “取消订阅” 的按钮，即可取消关注这个讨论。<br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6728159/aa1a525e-ce62-11e4-9205-f0645034749c.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6728159/aa1a525e-ce62-11e4-9205-f0645034749c.png" alt="取消订阅-1" loading="lazy"></a><br>
+<a href="https://cloud.githubusercontent.com/assets/5830104/6728160/aa1f5380-ce62-11e4-9d20-62d73497a2d1.png"><img src="https://cloud.githubusercontent.com/assets/5830104/6728160/aa1f5380-ce62-11e4-9d20-62d73497a2d1.png" alt="取消订阅-2" loading="lazy"></a></p>
+<h3 id="锁定某个讨论">锁定某个讨论</h3>
+<p>当某个 issue 或 PR 已经没有继续讨论的必要的，你可以锁定它——当然前提是你得是这个 repo 的管理员。</p>
+<h3 id="屏蔽某个人">屏蔽某个人</h3>
+<p>如果你遇到了无聊的人总是骚扰你，可以到它的用户页面，屏蔽并举报。</p>
+<h2 id="结语">结语</h2>
+<p>相信看到这里，你已经对 GitHub 的通知机制十分了解了吧，并且应该可以灵活配置 GitHub 消息的接收方式了。<br>
+好吧，就这样吧。如果以后还是不回复我，绝交。</p>
+<blockquote>
+<p>转自： <a href="https://github.com/cssmagic/blog/issues/49">cssmagic/blog#49</a></p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160107-16-前端进阶之路：点击事件绑定/" class="post-title gt-a-link">
+                    前端进阶之路：点击事件绑定
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

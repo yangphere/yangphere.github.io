@@ -1,0 +1,325 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>GitHub 上的书写方式 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    GitHub 上的书写方式
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tags">
+                            # github
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <blockquote>
+<ul>
+<li>Original: Writing on GitHub - GitHub Help</li>
+<li>Translated by: @cssmagic</li>
+</ul>
+<p>声明：原文版权属于 GitHub。中文翻译部分并非官方文档，仅供参考。</p>
+</blockquote>
+<p>Issues, comments, and pull request descriptions are written using GitHub Flavored Markdown along with some additional features to make writing content on GitHub easy.</p>
+<p>在 issue、评论和 pull request（以下简称 “PR”）的描述中，我们可以用 GitHub 风格的 Markdown 语法 来编写富文本；此外，GitHub 还提供了一些额外的功能，让我们的书写更加方便。<br>
+Markup<br>
+语法<br>
+Newlines<br>
+换行</p>
+<!--more-->
+<p>The biggest difference with writing on GitHub is the way we handle linebreaks. With Markdown, you can hard wrap paragraphs of text to have them combine into a single paragraph. We find this causes a huge number of unintentional formatting errors. In comments, GitHub treats newlines in paragraph-like content as real line breaks, which is usually what you intended.</p>
+<p>GitHub 上的书写方式有一个最大的不同，在于我们改变了处理换行的方式。在原生的 Markdown 语法中，如果我们把一段文本用硬回车打断成多行，它们仍然会被合并为一个连续的段落。但我们发现，这个特性导致了大量非预期的格式化错误。在评论中，GitHub 会把段落内容中的换行视为真正的换行，而这通常正是你所期望的。</p>
+<p>The next paragraph contains two phrases separated by a single newline character:</p>
+<p>下面这个段落被一个换行符分隔成了两个短语：</p>
+<p>Roses are red<br>
+Violets are blue</p>
+<p>becomes</p>
+<p>将被渲染为：</p>
+<p>Roses are red</p>
+<p>Violets are blue</p>
+<p>（译注：注意，只有在评论中才有这种行为。而所谓 “评论”，似乎是指所有非代码提交产生的内容，比如 issue、PR 的内容，以及对 issue、PR、commit 的所有评论等等。在其它场合下，如果需要产生硬回车，需要在行末使用两个空格。）<br>
+Task lists<br>
+任务清单</p>
+<p>Lists can be turned into task lists by prefacing list items with [ ] or [x] (incomplete or complete, respectively).</p>
+<p>列表可以被转换为 任务清单，只需要为列表项的开头加上 [ ] 或 [x] 即可（分别表示未完成和已完成）。</p>
+<ul class="contains-task-list">
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6539105"> @mentions, #refs, <a href="">links</a>, <strong>formatting</strong>, and <del>tags</del><label class="task-list-item-label" for="task-item-6539105"> @mentions, #refs, [links](), **formatting**, and <del>tags</del> are supported</label></p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5115611"><label class="task-list-item-label" for="task-item-5115611"> list syntax is required (any unordered or ordered list supported)</label></p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1385"><label class="task-list-item-label" for="task-item-1385"> this is a complete item</label></p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5083723"><label class="task-list-item-label" for="task-item-5083723"> this is an incomplete item</label></p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-555022"> 支持 @提到某人、#引用、<a href="">链接</a>、<strong>格式化</strong> 和 <del>HTML 标签</del><label class="task-list-item-label" for="task-item-555022"> 支持 @提到某人、#引用、[链接]()、**格式化** 和 <del>HTML 标签</del> 等语法</label></p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2543780"><label class="task-list-item-label" for="task-item-2543780"> 需要使用列表语法来激活（无序或有序列表均可）</label></p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3970649"><label class="task-list-item-label" for="task-item-3970649"> 这是一个已完成项目</label></p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8587496"><label class="task-list-item-label" for="task-item-8587496"> 这是一个未完成项目</label></p>
+</li>
+</ul>
+<p>Task lists render with checkboxes in all comments and Markdown files. Select or unselect these checkboxes to mark them as complete or incomplete across GitHub.</p>
+<p>在所有评论和 Markdown 文件中，任务清单都会渲染出复选框。在 GitHub 站内，这些复选框都可以通过勾选和取消勾选来切换完成状态。</p>
+<p>Task lists can be nested to better structure your tasks:</p>
+<p>任务清单还可以嵌套，以便更好地组织任务：</p>
+<ul class="contains-task-list">
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1978616"><label class="task-list-item-label" for="task-item-1978616"> a bigger project</label></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9076935"><label class="task-list-item-label" for="task-item-9076935"> first subtask #1234</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8224127"><label class="task-list-item-label" for="task-item-8224127"> follow up subtask #4321</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-19636"><label class="task-list-item-label" for="task-item-19636"> final subtask cc @mention</label></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8940354"><label class="task-list-item-label" for="task-item-8940354"> a separate task</label></p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-474442"><label class="task-list-item-label" for="task-item-474442"> 一个大工程</label></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9260835"><label class="task-list-item-label" for="task-item-9260835"> 第一项子任务 #1234</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5177227"><label class="task-list-item-label" for="task-item-5177227"> 接下来的子任务 #4321</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7216357"><label class="task-list-item-label" for="task-item-7216357"> 最后一项子任务 cc @mention</label></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9240474"><label class="task-list-item-label" for="task-item-9240474"> 一项单独的任务</label></p>
+</li>
+</ul>
+<p>Task lists can be nested to arbitrary depths, though we recommend nesting at most once or twice; more complicated tasks should be broken out into separate lists.</p>
+<p>任务清单的嵌套层级是没有限制的，不过我们建议你最多只嵌套一层或两层；如果你的任务清单需要嵌套更多的层数，则意味着应该把它分解为多个独立的清单。<br>
+References<br>
+事件引用</p>
+<p>Certain references are auto-linked:</p>
+<p>引用特定的事件将会自动创建链接：</p>
+<ul>
+<li>SHA: a5c3785ed8d6a35868bc169f07e40e889087fd2e</li>
+<li>User@SHA: jlord@a5c3785ed8d6a35868bc169f07e40e889087fd2e</li>
+<li>User/Repository@SHA: jlord/sheetsee.js@a5c3785ed8d6a35868bc169f07e40e889087fd2e</li>
+<li>#Num: #26</li>
+<li>GH-Num: GH-26</li>
+<li>User#Num: jlord#26</li>
+<li>User/Repository#Num: jlord/sheetsee.js#26</li>
+</ul>
+<p>becomes</p>
+<p>将被渲染为：</p>
+<pre><code>SHA: a5c3785
+User@SHA: jlord@a5c3785
+User/Repository@SHA: jlord/sheetsee.js@a5c3785
+#Num: #26
+GH-Num: GH-26
+User#Num: jlord#26
+User/Repository#Num: jlord/sheetsee.js#26
+</code></pre>
+<p>Features<br>
+便民功能<br>
+Quick quoting<br>
+快速引用</p>
+<p>Typing r on your keyboard lets you reply to the current issue or pull request with a comment. Any text you select within the discussion thread before pressing r will be added to your comment automatically and formatted as a blockquote.</p>
+<p>按下键盘的 r 键将为当前的 Issue 或 Pull Request 添加评论。在按下 r 键之前，你在讨论区中选中的任何文本都将自动以一个块级引用的形式插入到你的评论中。<br>
+Name and Team @mentions autocomplete<br>
+@ 提到人名或团队名时的自动补全</p>
+<p>Typing an @ symbol will bring up a list of people or teams on a project. The list filters as you type, so once you find the name of the person or team you are looking for, you can use the arrow keys to select it and hit either tab or enter to complete the name. For teams, just enter the @organization/team-name and all members of that team will get subscribed to the issue.</p>
+<p>按下 @ 符号将弹出一个列表，列出这个项目相关的人或团队。这个列表会随着你的输入不断匹配筛选，因此一旦你在列表中发现了你要找的人名或团队名，你就可以用方向键来选中它，然后按回车或 tab 键来补全。对于团队来说，只需要输入 @组织名/团队名，那么团队内的所有成员都将收到提醒。</p>
+<p>The autocomplete results are restricted to repository collaborators and any other participants on the thread, so it's not a full global search. It uses the same fuzzy filter as the file finder and works for both usernames and full names.</p>
+<p>自动补全的匹配范围仅限制在当前仓库的贡献者以及当前讨论的参与者，因此它并不是一个全局性的搜索。它和文件查找器使用相同的模糊筛选算法，并且同时适用于用户名和全名。</p>
+<p>Check out the blog posts for more information about @mention autocompletes for users and teams.</p>
+<p>详情参见关于 @ 提到 用户 和 团队 时自动补全的博文。<br>
+Emoji autocomplete<br>
+Emoji 表情符号的自动补全</p>
+<p>Typing : will bring up a list of suggested emoji. The list will filter as you type, so once you find the emoji you're looking for, press Tab or Enter to complete the highlighted result. For a full list of available emoji, check out emoji-cheat-sheet.com.</p>
+<p>按下 : 将会弹出一个表情符号的建议列表。这个列表会随着你的输入不断匹配筛选，因此一旦在列表中发现了你要找的表情符号，你就可以按 tab 或回车键来补全当前高亮的那一项。在 emoji-cheat-sheet.com 可以查阅所有可用的表情符号。<br>
+Issue autocompletion<br>
+Issue 的自动补全</p>
+<p>Typing # will bring up a list of suggested Issues and Pull Requests. Type a number or some text to filter the list, then hit either tab or enter to complete the highlighted result.</p>
+<p>按下 # 将会弹出一个 issue 和 PR 建议列表。输入数字或文本可以不断筛选这个列表，然后按 tab 或回车键可以补全当前高亮的那一项。<br>
+Zen Mode (fullscreen) writing<br>
+禅意模式（全屏书写模式）</p>
+<p>Zen Mode allows you to write markdown in fullscreen mode. You'll find the Zen Mode button on comment, issue, and pull request forms across the site.</p>
+<p>禅意模式允许你以全屏模式进行书写。在站内的评论、issue 和 PR 表单中，你都可以找到禅意模式按钮。</p>
+<p>Zen Mode button</p>
+<p>You can also use it when creating and editing files by using the Zen Mode button above the file box.</p>
+<p>在创建或编辑文件时，你也可以在文件框顶部找到禅意模式按钮。</p>
+<p>Zen Mode comes with both a light and a dark theme. You can change your theme using the switcher at the top right of the window.</p>
+<p>禅意模式提供了两种主题可供选择，浅色版和深色版。你可以用窗口右上角的切换按钮来更换当前主题。</p>
+<p>Check out the blog post for more information about Zen writing mode.</p>
+<p>详情参见 关于禅意模式的博文。<br>
+See also</p>
+<ul>
+<li><a href="https://help.github.com/articles/markdown-basics">Markdown Basics</a></li>
+<li><a href="https://help.github.com/articles/github-flavored-markdown">GitHub Flavored Markdown</a></li>
+</ul>
+<p>相关阅读</p>
+<ul>
+<li><a href="https://help.github.com/articles/markdown-basics">Markdown 语法基础</a></li>
+<li><a href="https://github.com/baixing/FE-Blog/issues/6">GitHub 风格的 Markdown 语法</a></li>
+</ul>
+<blockquote>
+<p>转自:<a href="https://github.com/baixing/FE-Blog/issues/5">https://github.com/baixing/FE-Blog/issues/5</a></p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160107-18-如何在 GitHub 正确吐槽/" class="post-title gt-a-link">
+                    如何在 GitHub 正确吐槽
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

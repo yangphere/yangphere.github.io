@@ -1,0 +1,340 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>github | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <div class="main-content">
+        <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+        <div class="current-tag-container">
+            <h2 class="title gt-c-content-color-first">
+                #github
+            </h2>
+        </div>
+        <div class="post-list-container">
+    <div class="post-inner">
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/ba-git-de-mo-ren-fen-zhi-master-xiu-gai-cheng-main/">
+                            <span class="post-title gt-c-content-color-first">把git的默认分支master修改成main</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2023-03-26 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/02yIJhftyy/" class="post-tag">
+                                # git
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tag">
+                                # github
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160107-20-GitHub 风格的 Markdown 语法/">
+                            <span class="post-title gt-c-content-color-first">GitHub 风格的 Markdown 语法</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        
+
+Original: GitHub Flavored Markdown - GitHub Help
+Translated by: @cssmagic
+
+声明：原文版权属于 GitHub。中文翻译部分并非官方文档，仅供参考。
+
+GitHub uses &quot;GitHub Flavored Markdown,&quot; or GFM, across the site--in issues, comments, and pull requests. It differs from standard Markdown (SM) in a few significant ways, and adds some additional functionality.
+GitHub 全站支持 “GitHub 风格的 Markdown 语法”（简称 GFM），你可以用它来书写 issue、pull request（以下简称 “PR”）和各种评论。它和标准 Markdown 语法（SM）相比，存在一些值得注意的差异，并且增加了一些额外功能。
+If you're not already familiar with Markdown, take a look at Markdown Basics. If you'd like to know more about features that are available in issues, comments, and pull request descriptions, such as task lists, read Writing on GitHub.
+如果你对 Markdown 还不是很熟悉，可以先看一眼 Markdown 语法基础。如果你想了解在书写 issue、评论和 PR 描述时有哪些技巧（比如任务清单这样的高级功能），你应该读一下 GitHub 上的书写方式。
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tag">
+                                # github
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160107-19-GitHub 上的书写方式/">
+                            <span class="post-title gt-c-content-color-first">GitHub 上的书写方式</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        
+
+Original: Writing on GitHub - GitHub Help
+Translated by: @cssmagic
+
+声明：原文版权属于 GitHub。中文翻译部分并非官方文档，仅供参考。
+
+Issues, comments, and pull request descriptions are written using GitHub Flavored Markdown along with some additional features to make writing content on GitHub easy.
+在 issue、评论和 pull request（以下简称 “PR”）的描述中，我们可以用 GitHub 风格的 Markdown 语法 来编写富文本；此外，GitHub 还提供了一些额外的功能，让我们的书写更加方便。
+Markup
+语法
+Newlines
+换行
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tag">
+                                # github
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160107-18-如何在 GitHub 正确吐槽/">
+                            <span class="post-title gt-c-content-color-first">如何在 GitHub 正确吐槽</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        背景
+在几年前，百姓网几乎所有项目的开发流程就已经迁到 GitHub 上了。将 GitHub flow 作为日常开发流程，有一个很大的好处，pull request 很自然地成为 code review 的平台——每个人的代码都必须经过 review 之后，才会合并到主干。
+因此，各个项目的 pull request 也逐渐成为一座座金矿，新人可以在历史 PR 中汲取经验，高手也常常通过 PR 追查疑难杂症的来龙去脉。而对我这个吐槽狂来说，PR 也是一个非常重要的阵地……
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tag">
+                                # github
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160107-17-如何正确接收 GitHub 的消息邮件/">
+                            <span class="post-title gt-c-content-color-first">如何正确接收 GitHub 的消息邮件</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        背景
+我厂的开发流程通常都是基于 GitHub 的。在 GitHub 上 review 代码，也是我日常工作的重要组成部分。对我来说，在 code review 过程中最讨厌的莫过于，我在 pull request 或 commit 下面评论或 @ 人，往往石沉大海，没有回音。我事后追问当事人，他们的回复往往是 “不知道你 @ 我了呀～”。
+这让我非常恼火。所以，我决定写篇文档给所有人看，避免他们漏看重要的 GitHub 消息。此后在 GitHub 不回复我的人，差不多也可以绝交了罢！
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tag">
+                                # github
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/">
+                            <span class="post-title gt-c-content-color-first">如何写就完美 Pull Request</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        
+译注：Github Blog 发表了一篇文章 How to write the perfect pull request，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！
+随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。
+
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2022-07-19 ·
+                        </time>
+                        
+                            <a href="https://blog.coolcode.dev/tag/02yIJhftyy/" class="post-tag">
+                                # git
+                            </a>
+                        
+                            <a href="https://blog.coolcode.dev/tag/3U-PtdxPqK/" class="post-tag">
+                                # github
+                            </a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        
+    </div>
+</div>
+        <div class="pagination-container">
+    
+    
+</div>
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

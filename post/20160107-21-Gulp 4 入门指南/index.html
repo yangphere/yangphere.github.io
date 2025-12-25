@@ -1,0 +1,519 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Gulp 4 入门指南 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Gulp 4 入门指南
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/owU-RD7Nin/" class="post-tags">
+                            # glup
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>原文地址：<a href="http://www.ociweb.com/resources/publications/sett/gulp-4/">http://www.ociweb.com/resources/publications/sett/gulp-4/</a></p>
+<h2 id="介绍">介绍</h2>
+<p>gulp是一个基于JavaScript的构建工具，它主要用于web部署任务的自动化执行。gulp可以自动化完成你通过Node.js做的任何事。由于Node.js可以执行<a href="http://linuxcommand.org/lts0010.php">shell命令</a>，所以gulp几乎可以自动化所有任务。但在实际使用中，gulp主要用于web开发中。</p>
+<!--more-->
+<h3 id="gulp与grunt">gulp与Grunt</h3>
+<p>gulp的主要竞争对手是Grunt，它和gulp一样是免费和开源的。其他不怎么火的竞争者有：Broccoli，Brunch，Cake和Jake。<br>
+配置方法是gulp和Grunt的主要差异之一。它们都通过一个JavaScript文件进行配置，gulp将其命名为 gulpfile.js，Grunt将其命名为Gruntfile.js。gulp通过调用不同的函数（gulp.taks，gulp.watch）完成 配置，而grunt则通过传递一个字面量对象（<strong>{... ：...}</strong>）参数给grunt.initConfig函数来完成配置。<br>
+gulp对比Grunt的优势之一是，gulp的运行速度相比Grunt更快。这归功于它使用了stream。对比两者执行连续任务的方式，Grunt执行连续任务通过创建大量的临时文件**（临时文件作为步骤i的输出以及步骤i+1的输入）**。gulp使用stream则允许我们更早的开始接下去的任务，只要stream中存在数据即可开始，而非必须等待整个文件被写完。</p>
+<h3 id="gulp与nodejs">gulp与Node.js</h3>
+<p>如果你希望使用gulp，那么必须安装Node.js。当然，它同样可以在io.js上运行（io.js是Node.js的一个分支，它使用了更新 版本的v8 javascript引擎，并且更新的更频繁）。就如同Node.js，gulp可以在多种平台下使用，例如windows，mac osx和其他unix系的操作系统。<br>
+在gulp中，我们同样可以使用es6中的特性（通过在Node.js或io.js，使用--harmony参数开启es6中的特性），</p>
+<p><strong>在*nix环境下，你需要这么做</strong>：</p>
+<p>创建一个别名alias gulp6='node --harmony $(which gulp)'(<a href="http://stackoverflow.com/questions/17984958/what-does-it-mean-in-shell-when-we-put-a-command-inside-dollar-sign-and-parenthe">what is $() ?</a>, <a href="http://linux.about.com/library/cmd/blcmdl1_which.htm">what is which?</a>)，你也可以将这行代码放在.bashrc中，这样每次你打开终端时它都将生效。完成这些，你就可以使用gulp6命令代替gulp命令，开始享受es6带来的新特性。</p>
+<p><strong>在windows环境下：</strong></p>
+<p>你可以试着使用doskey命令来做类似的事。<br>
+本文的某些例子中将使用es6的一项新特性，箭头函数表达式。这个特性允许我们使用一种更简洁的方式来书写匿名函数，并且它还有其他的优点（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">详情可见：Arrow functions MDN</a>）。对于本文，你只需知道function () { return expression; }在es6中等价于() =&gt; expression。</p>
+<h3 id="gulp插件简介">gulp插件简介</h3>
+<p>gulp的一大优势是大量有用的插件，它们能够帮助我们完成各种任务。截止到2015.5.25，已经有1711个gulp插件可供使用。你可以试着在*nix系统中使用npm search gulpplugin | wc-l命令来查看最新的插件数目。<br>
+我们可以使用gulp来完成以下常见的任务：</p>
+<ul>
+<li>检查html，css，javascript和json文件的语法。</li>
+<li>将es6 javascript代码编译为es5（通过使用babel，traceur或者typescript）。</li>
+<li>运行单元测试和端到端测试。</li>
+<li>合并和压缩css，javascript文件。</li>
+<li>通过http来提供静态文件服务。</li>
+<li>执行shell命令。</li>
+<li>监视特定文件或者文件类型的改变，当监察到改变后运行特定任务。</li>
+<li>当文件改变后刷新浏览器（livereload）。</li>
+</ul>
+<p>关于gulp插件，下文将更详细的讲述。<br>
+在我写这篇文章时，gulp最新的稳定版本为3。本文介绍的目标是新的开发版本4。<strong>版本4并不向后兼容版本3</strong>。如果你希望使用gulp4，那么你需要修改gulpfile.js。当然，大部分面向gulp3的插件仍然可在gulp4正常使用。<br>
+这篇文章中，如果你使用的是windows，那你需要将terminal替换为Command Prompt。</p>
+<h2 id="安装gulp">安装gulp</h2>
+<p>在终端键入npm install -g gulp，将安装最新，稳定的版本。如果你希望在gulp4成为稳定版之前就安装它，那么执行以下指令：<br>
+2. 打开终端。<br>
+4. 确定已正确安装git。<br>
+6. 如果之前安装过gulp，使用npm uninstall -g gulp命令来卸载它。<br>
+8. 使用npm install -g gulpjs/gulp-cli#4.0命令来安装gulp 4。</p>
+<p>如果你希望现在就在你的项目中使用gulp4，那么执行以下命令：<br>
+2. 打开终端。<br>
+4. 进入到你项目的顶层目录。<br>
+6. 使用npm init命令来新建package.json文件，回答新建过程中遇到的问题。<br>
+8. 本地安装gulp并且将它作为一个依赖添加到package.json中，命令如下：npm install gulp --save-dev<br>
+10. 如果之前已安装非4版本的gulp，那么使用npm uninstall gulp指令卸载它。<br>
+12. 本地安装gulp4并且将它作为一个依赖添加到package.json中，命令如下：npm install gulpjs/gulp.git#4.0 --save-dev。（原文命令npm install gulpjs/gulp-cli#4.0 --save-dev，实验后并不能安装本地gulp4.0）<br>
+14. 创建gulpfile.js</p>
+<p>npm install的--save-dev参数将在package.json中添加一个开发依赖。这使团队内的其他开发者能够通过使用npm install命令来安装整个项目的依赖。</p>
+<h2 id="运行gulp">运行gulp</h2>
+<p>在尝试运行定义在gulpfile.js内的gulp任务之前，进入到项目目录的根目录或其子目录内。<br>
+键入gulp --help或者gulp -h来获取基本的帮助信息。<br>
+键入gulp --version或者gulp -v来查看本机安装的gulp的版本。它将显示全局安装和基于项目本地安装的gulp的版本。<br>
+键入gulp --tasks或者gulp -T来查看gulpfile.js中定义的所有任务。这将输出一个任务依赖树。如果你希望以平铺的形式查看定义的任务列表，键入gulp --tasks-simple。<br>
+键入gulp --verify来检查是否依赖了被列入黑名单中的插件。这将检查列在package.json文件中的依赖。<strong>（gulp3.9中没有该命令?）</strong><br>
+键入gulp [options] task1 task2...来运行定义在gulpfile.js中的任务。除了任 务名外，我们还可以输入一些可选选项，但是通常来说我们不会使用它们。当我们同时输入了多个任务名，它们将被并行运行。如果希望它们能够串行的运行，那么 在gulpfile.js中定义一个新任务，在该任务内依次执行它们，然后单独在命令行中运行那个新任务。如果没有指定任务名，那么default任务将 运行，之后我们将看到如何定义一个默认任务。如果不指定具体的任务，并且没有定义default任务，那会显示一条错误信息。<br>
+大部分任务运行结束后gulp将退出。某些任务例如connect（用于提供http静态资源服务）和watch（用于监视文件是否有改变）将会一直运行直到任务被人为取消（或者出错退出），gulp将不会自动退出。你可以使用ctrl-c来退出任务并结束gulp。</p>
+<h2 id="gulp插件">gulp插件</h2>
+<p>gulp有大量的插件可用，下列是我推荐的一些优秀插件：</p>
+<ul>
+<li>gulp-babel -将es6(JavaScript)编译为es5(JavaScript)。</li>
+<li>gulp-changed -过滤掉比目标文件旧的文件（只处理有更新的文件）。</li>
+<li>gulp-concat -合并css和javascript文件。</li>
+<li>gulp-csslint -检验css文件正确性。</li>
+<li>gulp-eslint -使用eslint检验javascript正确性。</li>
+<li>gulp-jasmine -运行jasmine测试。</li>
+<li>gulp-jshint -使用jshint检验javascript正确性。</li>
+<li>gulp-jscs -使用jscs检查javascript代码风格。</li>
+<li>gulp-less -将less文件编译为css。</li>
+<li>gulp-livereload -当调用livereload方法时，刷新监听的浏览器。</li>
+<li>gulp-plumber -允许gulp在发生错误之后继续运行。</li>
+<li>gulp-sourcemaps -产生允许调试的sourcemap文件，用来调试被编译过的javascript文件。</li>
+<li>gulp-uglify -压缩javascript文件。</li>
+<li>gulp-usemin -将html文件中css，js文件的路径替换为其min版本。</li>
+<li>gulp-watch -监视文件是否被修改并且在我们修改文件后执行指定任务。</li>
+</ul>
+<p>此外，我们经常使用npm的del模块来删除指定的目录和文件。<br>
+你可以通过访问<a href="http://gulpjs.com/plugins">http://gulpjs.com/plugins</a>来搜索gulp插件。该站将列出那些带有gulpplugin关键词，且被发布到npm的插件，通过点击插件名链接可以直接访问插件文档。另一个搜索插件的方法是使用npm search命令。比如，可以键入npm search gulpplugin lint来搜索有linting功能的插件。<br>
+我们可以键入npm install plugin-name --save-dev来安装一个插件。这将安装插件到项目的node_modules目录。一旦插件安装完成，就可以修改gulpfile.js来require插件并且在一个或多个任务使用它。比如，var foo = require('gulp-foo');<br>
+一个更好的require插件的方法是使用gulp-load-plugins插件，它为我们提供了更好的require功能。这让我们不必为添加 每个插件使用require。gulp-load-plugins读取package.json中那些名字以gulp-开始的依赖，并返回一个对象，对象 的属性是依赖的名字。gulp-load-plugins有lazy load特性，它直到插件被使用时才会读取插件，而不用到的插件不会被读取。</p>
+<pre><code class="language-javascript">var pi = require('gulp-load-plugins')(); //我们可以在任务的定义内使用pi.name来引用插件。
+</code></pre>
+<h2 id="gulp方法下列api皆为gulp40版本">gulp方法（下列API皆为gulp4.0版本）</h2>
+<p>gulp和undertaker类中定义了gulp所提供的方法。<br>
+gulp类提供了src，dest和watch方法。它定义在gulp的github repo中的顶层文件index.js中（现在的地址为<a href="https://github.com/gulpjs/gulp/tree/4.0">https://github.com/gulpjs/gulp/tree/4.0</a>）。这个类继承于undertaker类。<br>
+undertaker类提供了task，series，parallel，get，set，tree和registry方法。它定义在undertaker的github repo中的顶层文件index.js中（<a href="https://github.com/phated/undertaker">https://github.com/phated/undertaker</a>）。undertaker类继承于node核心类eventemitter（<a href="https://nodejs.org/api/events.html">https://nodejs.org/api/events.html</a>）。<br>
+<a href="https://camo.githubusercontent.com/ac3bac88f3ab668ea4af30a265ed3d3a5bcf101b/687474703a2f2f7777772e6f63697765622e636f6d2f66696c65732f363531342f333236372f333032322f67756c702d636c6173732d6469616772616d2e706e67"><img src="https://camo.githubusercontent.com/ac3bac88f3ab668ea4af30a265ed3d3a5bcf101b/687474703a2f2f7777772e6f63697765622e636f6d2f66696c65732f363531342f333236372f333032322f67756c702d636c6173732d6469616772616d2e706e67" alt="" loading="lazy"></a><br>
+如果只是为了使用gulp，并不一定要了解这些继承关系。但是理解这些关系将有助于我们理解如何使用其中某些方法。<br>
+gulp使用的另一个关键的npm模块是vinyl-fs。vinyl-fs使用vinyl对象来存储用于描述文件的metadata。vinyl 适配器提供了通过stream来访问vinyl对象内容的方法。源stream产生文件对象，目标stream使用这些文件对象。更具体的可以参见<a href="https://github.com/wearefractal/vinyl-fs">https://github.com/wearefractal/vinyl-fs</a>，<a href="https://github.com/wearefractal/vinyl">https://github.com/wearefractal/vinyl</a>和<a href="https://medium.com/@contrahacks/gulp-3828e8126466">https://medium.com/@contrahacks/gulp-3828e8126466</a>。<br>
+下面这行代码可以帮助我们获取一个gulp对象：</p>
+<pre><code class="language-javascript">var gulp = require('gulp');
+</code></pre>
+<p>这个对象支持gulp类，undertaker类和eventemitter类中定义的所有方法。<br>
+在介绍具体的方法之前，我们需要先简单理解下通配符。gulp中的许多方法接受通配符参数。这可以是一个字符串或者一个由字符串组成的数组。字符串可以包含通配符。底层的实现由npm模块node-glob提供。更详细的语法参见<a href="https://github.com/isaacs/node-glob">“glob primer”</a>。基本语法包括：</p>
+<ul>
+<li>**？**代表任一字符。</li>
+<li>*代表0个或多个任意字符。</li>
+<li>** 在路径中表示任意数目的目录。</li>
+</ul>
+<h3 id="src方法">src方法</h3>
+<p>src方法提供了一个vinyl对象组成的stream，这些stream将传递给插件使用。它接受一个通配符表达式和一个选项对象（可选）。通配符表达式指明了将要处理的输入文件。选项则将传递给glob模块。详情请参见<a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpsrcglobs-options">https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpsrcglobs-options</a>和<a href="https://github.com/isaacs/node-glob">https://github.com/isaacs/node-glob</a>。</p>
+<h3 id="dest方法">dest方法</h3>
+<p>dest方法接受输送来的stream数据并且将它输出至文件。所有流向它的数据都存在备份**（原文re-emmited）**，这允许我们多次调用dest方法来将结果输出至多个文件。他接受一个目标路径参数和一个选项对象（可选）。目标路径参数指定了输出文件或者目录的路径。对于选项的详细介绍，请参见<a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpdestpath-options">https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpdestpath-options</a>。</p>
+<h3 id="watch方法">watch方法</h3>
+<p>watch方法将监视文件并且当它们被改变时调用指定任务。它接受一个通配符表达式，一个选项对象（可选）和一个方法。通配符表达式指定了需要监视的文件。这个方法通过npm模块gaze来实现。详情请参见<a href="https://github.com/shama/gaze">https://github.com/shama/gaze</a>。</p>
+<h3 id="task方法">task方法</h3>
+<p>task方法定义了一个任务。它接受一个任务名字符串和一个方法。当任务开始运行，这个方法也将开始运行。方法可以是匿名函数或者声明在任意位置的函数。如果没有传入方法对象，将返回先前定义的任务方法。</p>
+<h3 id="series方法">series方法</h3>
+<p>series方法将返回一个函数。当你调用这个函数时，它将串行执行你定义在series方法中的任务。它接受任意数目的参数，参数可以是任务名或函数。因为它返回一个函数，它可以作为参数使用在其他方法中（如task方法）。</p>
+<h3 id="parallel方法">parallel方法</h3>
+<p>parallel方法将返回一个函数，当你调用这个函数时，他将并行执行你定义在parallel方法中的任务。它接受任意数目的参数，参数可以是任务名和函数。因为它返回一个函数，它可以作为参数使用在其他方法中（如task方法）。<br>
+下列所述的undertaker类中的方法通常不会直接使用在gulpfile.js中。</p>
+<h3 id="get方法">get方法</h3>
+<p>get方法将返回一个和传入的任务名相关的函数，它接受一个任务名作为参数。</p>
+<h3 id="set方法">set方法</h3>
+<p>set方法设置或者改变和传入的任务名相关的函数。它接受一个任务名和一个函数作为参数，如果该任务已经定义了任务执行函数，那么该函数将被替换。</p>
+<h3 id="tree方法">tree方法</h3>
+<p>tree方法返回一个数组，该数组将包括已经定义的任务名字符串。它接受一个额外参数对象。如果deep参数设置为true，那么返回的数组还将包括每个任务的依赖关系。这个方法等于在命令行使用gulp --tasks或者gulp --tasks-simple。</p>
+<h3 id="registry方法">registry方法</h3>
+<p>registry方法获取或者设置任务名和任务执行函数的映射。</p>
+<h2 id="定义gulp任务">定义gulp任务</h2>
+<p>因为gulp运行在Node.js上，gulpfile.js中可以包含任何Node.js可以处理的代码。这代表所有的Node.js核心模块和npm模块都可以使用。<br>
+下面是一个简单的定义gulp任务的例子：</p>
+<pre><code class="language-javascript">var gulp = require('gulp');
+gulp.task('hello', function () {
+console.log('Hello, World!');
+});
+</code></pre>
+<p>下面是这个例子在es6中的实现：</p>
+<pre><code class="language-javascript">let gulp = require('gulp');
+gulp.task('hello', () =&gt; console.log('Hello, World!'));
+</code></pre>
+<p>然后键入gulp hello，你将会看到屏幕上打印出'Hello,World!'。<br>
+以下三种形式都将定义一个gulp任务：</p>
+<pre><code class="language-javascript">gulp.task(name, function () { ... });
+gulp.task(name, gulp.series(...));
+gulp.task(name, gulp.parallel(...));
+</code></pre>
+<p>一个gulp任务通常来说会读取特定的文件，对文件内容采取一个或多个的操作，然后生成一个或多个输出文件。下面是一个普通的gulp任务：</p>
+<pre><code class="language-javascript">gulp.task(name, function () {
+return gulp.src(srcPath).
+pipe(somePluginFn()).
+pipe(anotherPluginFn()).
+pipe(gulp.dest(destPath));
+});
+</code></pre>
+<p>在es6中，我们也可以这么写：</p>
+<pre><code class="language-javascript">gulp.task(name, () =&gt;
+gulp.src(srcPath).
+pipe(somePluginFn()).
+pipe(anotherPluginFn()).
+pipe(gulp.dest(destPath)));
+</code></pre>
+<h2 id="使用gulp提供静态资源服务">使用gulp提供静态资源服务</h2>
+<p>有许多npm模块通过http协议来向外提供静态文件。一个常见选择是<a href="https://github.com/senchalabs/connect">connect</a>。安装必要模块的命令如下：</p>
+<pre><code class="language-javascript">npm install connect --save
+npm install serve-static -save
+</code></pre>
+<p>下面是一个gulp任务从项目目录顶层提供静态文件的例子：</p>
+<pre><code class="language-javascript">var connect = require('connect');
+var http = require('http'); // a Node.js core module
+var serveStatic = require('serveStatic');
+gulp.task('connect', function () {
+var app = connect();
+app.use(serveStatic(__dirname));
+var port = 8080;
+http.createServer(app).listen(port);
+});
+</code></pre>
+<p>__dirname是一个Node.js全局变量，它存放了当前目录的路径。如果在该目录内有一个index.html文件，那么我们可以通过在浏览器地址栏键入httpL//localhost:8080来访问它。<br>
+如果要运行这个任务，键入gulp connect</p>
+<h2 id="监听文件">监听文件</h2>
+<p>gulp可以监听文件的改变或新文件的创建。但如果是gulpfile.js本身被改变了，那么必须重启gulp来使用被修改过的gulpfile.js。<br>
+下面是一个使用gulp来监听less文件改变的例子。当gulp到改变后，它将运行less和csslint任务。</p>
+<pre><code class="language-javascript">gulp.task('watch', function () {
+gulp.watch('styles/*.less', gulp.series('less', 'csslint'));
+})
+</code></pre>
+<h2 id="live-reload">Live Reload</h2>
+<p>不仅如此，gulp甚至可以让浏览器自动刷新。这个功能对于那些浏览器读取的文件很有用，比如html，css，javascript文件等。现在，有许多gulp插件支持这个功能。最常见的是<a href="https://github.com/vohof/gulp-livereload">gulp-livereload</a>。这个插件最好与chrome协作使用，并且需要安装livereload chrome插件。如果你希望安装该插件，访问<a href="https://chrome.google.com/webstore/category/apps">https://chrome.google.com/webstore/category/apps</a>然后搜索livereload。<br>
+你可以按下列步骤来使用该插件：<br>
+2. 安装gulp-livereload插件。<br>
+4. 添加script元素至html文件：<script src="http://localhost:35729/liverload.js"></script>。<br>
+6. 在watch任务内调用livereload.listen()。<br>
+8. 在需要触发刷新时调用livereload()。</p>
+<p>下面的gulpfile.js作为示例，展示了上述所述的最后两步。他定义了许多gulp任务，这些在我们日常的web应用中都十分常见并且有用。</p>
+<h2 id="gulpfilejs示例">gulpfile.js示例</h2>
+<pre><code class="language-javascript">var connect = require('connect');
+var del = require('del');
+var gulp = require('gulp');
+var http = require('http');
+var pi = require('gulp-load-plugins')();
+var serveStatic = require('serve-static');
+
+var paths = {
+build: 'build',
+css: 'build/**/*.css',
+html: ['index.html', 'src/**/*.html'],
+js: ['src/**/*.js'],
+jsPlusTests: ['src/**/*.js', 'test/**/*.js'],
+less: 'src/**/*.less',
+test: 'build/**/*-test.js'
+};
+
+// This just demonstrates the simplest possible task.
+gulp.task('hello', function () {
+console.log('Hello, World!'));
+});
+
+// This deletes all generated files.
+// In tasks that do something asynchronously, the function
+// passed to task should take a callback function and
+// invoke it when the asynchronous action completes.
+// This is how gulp knows when the task has completed.
+gulp.task('clean', function (cb) {
+del(paths.build, cb);
+});
+
+// This starts a simple HTTP file server.
+gulp.task('connect', function () {
+var app = connect();
+app.use(serveStatic(__dirname));
+http.createServer(app).listen(1919);
+});
+
+// This validates all CSS files.
+// In this example, the CSS files are generated from LESS files.
+gulp.task('csslint', function () {
+return gulp.src(paths.css).
+pipe(pi.csslint({ids: false})).
+pipe(pi.csslint.reporter());
+});
+
+// This validates JavaScript files using ESLint.
+gulp.task('eslint', function () {
+return gulp.src(paths.jsPlusTests).
+pipe(pi.changed(paths.build)).
+pipe(pi.eslint({
+  envs: ['browser', 'es6', 'node'],
+  rules: {
+    curly: [2, 'multi-line'],
+    indent: [2, 2]
+  }
+})).
+pipe(pi.eslint.format());
+});
+
+// This is used by the &quot;watch&quot; task to
+// reload the browser when an HTML file is modified.
+gulp.task('html', function () {
+return gulp.src(paths.html).
+pipe(pi.livereload());
+});
+
+// This validates JavaScript files using JSHint.
+gulp.task('jshint', function () {
+return gulp.src(paths.jsPlusTests).
+pipe(pi.changed(paths.build)).
+pipe(pi.jshint()).
+pipe(pi.jshint.reporter('default'));
+});
+
+// This compiles LESS files to CSS files.
+gulp.task('less', function () {
+return gulp.src(paths.less).
+pipe(pi.changed(paths.build)).
+pipe(pi.less()).
+pipe(gulp.dest(paths.build)).
+pipe(pi.livereload());
+});
+
+// This compiles ES6 JavaScript files to ES5 JavaScript files.
+// &quot;transpile&quot; is a term used to describe compiling
+// one syntax to a different version of itself.
+// Compiling ES6 code to ES5 fits this description.
+gulp.task('transpile-dev', function () {
+return gulp.src(paths.jsPlusTests).
+pipe(pi.changed(paths.build)).
+pipe(pi.sourcemaps.init()).
+pipe(pi.babel()).
+pipe(pi.sourcemaps.write('.')).
+pipe(gulp.dest(paths.build)).
+pipe(pi.livereload());
+});
+
+// This does the same as the previous task, but also
+// concatenates and minimizes the resulting JavaScript files.
+gulp.task('transpile-prod', function () {
+return gulp.src(paths.js).
+pipe(pi.sourcemaps.init()).
+pipe(pi.babel()).
+pipe(pi.concat('all.js')).
+pipe(pi.uglify()).
+pipe(pi.sourcemaps.write('.')).
+pipe(gulp.dest(paths.build));
+});
+
+// This is not meant to be used directly.
+// Use the &quot;test&quot; task instead.
+gulp.task('jasmine', function () {
+return gulp.src(paths.test).
+pipe(pi.plumber()).
+pipe(pi.jasmine());
+});
+
+gulp.task('test', gulp.series('transpile-dev', 'jasmine'));
+
+// This watches HTML, LESS, and JavaScript files for changes
+// and processes them when they do.
+// It also reloads the web browser.
+gulp.task('watch', function () {
+pi.livereload.listen();
+gulp.watch(paths.html, gulp.series('html'));
+gulp.watch(paths.less, gulp.series('less', 'csslint'));
+gulp.watch(paths.jsPlusTests,
+gulp.series('eslint', 'jshint', 'transpile-dev'));
+});
+
+// This compiles LESS and ES5 JavaScript files in parallel.
+gulp.task('build-dev', gulp.parallel('less', 'transpile-dev'));
+
+// This does the same as the previous tasks, but also
+// concatenates and minimizes the resulting JavaScript files.
+gulp.task('build-prod', gulp.parallel('less', 'transpile-prod'));
+
+// This is used when gulp is run without specifying a task.
+// It runs the &quot;build-dev&quot; task and then
+// starts the &quot;connect&quot; and &quot;watch&quot; tasks in parallel.
+// This is the most commonly used task during development.
+gulp.task('default',
+gulp.series('build-dev', gulp.parallel('connect', 'watch')));
+</code></pre>
+<h2 id="gulp的通常用法">gulp的通常用法</h2>
+<p>对于gulpfile.js的常见使用方法可以总结为以下步骤：</p>
+<ul>
+<li>打开一个终端，并且进入到项目文件，运行gulp。这将开启本地http服务器并且监视文件的变化。</li>
+<li>保持终端是可见的，这样你能观察到最新的输出。</li>
+<li>在支持livereload的浏览器中浏览自己编写的程序。</li>
+<li>使用编辑器或IDE来编辑代码。</li>
+<li>观察gulp在监视过程中是否产生了错误。</li>
+<li>观察浏览器的刷新结果。</li>
+<li>就这么不停工作下去。</li>
+</ul>
+<h2 id="后续">后续</h2>
+<p>我们都很关心gulp4何时能够代替gulp3成为最新的稳定版本。在2015.1.29，gulp4的主要开发者发推文说“gulp4本可以在 31号问世，但是很不幸，我得了流感，我感觉很不好，所以对不起了伙计们。”。于是在2015.4.28，历时三个月的等待后，我向他问道，“gulp4 有何最新进展嘛？虽然我们现在已经能够使用它，但是我们更希望他能成为一个官方版本。”。令人遗憾的是，我收到的回复十分简单，“没有。”。在 2015.5.19，gulp的主要开发者发推文表示，“他们获得了1000万对于<a href="https://github.com/gulpjs">@gulpjs</a>的赞助。”。我希望这表示他们将会继续新版本的开发工作。</p>
+<h2 id="总结">总结</h2>
+<p>gulp是一款十分流行并且功能强大的自动化web部署工具。看起来，它现在已经比Grunt火多了。如果你现在还没在使用gulp，那还等什么？</p>
+<blockquote>
+<p>转自:<a href="https://github.com/baixing/FE-Blog/issues/7">https://github.com/baixing/FE-Blog/issues/7</a></p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160107-20-GitHub 风格的 Markdown 语法/" class="post-title gt-a-link">
+                    GitHub 风格的 Markdown 语法
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

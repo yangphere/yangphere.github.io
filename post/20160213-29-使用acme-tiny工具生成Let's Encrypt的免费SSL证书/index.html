@@ -1,0 +1,285 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>使用acme-tiny工具生成Let&#39;s Encrypt的免费SSL证书 | 酷码</title>
+
+<link rel="shortcut icon" href="https://blog.coolcode.dev/favicon.ico?v=1766679141061">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://blog.coolcode.dev/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            酷码
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1766679141061"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    使用acme-tiny工具生成Let&#39;s Encrypt的免费SSL证书
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-07-19 ·
+                    </time>
+                    
+                        <a href="https://blog.coolcode.dev/tag/o3tGANdi_Y7/" class="post-tags">
+                            # ssl
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h3 id="下载acme-tiny">下载acme-tiny</h3>
+<p>下载地址：<a href="https://github.com/diafygi/acme-tiny">https://github.com/diafygi/acme-tiny</a></p>
+<h3 id="创建用户私钥和域名私钥">创建用户私钥和域名私钥</h3>
+<pre><code class="language-bash">mkdir -p /etc/ssl/letsencrypt/
+cd /etc/ssl/letsencrypt/
+
+openssl genrsa 4096 &gt; account.key
+openssl genrsa 4096 &gt; domain.key
+</code></pre>
+<!--more-->
+<h3 id="生成域名csr文件">生成域名csr文件</h3>
+<p>单域名</p>
+<pre><code class="language-bash">openssl req -new -sha256 -key domain.key -subj &quot;/CN=www.yoursite.com&quot; &gt; domain.csr
+</code></pre>
+<p>多域名</p>
+<pre><code class="language-bash">ln -s /etc/pki/tls/openssl.cnf /etc/ssl/openssl.cnf
+</code></pre>
+<pre><code class="language-bash">openssl req -new -sha256 -key domain.key -subj &quot;/&quot; -reqexts SAN -config &lt;(cat /etc/ssl/openssl.cnf &lt;(printf &quot;[SAN]\nsubjectAltName=DNS:yoursite.com,DNS:www.yoursite.com&quot;)) &gt; domain.csr
+</code></pre>
+<h3 id="配置web站点的challenge文件">配置web站点的challenge文件</h3>
+<pre><code class="language-bash">mkdir -p /var/www/challenges/
+</code></pre>
+<pre><code class="language-nginx">#example for nginx
+server {
+    listen 80;
+    server_name yoursite.com www.yoursite.com;
+
+    location /.well-known/acme-challenge/ {
+        alias /var/www/challenges/;
+        try_files $uri =404;
+    }
+
+    ...the rest of your config
+}
+</code></pre>
+<h3 id="生成signed文件">生成signed文件</h3>
+<pre><code class="language-bash">wget -c https://raw.githubusercontent.com/yangphere/acme-tiny/master/acme_tiny.py --no-check-certificate
+python acme_tiny.py --account-key /etc/ssl/letsencrypt/account.key --csr /etc/ssl/letsencrypt/domain.csr --acme-dir /var/www/challenges/ &gt; /etc/ssl/letsencrypt/signed.crt
+</code></pre>
+<h3 id="生成证书链">生成证书链</h3>
+<p>v1版，兼容性差点</p>
+<pre><code class="language-bash">wget -O - https://letsencrypt.org/certs/lets-encrypt-x1-cross-signed.pem &gt; /etc/ssl/letsencrypt/intermediate.pem
+cat /etc/ssl/letsencrypt/signed.crt /etc/ssl/letsencrypt/intermediate.pem &gt; /etc/ssl/letsencrypt/chained.pem
+</code></pre>
+<p>建议使用v3版</p>
+<pre><code class="language-bash">wget -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem &gt; /etc/ssl/letsencrypt/intermediate.pem
+cat /etc/ssl/letsencrypt/signed.crt /etc/ssl/letsencrypt/intermediate.pem &gt; /etc/ssl/letsencrypt/chained.pem
+</code></pre>
+<h3 id="生成dh证书">生成dh证书</h3>
+<pre><code class="language-bash">openssl dhparam -out dhparam.pem 2048
+</code></pre>
+<h3 id="配置nginx使ssl证书生效">配置nginx使SSL证书生效</h3>
+<pre><code class="language-nginx">server {
+    listen 443;
+    server_name yoursite.com, www.yoursite.com;
+
+    ssl on;
+    ssl_certificate /etc/ssl/letsencrypt/chained.pem;
+    ssl_certificate_key /etc/ssl/letsencrypt/domain.key;
+    ssl_session_timeout 5m;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA;
+    ssl_session_cache shared:SSL:50m;
+    ssl_dhparam /etc/ssl/letsencrypt/dhparam.pem;
+    ssl_prefer_server_ciphers on;
+
+    ...the rest of your config
+}
+
+server {
+    listen 80;
+    server_name yoursite.com, www.yoursite.com;
+
+    location /.well-known/acme-challenge/ {
+        alias /var/www/challenges/;
+        try_files $uri =404;
+    }
+
+    ...the rest of your config
+}
+</code></pre>
+<h3 id="重启nginx服务">重启nginx服务</h3>
+<pre><code class="language-bash">service nginx reload
+</code></pre>
+<h3 id="自动生成ssl证书">自动生成SSL证书</h3>
+<p>由于Let's Encrypt的证书只有90天的有效期，需要使用系统每个月生成一次。编辑<strong>renew_cert.sh</strong>文件</p>
+<p>以下是v1版，兼容性差点</p>
+<pre><code class="language-bash">#!/usr/bin/sh
+python /etc/ssl/letsencrypt/acme_tiny.py --account-key /etc/ssl/letsencrypt/account.key --csr /etc/ssl/letsencrypt/domain.csr --acme-dir /var/www/challenges/ &gt; /etc/ssl/letsencrypt/signed.crt || exit
+wget -O - https://letsencrypt.org/certs/lets-encrypt-x1-cross-signed.pem &gt; /etc/ssl/letsencrypt/intermediate.pem
+cat /etc/ssl/letsencrypt/signed.crt /etc/ssl/letsencrypt/intermediate.pem &gt; /etc/ssl/letsencrypt/chained.pem
+service nginx reload
+</code></pre>
+<p>建议使用v3版</p>
+<pre><code class="language-bash">#!/usr/bin/sh
+python /etc/ssl/letsencrypt/acme_tiny.py --account-key /etc/ssl/letsencrypt/account.key --csr /etc/ssl/letsencrypt/domain.csr --acme-dir /var/www/challenges/ &gt; /etc/ssl/letsencrypt/signed.crt || exit
+wget -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem &gt; /etc/ssl/letsencrypt/intermediate.pem
+cat /etc/ssl/letsencrypt/signed.crt /etc/ssl/letsencrypt/intermediate.pem &gt; /etc/ssl/letsencrypt/chained.pem
+service nginx reload
+</code></pre>
+<p>添加可执行权限</p>
+<pre><code class="language-bash">chmod +x renew_cert.sh
+</code></pre>
+<p>编辑crontab文件</p>
+<pre><code class="language-bash">crontab -e
+</code></pre>
+<p>加入如下内容</p>
+<pre><code class="language-text">0 0 1 * * /etc/ssl/letsencrypt/renew_cert.sh 2&gt;&gt; /var/log/acme_tiny.log
+</code></pre>
+<p>重启crontab服务</p>
+<pre><code class="language-bash">service crond restart
+</code></pre>
+<h3 id="测试一下ssl质量">测试一下SSL质量</h3>
+<p>网址：<a href="https://www.ssllabs.com/ssltest/">https://www.ssllabs.com/ssltest/</a></p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.coolcode.dev/post/20160129-28-Google Java编程风格指南中文版/" class="post-title gt-a-link">
+                    Google Java编程风格指南中文版
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">个人技术博客</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://blog.coolcode.dev/" target="_self">酷码</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://blog.coolcode.dev/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
