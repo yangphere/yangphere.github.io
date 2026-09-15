@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title></title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789451431">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title=" - Atom Feed" href="/atom.xml">
@@ -37,7 +37,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789451431" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
     </a>
     <h1 class="site-title">
         酷码
@@ -102,6 +102,42 @@
 
             
 <div class="post-container">
+    
+    <article class="post">
+        <a href="/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/">
+            <h2 class="post-title">关于ja-netfilter适配Java17的问题</h2>
+        </a>
+        <div class="post-info">
+            <span>
+                2025-10-31
+            </span>
+            <span>
+                1 分钟阅读
+            </span>
+            
+            <a href="/tag/ja-netfilter/" class="post-tag">
+                # ja-netfilter
+            </a>
+            
+            <a href="/tag/java/" class="post-tag">
+                # Java
+            </a>
+            
+            <a href="/tag/javaagent/" class="post-tag">
+                # Javaagent
+            </a>
+            
+        </div>
+        
+        <div class="post-abstract">
+            <p>这两天总有人私信或评论跟我说：大事不好了，ja-netfilter在Java17里用不起了！</p>
+<p>这事听着就新鲜！我心想早在5月20日的提交中，我就兼容了Java17并且写在README里了。<br />
+所以，这个事情我本没当回事，直到问的人越来越多。细问之下，原来是JB家所有IDE2022.2版本默认启用Java17。<br />
+故有写此短文专门来解释一下。</p>
+<p>首先，请看项目的README.md，自认&hellip;</p>
+
+        </div>
+    </article>
     
     <article class="post">
         <a href="/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/">
@@ -361,36 +397,6 @@ openssl genrsa 4096 &gt; domain.key
         <div class="post-abstract">
             <h3 id="heading">问题描述</h3>
 <p>在页面中有多个按钮，点击该按钮可以异步的去服务端读取数据，然后在前端将数据展示出来。 每个按钮点击请求的页面都是同一个，但是请求的参数不同，所以返回的内容就不同。 在连续点击多个按钮的时候就会发出多个异步请求。那么根据请求返回的快慢(因为不同按钮参数不同，返回内容不同，所以会有快慢之分），数据会依次的展示出来，那么就会出现一个先点击的按钮，由于他请求的数据量比较大，导致数据被后显示出来。</p>
-
-        </div>
-    </article>
-    
-    <article class="post">
-        <a href="/post/20160112-24-centos6.4%e6%ba%90%e7%a0%81%e5%ae%89%e8%a3%85git/">
-            <h2 class="post-title">centos6.4源码安装git</h2>
-        </a>
-        <div class="post-info">
-            <span>
-                2022-07-19
-            </span>
-            <span>
-                1 分钟阅读
-            </span>
-            
-            <a href="/tag/git/" class="post-tag">
-                # git
-            </a>
-            
-            <a href="/tag/linux/" class="post-tag">
-                # linux
-            </a>
-            
-        </div>
-        
-        <div class="post-abstract">
-            <p>需要给 CentOS 下载安装编译工具。</p>
-<pre><code class="language-bash">yum groupinstall &quot;Development Tools&quot;
-</code></pre>
 
         </div>
     </article>
