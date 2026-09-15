@@ -1,0 +1,240 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>MySQL的my.ini配置文件 | 酷码</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="MySQL的my.ini配置文件 | 酷码 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="mysql" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="[mysqld] # 设置3306端口 port=3306 # 设置mysql的安装目录 basedir=C:\mysql8 # 设置mysql数据库的数据的存放目录 datadir=E:\mysql-dc\data # mysqlsock存储目录 socket=E:\mysql-dc\data\mysql.sock # 允许最大连接数 max_connections=l0000 ...">
+<link rel="canonical" href="https://blog.coolcode.dev/post/MySQL的myini配置文件-mysql的myini配置文件/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"MySQL的my.ini配置文件","url":"https://blog.coolcode.dev/post/MySQL的myini配置文件-mysql的myini配置文件/","description":"[mysqld] # 设置3306端口 port=3306 # 设置mysql的安装目录 basedir=C:\\mysql8 # 设置mysql数据库的数据的存放目录 datadir=E:\\mysql-dc\\data # mysqlsock存储目录 socket=E:\\mysql-dc\\data\\mysql.sock # 允许最大连接数 max_connections=l0000 ...","datePublished":"2020-02-25T22:57:38+08:00","dateModified":"2020-02-25T22:57:38+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/MySQL的myini配置文件-mysql的myini配置文件/","name":"MySQL的my.ini配置文件","position":2}]}</script>
+<meta property="og:title" content="MySQL的my.ini配置文件">
+<meta property="og:description" content="[mysqld] # 设置3306端口 port=3306 # 设置mysql的安装目录 basedir=C:\mysql8 # 设置mysql数据库的数据的存放目录 datadir=E:\mysql-dc\data # mysqlsock存储目录 socket=E:\mysql-dc\data\mysql.sock # 允许最大连接数 max_connections=l0000 ...">
+<meta property="og:url" content="https://blog.coolcode.dev/post/MySQL的myini配置文件-mysql的myini配置文件/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="酷码">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.coolcode.dev/post/MySQL的myini配置文件-mysql的myini配置文件/">
+<meta name="twitter:title" content="MySQL的my.ini配置文件">
+<meta name="twitter:description" content="[mysqld] # 设置3306端口 port=3306 # 设置mysql的安装目录 basedir=C:\mysql8 # 设置mysql数据库的数据的存放目录 datadir=E:\mysql-dc\data # mysqlsock存储目录 socket=E:\mysql-dc\data\mysql.sock # 允许最大连接数 max_connections=l0000 ...">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
+    </a>
+    <h1 class="site-title">
+        酷码
+    </h1>
+    <p class="site-description">
+        个人技术博客
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/post" class="menu">
+            博客
+        </a>
+        
+        
+        
+        <a href="/memos" class="menu">
+            闪念
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="/links" class="menu">
+            友链
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        MySQL的my.ini配置文件
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2020-02-25
+                        </span>
+                        <span>
+                            1 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/mysql/" class="post-tag">
+                            # mysql
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <pre><code class="language-ini">[mysqld]
+# 设置3306端口
+port=3306
+# 设置mysql的安装目录
+basedir=C:\mysql8
+# 设置mysql数据库的数据的存放目录
+datadir=E:\mysql-dc\data
+# mysqlsock存储目录
+socket=E:\mysql-dc\data\mysql.sock
+# 允许最大连接数
+max_connections=l0000 
+# 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统
+max_connect_errors= 10
+# 服务端使用的字符集默认为UTF8
+character-set-server=UTF8MB4
+#创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+# 默认使用“mysql_native_password”插件认证
+default_authentication_plugin=mysql_native_password
+
+[mysql]
+# 设置mysql客户端默认字符集
+default-character-set=UTF8MB4
+# mysqlsock存储目录
+sockct=E:\mysql-dc\data\mysql.sock
+
+[client]
+# 设置mysql客户端连接服务端时默认使用的端口
+port=3306
+derault-character-set=utf8
+
+[mysqld_safe]
+log-error=E:\mysql-dc\logs\mysql.log
+pid-file=E:\mysql-dc\logs\mysql.pid
+# mysqlsock存储目录
+socket=E:\mysql-dc\data\mysql.sock
+</code></pre>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/Chrome%e6%89%93%e4%b8%8d%e5%bc%80https%e7%bd%91%e7%ab%99%ef%bc%8c%e6%8f%90%e7%a4%ba%ef%bc%9a%e6%82%a8%e7%9a%84%e8%bf%9e%e6%8e%a5%e4%b8%8d%e6%98%af%e7%a7%81%e5%af%86%e8%bf%9e%e6%8e%a5%ef%bc%9f-chrome%e6%89%93%e4%b8%8d%e5%bc%80https%e7%bd%91%e7%ab%99%e6%8f%90%e7%a4%ba%e6%82%a8%e7%9a%84%e8%bf%9e%e6%8e%a5%e4%b8%8d%e6%98%af%e7%a7%81%e5%af%86%e8%bf%9e%e6%8e%a5/">
+                    <h3 class="post-title">
+                        Chrome打不开https网站，提示：您的连接不是私密连接？
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    Powered by &lt;a href=&#34;https://blog.coolcode.dev/&#34; target=&#34;_self&#34;&gt;酷码&lt;/a&gt;
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

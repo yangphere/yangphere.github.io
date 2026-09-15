@@ -1,0 +1,297 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>配置HTTPS及自动续期 | 酷码</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="配置HTTPS及自动续期 | 酷码 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="nginx,https" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="certbot-auto在2020年3月份停止维护，目前域名更新暂未受影响，但新增已经无法使用，官方建议使用snap进行certbot的安装和更新。 一、基本环境 1、安装依赖 sudo yum install openssl sudo yum install epel-release 2、生成2048位 DH parameters： `&amp;hellip;">
+<link rel="canonical" href="https://blog.coolcode.dev/post/配置HTTPS及自动续期-pei-zhi-https-ji-zi-dong-xu-qi/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"配置HTTPS及自动续期","url":"https://blog.coolcode.dev/post/配置HTTPS及自动续期-pei-zhi-https-ji-zi-dong-xu-qi/","description":"certbot-auto在2020年3月份停止维护，目前域名更新暂未受影响，但新增已经无法使用，官方建议使用snap进行certbot的安装和更新。 一、基本环境 1、安装依赖 sudo yum install openssl sudo yum install epel-release 2、生成2048位 DH parameters： `\u0026hellip;","datePublished":"2022-04-07T14:07:47+08:00","dateModified":"2022-04-07T14:07:47+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/配置HTTPS及自动续期-pei-zhi-https-ji-zi-dong-xu-qi/","name":"配置HTTPS及自动续期","position":2}]}</script>
+<meta property="og:title" content="配置HTTPS及自动续期">
+<meta property="og:description" content="certbot-auto在2020年3月份停止维护，目前域名更新暂未受影响，但新增已经无法使用，官方建议使用snap进行certbot的安装和更新。 一、基本环境 1、安装依赖 sudo yum install openssl sudo yum install epel-release 2、生成2048位 DH parameters： `&amp;hellip;">
+<meta property="og:url" content="https://blog.coolcode.dev/post/配置HTTPS及自动续期-pei-zhi-https-ji-zi-dong-xu-qi/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="酷码">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.coolcode.dev/post/配置HTTPS及自动续期-pei-zhi-https-ji-zi-dong-xu-qi/">
+<meta name="twitter:title" content="配置HTTPS及自动续期">
+<meta name="twitter:description" content="certbot-auto在2020年3月份停止维护，目前域名更新暂未受影响，但新增已经无法使用，官方建议使用snap进行certbot的安装和更新。 一、基本环境 1、安装依赖 sudo yum install openssl sudo yum install epel-release 2、生成2048位 DH parameters： `&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
+    </a>
+    <h1 class="site-title">
+        酷码
+    </h1>
+    <p class="site-description">
+        个人技术博客
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/post" class="menu">
+            博客
+        </a>
+        
+        
+        
+        <a href="/memos" class="menu">
+            闪念
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="/links" class="menu">
+            友链
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        配置HTTPS及自动续期
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2022-04-07
+                        </span>
+                        <span>
+                            5 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/nginx/" class="post-tag">
+                            # nginx
+                        </a>
+                        
+                        <a href="/tag/https/" class="post-tag">
+                            # https
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <blockquote>
+<p>certbot-auto在2020年3月份停止维护，目前域名更新暂未受影响，但新增已经无法使用，官方建议使用snap进行certbot的安装和更新。</p>
+</blockquote>
+<h2 id="heading">一、基本环境</h2>
+<h3 id="1">1、安装依赖</h3>
+<pre><code class="language-shell">sudo yum install openssl
+sudo yum install epel-release
+</code></pre>
+<h3 id="22048-dh-parameters">2、生成2048位 DH parameters：</h3>
+<pre><code class="language-shell">sudo openssl dhparam -out /etc/letsencrypt/live/dhparams.pem 2048
+</code></pre>
+<h3 id="3snap">3、安装snap</h3>
+<pre><code class="language-shell">sudo yum install snapd
+</code></pre>
+<h3 id="4-snap--systemd-">4、启用管理主 snap 通信套接字的 systemd 单元：</h3>
+<pre><code class="language-shell">sudo ln -s /var/lib/snapd/snap /snap
+sudo systemctl start snapd.service
+sudo systemctl enable snapd.service
+</code></pre>
+<h3 id="5snap">5、更新snap到最新版</h3>
+<pre><code class="language-shell">sudo snap install core; sudo snap refresh core
+</code></pre>
+<h3 id="6-certbot-auto--certbot-os-">6、删除 certbot-auto 和任何 Certbot OS 包</h3>
+<pre><code class="language-shell">sudo apt-get remove certbot（Ubuntu）
+sudo dnf remove certbot（CentOS8）
+sudo yum remove certbot.（CentOS7）
+</code></pre>
+<blockquote>
+<p>清理certbot-auto<br />
+参考链接：https://certbot.eff.org/docs/uninstall.html</p>
+</blockquote>
+<h3 id="7certbot">7、安装certbot</h3>
+<pre><code class="language-shell">sudo snap install --classic certbot
+</code></pre>
+<blockquote>
+<p>确保/var/lib属主和属组均为<strong>root</strong>，不然会安装失败</p>
+</blockquote>
+<h3 id="8certbot">8、建立连接，确保certbot失效</h3>
+<pre><code class="language-shell">sudo ln -s /snap/bin/certbot /usr/bin/certbot
+</code></pre>
+<h3 id="9">9、执行命令安装证书</h3>
+<pre><code class="language-shell">sudo certbot --nginx（自动）
+</code></pre>
+<blockquote>
+<p>Certbot默认nginx配置文件在 <strong>/etc/nginx/nginx.conf</strong> 或 <strong>/usr/local/etc/nginx/nginx.conf</strong>，若你的nginx配置文件不在此处（以/usr/local/nginx/conf/nginx.conf为例），需在命令加上 **&ndash;nginx-server-root /usr/local/nginx/conf，**主配置文件所在目录，不是虚拟主机配置文件目录。</p>
+</blockquote>
+<pre><code class="language-shell">sudo certbot certonly --nginx（手动）
+</code></pre>
+<blockquote>
+<p>配置文件同上操作，执行后会出现选择域名列表，多个域名空格隔开，不在需要老版的各种参数，需要手动调整配置文件。</p>
+</blockquote>
+<h3 id="10">10、自动更新</h3>
+<p>Certbot 软件包带有一个 cron 作业或 systemd 计时器，它们会在证书到期之前自动更新证书。除非更改配置，否则无需再次运行 Certbot。可以通过运行以下命令来测试证书的自动续订：</p>
+<pre><code class="language-shell">sudo certbot renew --dry-run
+</code></pre>
+<h2 id="dnshttp">二、DNS指向及域名的http服务</h2>
+<h2 id="heading-1">三、域名验证</h2>
+<h3 id="1nginx">1、nginx配置文件</h3>
+<pre><code class="language-shell">location /.well-known/acme-challenge/ {    
+    allow all;    
+}
+</code></pre>
+<h3 id="2apacheapache">2、如果使用apache，移除apache的干扰</h3>
+<pre><code class="language-shell">mv /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.org
+service httpd restart
+</code></pre>
+<h3 id="3nginx">3、修改配置nginx文件</h3>
+<pre><code class="language-shell">if ($scheme = http)    {    
+    #return 301 https://$server_name$request_uri; (强制跳转)    
+}    
+    location ~ /.well-known {        
+  allow all;    
+  }    
+  listen 443 ssl;    
+  ssl_certificate      /etc/letsencrypt/live/www.yri.cc/fullchain.pem;    
+  ssl_certificate_key /etc/letsencrypt/live/www.yri.cc/privkey.pem;    
+  ssl_protocols        TLSv1 TLSv1.1 TLSv1.2;    
+  ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';    
+  ssl_prefer_server_ciphers on;    
+  ssl_session_cache shared:SSL:20m;    
+  ssl_session_timeout 20m;    
+  ssl_dhparam /etc/letsencrypt/live/dhparams.pem;
+</code></pre>
+<h3 id="5nginx">5、nginx重新加载</h3>
+<h3 id="6">6、打开防火墙端口</h3>
+<pre><code class="language-shell">firewall-cmd --zone=public --add-port=443/tcp  firewall-cmd --zone=public --add-port=443/tcp --permanent
+# 查看效果
+firewall-cmd --list-all
+</code></pre>
+<h3 id="7">7、浏览器测试</h3>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/%e8%ae%a1%e7%ae%97%e6%9c%ba%e5%9f%ba%e7%a1%80%e8%af%be%e7%a8%8b-ji-suan-ji-ji-chu-ke-cheng/">
+                    <h3 class="post-title">
+                        计算机基础课程
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    Powered by &lt;a href=&#34;https://blog.coolcode.dev/&#34; target=&#34;_self&#34;&gt;酷码&lt;/a&gt;
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

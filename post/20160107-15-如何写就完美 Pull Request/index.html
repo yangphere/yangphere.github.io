@@ -1,0 +1,255 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>如何写就完美 Pull Request | 酷码</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="如何写就完美 Pull Request | 酷码 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="git,github" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="译注：Github Blog 发表了一篇文章 How to write the perfect pull request，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！ 随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。">
+<link rel="canonical" href="https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"如何写就完美 Pull Request","url":"https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/","description":"译注：Github Blog 发表了一篇文章 How to write the perfect pull request，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！ 随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。","datePublished":"2022-07-19T10:06:22+08:00","dateModified":"2022-07-19T10:06:22+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/","name":"如何写就完美 Pull Request","position":2}]}</script>
+<meta property="og:title" content="如何写就完美 Pull Request">
+<meta property="og:description" content="译注：Github Blog 发表了一篇文章 How to write the perfect pull request，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！ 随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。">
+<meta property="og:url" content="https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="酷码">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/">
+<meta name="twitter:title" content="如何写就完美 Pull Request">
+<meta name="twitter:description" content="译注：Github Blog 发表了一篇文章 How to write the perfect pull request，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！ 随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
+    </a>
+    <h1 class="site-title">
+        酷码
+    </h1>
+    <p class="site-description">
+        个人技术博客
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/post" class="menu">
+            博客
+        </a>
+        
+        
+        
+        <a href="/memos" class="menu">
+            闪念
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="/links" class="menu">
+            友链
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        如何写就完美 Pull Request
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2022-07-19
+                        </span>
+                        <span>
+                            3 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/git/" class="post-tag">
+                            # git
+                        </a>
+                        
+                        <a href="/tag/github/" class="post-tag">
+                            # github
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <blockquote>
+<p>译注：Github Blog 发表了一篇文章 <a href="https://github.com/blog/1943-how-to-write-the-perfect-pull-request">How to write the perfect pull request</a>，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！<br />
+随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。</p>
+</blockquote>
+<!--more-->
+<h2 id="-pull-request">撰写 Pull Request</h2>
+<ul>
+<li>要涵盖此次 Pull Request 的目标，例如： 尝试用 XXX 方法实现…… 优化…… 修复在 XX 状态下对 XX 的异常处理</li>
+<li>可以提供一份关于这些工作起因的说明（包含上相关链接）。不要假定对方已经熟悉这些事情的前因后果。</li>
+<li>记住公司里任何人都有可能来阅读这个 Pull Request，所以内容和语气都需要面向那些未参与工作内容的人，现在和未来的。</li>
+<li>如果有的话，请详述你需要的反馈，如：快速过目一下代码/讨论某项技术实现/对设计的意见等等。</li>
+<li>明确你<em>何时</em>需要反馈。如果这个 PR 还在没有完成，就需要这么注明一下。给标题加上[WIP]（施工中）的前缀也是个简便快捷的方法。</li>
+<li><a href="https://github.com/blog/821">@艾特</a> 需要特别指明加入讨论的人，并说明原因（“/cc <a href="https://github.com/hax">@hax</a> 麻烦来看下这个逻辑对么？”）。</li>
+<li>同样的方法也可以艾特团队（“/cc @baixing/sa 这么做没安全问题吧？”）。</li>
+</ul>
+<h2 id="heading">提供反馈</h2>
+<ul>
+<li>首先要了解下此 PR 的前情提要。</li>
+<li>如果你有强烈的反对意见，多花几分钟审视下自己的意见再做反馈。Think Twice。</li>
+<li>询问，不要指点。（“为什么你要……”而非“不要……”）</li>
+<li>解释你提出修改意见的原因。（和代码规范不符？个人喜好？）</li>
+<li>提供简化或改进代码的方法。</li>
+<li>在提到别人的工作成果时避免使用贬义词（愚蠢什么的）。</li>
+<li>谦逊。（“我不很确定，不过可以试试……”）</li>
+<li>不要夸张。（“任何时候绝对……”）</li>
+<li>评论旨在提高专业技能、产品质量，达成团队共识。</li>
+<li>在线交流时要当心负面歧义（如果文字内容中性，我们倾向认为语气偏负面），尽量使用积极的语气而非中性的。</li>
+<li>善用表情符号美化语气。（感受一下 “看起来不错。” 和 “<img src="https://assets-cdn.github.com/images/icons/emoji/unicode/2728.png" alt=":sparkles:" title=":sparkles:" /> <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/2728.png" alt=":sparkles:" title=":sparkles:" /> 看起来不错 <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png" alt=":+1:" title=":+1:" /> <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/2728.png" alt=":sparkles:" title=":sparkles:" /> <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/2728.png" alt=":sparkles:" title=":sparkles:" />”）</li>
+</ul>
+<h2 id="heading-1">对反馈的回复</h2>
+<ul>
+<li>考虑以感激作为开场白，尤其是当反馈混杂了各种意见的时候。</li>
+<li>如有不明白的地方，请求进一步澄清。（“我不大明白，你能再解释一下么？”）</li>
+<li>提供澄清。解释对方询问的实现方案是如何决策的。</li>
+<li>尽量回复所有评论。</li>
+<li>链接到相关的后续提交。（“好建议！a1da2324ca 已搞定 :D”）</li>
+<li>如果疑惑和争论持续扩大，首先审视自己在前面的讨论中是否表达良好，尝试面对面做充分沟通，之后把线下沟通的内容汇总回复（便于其他人跟踪进展或未来了解详情）。</li>
+</ul>
+<p>这份指南部分受到了 ThoughtBot 的 <a href="https://github.com/thoughtbot/guides/tree/master/code-review">Code Review 指南</a>的启发。<br />
+这份指南很适合我们的工作方式，以及我们想要建立的协作文化，希望对你也有帮助。<br />
+沟通愉快！</p>
+<p>可以结合这篇一起看：<a href="http://www.infoq.com/cn/news/2015/02/pull-reques-ten-suggestion">http://www.infoq.com/cn/news/2015/02/pull-reques-ten-suggestion</a></p>
+<p>再加两条：</p>
+<ul>
+<li>如果有代码格式化整理，记得把格式化的操作作为独立的一次提交。不要和代码修改混在一起，以便 Review 的人能方便查看干净的代码修改 diff。</li>
+<li>注明所有修改内容。如果确有必要将几件事情（例如特别小、相互有依赖等）一起提交 PR，则需要列明具体每一件事情。</li>
+</ul>
+<p>原文: <a href="https://github.com/baixing/FE-Blog/issues/1">https://github.com/baixing/FE-Blog/issues/1</a></p>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/20160104-14-2015%20%e5%b9%b4%e6%9c%80%e7%83%ad%e9%97%a8%e7%9a%84%e5%9b%bd%e4%ba%ba%e5%bc%80%e5%8f%91%e5%bc%80%e6%ba%90%e8%bd%af%e4%bb%b6%20TOP%2050/">
+                    <h3 class="post-title">
+                        2015 年最热门的国人开发开源软件 TOP 50
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    Powered by &lt;a href=&#34;https://blog.coolcode.dev/&#34; target=&#34;_self&#34;&gt;酷码&lt;/a&gt;
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

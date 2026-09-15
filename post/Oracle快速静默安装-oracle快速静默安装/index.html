@@ -1,0 +1,340 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>Oracle快速静默安装 | 酷码</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Oracle快速静默安装 | 酷码 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="oracle" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="参考地址：https://blog.51cto.com/mflag/2420185 操作系统环境：最小化安装 centos7 一、创建目录、更新补丁、安装依赖包与创建用户 mkdir -p /data/u01/software yum -y groupinstall &amp;lsquo;Development Tools&amp;rsquo; yum -y install epel-release lrzsz vim unzip &amp;hellip;">
+<link rel="canonical" href="https://blog.coolcode.dev/post/Oracle快速静默安装-oracle快速静默安装/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Oracle快速静默安装","url":"https://blog.coolcode.dev/post/Oracle快速静默安装-oracle快速静默安装/","description":"参考地址：https://blog.51cto.com/mflag/2420185 操作系统环境：最小化安装 centos7 一、创建目录、更新补丁、安装依赖包与创建用户 mkdir -p /data/u01/software yum -y groupinstall \u0026lsquo;Development Tools\u0026rsquo; yum -y install epel-release lrzsz vim unzip \u0026hellip;","datePublished":"2020-03-04T07:44:41+08:00","dateModified":"2020-03-04T07:44:41+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/Oracle快速静默安装-oracle快速静默安装/","name":"Oracle快速静默安装","position":2}]}</script>
+<meta property="og:title" content="Oracle快速静默安装">
+<meta property="og:description" content="参考地址：https://blog.51cto.com/mflag/2420185 操作系统环境：最小化安装 centos7 一、创建目录、更新补丁、安装依赖包与创建用户 mkdir -p /data/u01/software yum -y groupinstall &amp;lsquo;Development Tools&amp;rsquo; yum -y install epel-release lrzsz vim unzip &amp;hellip;">
+<meta property="og:url" content="https://blog.coolcode.dev/post/Oracle快速静默安装-oracle快速静默安装/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="酷码">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.coolcode.dev/post/Oracle快速静默安装-oracle快速静默安装/">
+<meta name="twitter:title" content="Oracle快速静默安装">
+<meta name="twitter:description" content="参考地址：https://blog.51cto.com/mflag/2420185 操作系统环境：最小化安装 centos7 一、创建目录、更新补丁、安装依赖包与创建用户 mkdir -p /data/u01/software yum -y groupinstall &amp;lsquo;Development Tools&amp;rsquo; yum -y install epel-release lrzsz vim unzip &amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
+    </a>
+    <h1 class="site-title">
+        酷码
+    </h1>
+    <p class="site-description">
+        个人技术博客
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/post" class="menu">
+            博客
+        </a>
+        
+        
+        
+        <a href="/memos" class="menu">
+            闪念
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="/links" class="menu">
+            友链
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        Oracle快速静默安装
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2020-03-04
+                        </span>
+                        <span>
+                            8 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/oracle/" class="post-tag">
+                            # oracle
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <p>参考地址：https://blog.51cto.com/mflag/2420185</p>
+<p>操作系统环境：最小化安装 centos7</p>
+<p>一、创建目录、更新补丁、安装依赖包与创建用户<br />
+mkdir -p /data/u01/software<br />
+yum -y groupinstall &lsquo;Development Tools&rsquo;<br />
+yum -y install epel-release lrzsz vim unzip net-tools lsof<br />
+groupadd oinstall<br />
+groupadd dba<br />
+useradd -g oinstall -G dba oracle<br />
+echo &ldquo;oracleadmin&rdquo; | passwd &ndash;stdin oracle<br />
+mkdir -p /data/u01/app/oracle/product/11.2.0/dbhome_1<br />
+mkdir /data/u01/app/oracle/{oradata,inventory,fast_recovery_area}<br />
+chown -R oracle:oinstall /data/u01/app/oracle<br />
+chmod -R 775 /data/u01/app/oracle<br />
+yum -y install gcc gcc-c++ make binutils compat-libstdc++-33 elfutils-libelf elfutils-libelf-devel elfutils-libelf-devel-static glibc glibc-common glibc-devel ksh libaio libaio-devel libgcc libstdc++ libstdc++-devel numactl-devel sysstat unixODBC unixODBC-devel kernelheaders pdksh pcre-devel readline* rlwrap<br />
+yum -y update<br />
+cd /data/u01/software<br />
+ls</p>
+<p>二、新会话：上传安装包<br />
+cd /data/u01/software<br />
+ls<br />
+上传Oracle安装包linux.x64_11gR2_database*</p>
+<p>三、新会话修改配置文件、安装sqlplus<br />
+echo &ldquo;#&quot;$(date) &ldquo;quick install oracle11GR2 add vim /etc/sysctl.conf&rdquo;&raquo; /etc/sysctl.conf<br />
+echo &ldquo;fs.aio-max-nr = 1048576&rdquo; &raquo; /etc/sysctl.conf<br />
+echo &ldquo;fs.file-max = 6815744&rdquo; &raquo; /etc/sysctl.conf<br />
+echo &ldquo;kernel.shmall = 2097152&rdquo; &raquo; /etc/sysctl.conf<br />
+echo &ldquo;kernel.shmmax = 1073741824&rdquo; &raquo; /etc/sysctl.conf<br />
+echo &ldquo;kernel.shmmni = 4096&rdquo; &raquo; /etc/sysctl.conf<br />
+echo &ldquo;kernel.sem = 250 32000 100 128&rdquo; &raquo; /etc/sysctl.conf<br />
+echo &ldquo;net.ipv4.ip_local_port_range = 9000 65500&rdquo; &raquo; /etc/sysctl.conf<br />
+echo &ldquo;net.core.rmem_default = 262144&rdquo; &raquo; /etc/sysctl.conf<br />
+echo &ldquo;net.core.rmem_max = 4194304&rdquo; &raquo; /etc/sysctl.conf<br />
+echo &ldquo;net.core.wmem_default = 262144&rdquo; &raquo; /etc/sysctl.conf<br />
+echo &ldquo;net.core.wmem_max = 1048576&rdquo; &raquo; /etc/sysctl.conf<br />
+sysctl -p<br />
+echo &ldquo;#&quot;$(date) &ldquo;quick install oracle11GR2 add vim /etc/security/limits.conf&rdquo;&raquo;/etc/security/limits.conf<br />
+echo &ldquo;oracle soft nproc 2047&rdquo; &raquo;/etc/security/limits.conf<br />
+echo &ldquo;oracle hard nproc 16384&rdquo; &raquo;/etc/security/limits.conf<br />
+echo &ldquo;oracle soft nofile 1024&rdquo; &raquo;/etc/security/limits.conf<br />
+echo &ldquo;oracle hard nofile 65536&rdquo; &raquo;/etc/security/limits.conf<br />
+echo &ldquo;oracle soft stack 10240&rdquo; &raquo;/etc/security/limits.conf<br />
+echo &ldquo;#&quot;$(date) &ldquo;quick install oracle11GR2 add vim /etc/pam.d/login&rdquo;&raquo;/etc/pam.d/login<br />
+echo &ldquo;session required /lib64/security/pam_limits.so&rdquo;&raquo;/etc/pam.d/login<br />
+echo &ldquo;session required pam_limits.so&rdquo;&raquo;/etc/pam.d/login</p>
+<p>echo &ldquo;#&quot;$(date) &ldquo;quick install oracle11GR2 add vim /etc/profile&rdquo;&raquo;/etc/profile<br />
+echo &lsquo;if [ $USER = &ldquo;oracle&rdquo; ]; then&rsquo;&raquo;/etc/profile<br />
+echo &lsquo;if [ $SHELL = &ldquo;/bin/ksh&rdquo; ]; then&rsquo;&raquo;/etc/profile<br />
+echo &ldquo;ulimit -p 16384&rdquo;&raquo;/etc/profile<br />
+echo &ldquo;ulimit -n 65536&rdquo;&raquo;/etc/profile<br />
+echo &ldquo;else&rdquo;&raquo;/etc/profile<br />
+echo &ldquo;ulimit -u 16384 -n 65536&rdquo;&raquo;/etc/profile<br />
+echo &ldquo;fi&rdquo;&raquo;/etc/profile<br />
+echo &ldquo;fi&rdquo;&raquo;/etc/profile</p>
+<p>cd /data/u01/software</p>
+<h1 id="heading">前面已经安装，此步忽略</h1>
+<p>#tar -xvf rlwrap-0.42.tar.gz<br />
+#cd rlwrap-0.42<br />
+#./configure<br />
+#make<br />
+#make install</p>
+<p>需要等上传完成；<br />
+unzip linux.x64_11gR2_database_1of2.zip<br />
+unzip linux.x64_11gR2_database_2of2.zip</p>
+<p>su - oracle<br />
+echo &ldquo;#&quot;$(date) &ldquo;quick install oracle11GR2 add vim .bash_profile&rdquo;&raquo;.bash_profile<br />
+echo &ldquo;export ORACLE_BASE=/data/u01/app/oracle&rdquo;&raquo;.bash_profile<br />
+echo &ldquo;export ORACLE_HOME=/data/u01/app/oracle/product/11.2.0/dbhome_1&rdquo;&raquo;.bash_profile<br />
+echo &ldquo;export ORACLE_SID=orcl&rdquo;&raquo;.bash_profile<br />
+echo &rsquo;export ORACLE_UNQNAME=$ORACLE_SID&rsquo;&raquo;.bash_profile<br />
+echo &rsquo;export PATH=<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mi>R</mi><mi>A</mi><mi>C</mi><mi>L</mi><msub><mi>E</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi><mi mathvariant="normal">/</mi><mi>b</mi><mi>i</mi><mi>n</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">ORACLE_HOME/bin:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord mathnormal">L</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0813em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mord">/</span><span class="mord mathnormal">bin</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span></span></span></span>PATH&rsquo;&raquo;.bash_profile<br />
+echo &ldquo;export NLS_LANG=american_america.AL32UTF8&rdquo;&raquo;.bash_profile<br />
+echo &ldquo;alias sqlplus=&lsquo;rlwrap sqlplus&rsquo;&quot;&raquo;.bash_profile<br />
+echo &ldquo;alias rman=&lsquo;rlwrap rman&rsquo;&quot;&raquo;.bash_profile<br />
+source .bash_profile<br />
+ls</p>
+<p>以下第四，五步可以使用本地已经配置好的response.tar.gz包上传到 /home/oracle/ 目录<br />
+然后执行：<br />
+cd /data/u01/software/database/<br />
+./runInstaller -silent -responseFile /home/oracle/response/db_install.rsp -ignorePrereq<br />
+等待执行成功<br />
+继续执行安装实例：<br />
+dbca -silent -responseFile /home/oracle/response/dbca.rsp<br />
+等待执行成功</p>
+<p>四、修改静默响应文件并执行安装<br />
+拷贝备份一份响应文件：<br />
+cp -R /data/u01/software/database/response/ .<br />
+cd response/<br />
+vim db_install.rsp</p>
+<p>修改内容：<br />
+oracle.install.option=INSTALL_DB_SWONLY<br />
+ORACLE_HOSTNAME=localhost.localdomain<br />
+UNIX_GROUP_NAME=oinstall<br />
+INVENTORY_LOCATION=/data/u01/app/oracle/inventory<br />
+SELECTED_LANGUAGES=en,zh_CN<br />
+ORACLE_HOME=/data/u01/app/oracle/product/11.2.0/dbhome_1<br />
+ORACLE_BASE=/data/u01/app/oracle<br />
+oracle.install.db.InstallEdition=EE<br />
+oracle.install.db.DBA_GROUP=dba<br />
+oracle.install.db.OPER_GROUP=dba<br />
+DECLINE_SECURITY_UPDATES=true</p>
+<p>切换到解压的安装包目录执行安装：<br />
+cd /data/u01/software/database/<br />
+./runInstaller -silent -responseFile /home/oracle/response/db_install.rsp -ignorePrereq<br />
+sqlplus / as sysdba</p>
+<p>linux CentOS7下快速静默安装Oracle11GR2数据库并创建实例</p>
+<p>五、切换一个会话开始配置实例响应文件<br />
+配置响应文件：<br />
+vim /home/oracle/response/dbca.rsp<br />
+修改内容（注意修改选项前面的#要删除）：<br />
+GDBNAME = &ldquo;orcl&rdquo;<br />
+SID = &ldquo;orcl&rdquo;<br />
+SYSPASSWORD = &ldquo;输入密码&rdquo;<br />
+SYSTEMPASSWORD = &ldquo;输入密码&rdquo;<br />
+SYSMANPASSWORD = &ldquo;输入密码&rdquo;<br />
+DBSNMPPASSWORD = &ldquo;输入密码&rdquo;<br />
+DATAFILEDESTINATION =/data/u01/app/oracle/oradata<br />
+RECOVERYAREADESTINATION=/data/u01/app/oracle/fast_recovery_area<br />
+CHARACTERSET = &ldquo;AL32UTF8&rdquo;<br />
+TOTALMEMORY = &ldquo;2048&rdquo;</p>
+<p>egrep -v &ldquo;(^#|^$)&rdquo; /home/oracle/response/dbca.rsp</p>
+<p>安装创建（等第六步成功后执行）：<br />
+cd ~<br />
+dbca -silent -responseFile /home/oracle/response/dbca.rsp<br />
+linux CentOS7下快速静默安装Oracle11GR2数据库并创建实例</p>
+<p>六、数据库操作</p>
+<p>1、检查oracle数据库是否启动：ps -ef | grep ora<br />
+2、检查Oracle DB监听器是否正常：<br />
+         输入：lsnrctl status 检查监听是否启动，如未启动<br />
+ 输入：lsnrctl start 启动监听器；<br />
+lsnrctl stop  停止监听器命令<br />
+       netstat -ntlp 查看1521端口是否启动</p>
+<p>3、进入sqlplus界面：<br />
+sqlplus /nolog;<br />
+conn / as sysdba;<br />
+然后startup启动数据库实例和数据库<br />
+shutdown关闭数据库实例</p>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/How%20do%20I%20set%20the%20time%20zone%20of%20MySQL-howdoisetthetimezoneofmysql/">
+                    <h3 class="post-title">
+                        How do I set the time zone of MySQL?
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    Powered by &lt;a href=&#34;https://blog.coolcode.dev/&#34; target=&#34;_self&#34;&gt;酷码&lt;/a&gt;
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

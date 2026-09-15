@@ -1,0 +1,300 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>告别 Terminal！IDEA 也可以爽用 Claude Code 惹 | 酷码</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="告别 Terminal！IDEA 也可以爽用 Claude Code 惹 | 酷码 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="ai,claude" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="原文：https://linux.do/t/topic/1362218 想必各位 Vide Coding Master 在使用 JetBrains 家 IDE 的时候总有一些苦恼： 如果想要使用 Claude Code、Codex、Gemini CLI 这类终端工具，就要在 IDEA 的命令行中使用它们， 这缺少了一些 UI 交互，也有很大概率会出现终端工具的内容疯狂闪屏的问题（点名批评 C&amp;hellip;">
+<link rel="canonical" href="https://blog.coolcode.dev/post/gao-bie-terminalidea-ye-ke-yi-shuang-yong-claude-code-re/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"告别 Terminal！IDEA 也可以爽用 Claude Code 惹","url":"https://blog.coolcode.dev/post/gao-bie-terminalidea-ye-ke-yi-shuang-yong-claude-code-re/","description":"原文：https://linux.do/t/topic/1362218 想必各位 Vide Coding Master 在使用 JetBrains 家 IDE 的时候总有一些苦恼： 如果想要使用 Claude Code、Codex、Gemini CLI 这类终端工具，就要在 IDEA 的命令行中使用它们， 这缺少了一些 UI 交互，也有很大概率会出现终端工具的内容疯狂闪屏的问题（点名批评 C\u0026hellip;","datePublished":"2025-12-26T00:11:30+08:00","dateModified":"2025-12-26T00:11:30+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/gao-bie-terminalidea-ye-ke-yi-shuang-yong-claude-code-re/","name":"告别 Terminal！IDEA 也可以爽用 Claude Code 惹","position":2}]}</script>
+<meta property="og:title" content="告别 Terminal！IDEA 也可以爽用 Claude Code 惹">
+<meta property="og:description" content="原文：https://linux.do/t/topic/1362218 想必各位 Vide Coding Master 在使用 JetBrains 家 IDE 的时候总有一些苦恼： 如果想要使用 Claude Code、Codex、Gemini CLI 这类终端工具，就要在 IDEA 的命令行中使用它们， 这缺少了一些 UI 交互，也有很大概率会出现终端工具的内容疯狂闪屏的问题（点名批评 C&amp;hellip;">
+<meta property="og:url" content="https://blog.coolcode.dev/post/gao-bie-terminalidea-ye-ke-yi-shuang-yong-claude-code-re/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="酷码">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.coolcode.dev/post/gao-bie-terminalidea-ye-ke-yi-shuang-yong-claude-code-re/">
+<meta name="twitter:title" content="告别 Terminal！IDEA 也可以爽用 Claude Code 惹">
+<meta name="twitter:description" content="原文：https://linux.do/t/topic/1362218 想必各位 Vide Coding Master 在使用 JetBrains 家 IDE 的时候总有一些苦恼： 如果想要使用 Claude Code、Codex、Gemini CLI 这类终端工具，就要在 IDEA 的命令行中使用它们， 这缺少了一些 UI 交互，也有很大概率会出现终端工具的内容疯狂闪屏的问题（点名批评 C&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
+    </a>
+    <h1 class="site-title">
+        酷码
+    </h1>
+    <p class="site-description">
+        个人技术博客
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/post" class="menu">
+            博客
+        </a>
+        
+        
+        
+        <a href="/memos" class="menu">
+            闪念
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="/links" class="menu">
+            友链
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        告别 Terminal！IDEA 也可以爽用 Claude Code 惹
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2025-12-26
+                        </span>
+                        <span>
+                            5 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/ai/" class="post-tag">
+                            # ai
+                        </a>
+                        
+                        <a href="/tag/claude/" class="post-tag">
+                            # claude
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <p>原文：https://linux.do/t/topic/1362218</p>
+<p>想必各位 Vide Coding Master 在使用 JetBrains 家 IDE 的时候总有一些苦恼： 如果想要使用 Claude Code、Codex、Gemini CLI 这类终端工具，就要在 IDEA 的命令行中使用它们， 这缺少了一些 UI 交互，也有很大概率会出现终端工具的内容疯狂闪屏的问题（点名批评 Claude Code）。<br />
+而现在！AI Assistant 插件更新了对自定义 ACP 的配置支持，现在你可以配置任何支持 ACP 的 Agent 到你的 AI Assistant 中啦！</p>
+<p><img src="https://img.weiblogs.com/img/20251226000358581.png" alt="image-20251226000357223" /></p>
+<h2 id="-acp">什么是 ACP？</h2>
+<p><a href="https://agentclientprotocol.com/">Agent Client Protocol (ACP)</a>, 是一个由 Zed 和 JetBrains 发起的、<br />
+用于规范<strong>代码编辑器</strong>、<strong>集成开发环境</strong>与<strong>编码代理</strong> (也就是常说的 AI Agent) 之间的通讯的协议。</p>
+<p>简单来说，就是一个专门为了让 AI Agent 与各类 IDE 友好协作的通用协议。</p>
+<p>在佬友们面前我就不班门弄斧了，更多有关 ACP 的信息可以前往 ACP 的官方网站 <a href="https://agentclientprotocol.com/">https://agentclientprotocol.com</a> 了解更多信息。</p>
+<h2 id="heading">配置</h2>
+<p>如上文所配的图所示，你可以在 AI Assistant 插件右上角的下拉菜单中找到「配置 ACP 智能体」的功能，<br />
+点击后会打开一个 <code>acp.json</code> 文件，此时即可配置 ACP 了。</p>
+<p>这里我会展示一个已经配置完 Claude Code 和 Codex 之后的 <code>acp.json</code> 文件内容</p>
+<p>下面是 MacOS上的配置：</p>
+<pre><code class="language-JSON">{
+    &quot;agent_servers&quot;: {
+        &quot;Claude Code&quot;: {
+            &quot;command&quot;: &quot;claude-code-acp&quot;
+        },
+        &quot;Codex&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;@zed-industries/codex-acp&quot;
+            ]
+        }
+    }
+}
+</code></pre>
+<p>Windows上的配置需要加上命令的后缀：</p>
+<pre><code class="language-json">{
+    &quot;agent_servers&quot;: {
+        &quot;Claude Code&quot;: {
+            &quot;command&quot;: &quot;claude-code-acp.cmd&quot;
+        },
+        &quot;Codex&quot;: {
+            &quot;command&quot;: &quot;npx.cmd&quot;,
+            &quot;args&quot;: [
+                &quot;-y&quot;,
+                &quot;@zed-industries/codex-acp&quot;
+            ]
+        }
+    }
+}
+</code></pre>
+<p>之后会继续简单介绍二者具体的配置过程。</p>
+<h3 id="claude-code">Claude Code</h3>
+<p>Zed 提供了一个针对 Claude Code 的 ACP 适配器：<a href="https://github.com/zed-industries/claude-code-acp">claude-code-acp</a>，<br />
+根据文档的描述，我们使用 <code>npm</code> 安装它即可：</p>
+<pre><code class="language-Bash">npm install -g @zed-industries/claude-code-acp
+</code></pre>
+<blockquote>
+<p>需要注意的是，这里实际上是需要 <code>-g</code> 来安装到全局的，不知道为什么官方的文档里没有添加它。</p>
+</blockquote>
+<p>安装成功后，上述的配置就可以正常生效啦，现在你可以在 AI Assistant 的选项里看到它了：</p>
+<p><img src="https://img.weiblogs.com/img/20251226000613971.png" alt="image-20251226000611095" /></p>
+<p>而且包括模式选择和模型选择也都有：</p>
+<p><img src="https://img.weiblogs.com/img/20251226000641202.png" alt="image-20251226000639351" /></p>
+<p><img src="https://img.weiblogs.com/img/20251226000706858.png" alt="image-20251226000704304" /></p>
+<p>我们可以尝试对个话，看看是否可用：</p>
+<p><img src="https://img.weiblogs.com/img/20251226000746397.png" alt="image-20251226000744692" /></p>
+<p>嗯～ 一切正常，而且这里有一个很明显与 AI Assistant 中内置的 Claude Agent 之间的区别：<br />
+使用自己配置的 ACP 可以完整识别到你的所有全局配置，包括配置的第三方中转站地址、MCP 之类的工具调用。<br />
+而内置的 Claude Agent 模式，最多只能识别到第三方地址，而 MCP 是无法被读取识别使用的。</p>
+<p>终于可以不用看CC CLI那闪花眼的超级闪屏BUG了<img src="https://linux.do/images/emoji/twemoji/sob.png?v=15" alt=":sob:" /></p>
+<h3 id="codex">Codex</h3>
+<p>Zed 也同样实现了一个 Codex 的 ACP 适配器：<a href="https://github.com/zed-industries/codex-acp">codex-acp</a>。</p>
+<p>不过它不使用 <code>npm i -g</code> 安装，而是使用 <code>npx</code>。</p>
+<pre><code class="language-bash">npx -g @zed-industries/codex-acp
+</code></pre>
+<p>就像上面所展示的 <code>acp.json</code> 里配置的那样，直接配置 npx 命令即可：</p>
+<pre><code class="language-JSON">{
+    &quot;agent_servers&quot;: {
+        &quot;Codex&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;@zed-industries/codex-acp&quot;
+            ]
+        }
+    }
+}
+</code></pre>
+<p>同样的，配置完成后就可以选择并使用了：</p>
+<p><img src="https://img.weiblogs.com/img/20251226000825089.png" alt="image-20251226000823713" /></p>
+<p>我本身也没给 Codex 配置太多 MCP，所以看上去不是很多的样子。<br />
+它也有部分可选择的选项，例如模式和模型：</p>
+<p><img src="https://img.weiblogs.com/img/20251226000852438.png" alt="image-20251226000851136" /></p>
+<p><img src="https://img.weiblogs.com/img/20251226000913559.png" alt="image-20251226000912139" /></p>
+<p>按需选择即可。</p>
+<h2 id="heading-1">总结</h2>
+<p>如果你是 JetBrains 家 IDE 的重度使用者，又苦于 Claude Code 原生 CLI 那闪瞎眼的超级闪屏 BUG，<br />
+或者你希望在任何支持 ACP 的 IDE 中得到更好的 AI Agent UX 体验，那么现在就是动手尝试的时候啦～</p>
+<p>我也是刚刚才配置的，在元旦假期开始之前，我打算再深度体验几天，<br />
+看看通过 ACP 带来的 UX 体验是否能给我带来全面的提升和身心的愉悦～</p>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/claude-code-zhong-mcp-zai-windows-shang-jing-gao-xin-xi/">
+                    <h3 class="post-title">
+                        Claude Code 中 MCP 在Windows上警告信息
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    Powered by &lt;a href=&#34;https://blog.coolcode.dev/&#34; target=&#34;_self&#34;&gt;酷码&lt;/a&gt;
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

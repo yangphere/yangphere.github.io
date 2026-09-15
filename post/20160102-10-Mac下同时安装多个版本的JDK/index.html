@@ -1,0 +1,240 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>Mac下同时安装多个版本的JDK | 酷码</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Mac下同时安装多个版本的JDK | 酷码 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="mac,java" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="JDK8 GA之后，小伙伴们喜大普奔，纷纷跃跃欲试，想体验一下Java8的Lambda等新特性，可是目前Java企业级应用的主打版本还是JDK6， JDK7。因此，我需要在我的电脑上同时有JDK8，JDK7，JDK6。JDK6和JDK7主要是做一些产品代码的验证，以及自己玩一些开源项目，JDK8则纯属尝鲜，谁叫咱是喜新厌旧的程序员呢。">
+<link rel="canonical" href="https://blog.coolcode.dev/post/20160102-10-Mac下同时安装多个版本的JDK/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Mac下同时安装多个版本的JDK","url":"https://blog.coolcode.dev/post/20160102-10-Mac下同时安装多个版本的JDK/","description":"JDK8 GA之后，小伙伴们喜大普奔，纷纷跃跃欲试，想体验一下Java8的Lambda等新特性，可是目前Java企业级应用的主打版本还是JDK6， JDK7。因此，我需要在我的电脑上同时有JDK8，JDK7，JDK6。JDK6和JDK7主要是做一些产品代码的验证，以及自己玩一些开源项目，JDK8则纯属尝鲜，谁叫咱是喜新厌旧的程序员呢。","datePublished":"2022-07-19T10:06:02+08:00","dateModified":"2022-07-19T10:06:02+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/20160102-10-Mac下同时安装多个版本的JDK/","name":"Mac下同时安装多个版本的JDK","position":2}]}</script>
+<meta property="og:title" content="Mac下同时安装多个版本的JDK">
+<meta property="og:description" content="JDK8 GA之后，小伙伴们喜大普奔，纷纷跃跃欲试，想体验一下Java8的Lambda等新特性，可是目前Java企业级应用的主打版本还是JDK6， JDK7。因此，我需要在我的电脑上同时有JDK8，JDK7，JDK6。JDK6和JDK7主要是做一些产品代码的验证，以及自己玩一些开源项目，JDK8则纯属尝鲜，谁叫咱是喜新厌旧的程序员呢。">
+<meta property="og:url" content="https://blog.coolcode.dev/post/20160102-10-Mac下同时安装多个版本的JDK/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="酷码">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.coolcode.dev/post/20160102-10-Mac下同时安装多个版本的JDK/">
+<meta name="twitter:title" content="Mac下同时安装多个版本的JDK">
+<meta name="twitter:description" content="JDK8 GA之后，小伙伴们喜大普奔，纷纷跃跃欲试，想体验一下Java8的Lambda等新特性，可是目前Java企业级应用的主打版本还是JDK6， JDK7。因此，我需要在我的电脑上同时有JDK8，JDK7，JDK6。JDK6和JDK7主要是做一些产品代码的验证，以及自己玩一些开源项目，JDK8则纯属尝鲜，谁叫咱是喜新厌旧的程序员呢。">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
+    </a>
+    <h1 class="site-title">
+        酷码
+    </h1>
+    <p class="site-description">
+        个人技术博客
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/post" class="menu">
+            博客
+        </a>
+        
+        
+        
+        <a href="/memos" class="menu">
+            闪念
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="/links" class="menu">
+            友链
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        Mac下同时安装多个版本的JDK
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2022-07-19
+                        </span>
+                        <span>
+                            2 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/mac/" class="post-tag">
+                            # mac
+                        </a>
+                        
+                        <a href="/tag/java/" class="post-tag">
+                            # java
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <p>JDK8 GA之后，小伙伴们喜大普奔，纷纷跃跃欲试，想体验一下Java8的Lambda等新特性，可是目前Java企业级应用的主打版本还是JDK6， JDK7。因此，我需要在我的电脑上同时有JDK8，JDK7，JDK6。JDK6和JDK7主要是做一些产品代码的验证，以及自己玩一些开源项目，JDK8则纯属尝鲜，谁叫咱是喜新厌旧的程序员呢。</p>
+<!--more-->
+<p><strong>目标</strong><br />
+在命令行下，可以通过命令&rsquo;jdk6&rsquo;, &lsquo;jdk7&rsquo;,&lsquo;jdk8&rsquo;轻松切换到对应的Java版本， 默认初始设置为jdk7。</p>
+<p><strong>做法</strong><br />
+首先安装所有的JDK：</p>
+<ul>
+<li>Mac自带了的JDK6，安装在目录：/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/下。</li>
+<li>JDK7，JDK8则需要自己到Oracle官网下载安装对应的版本。自己安装的JDK默认路径为：/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk</li>
+</ul>
+<p>在用户目录下的bash配置文件.bashrc中配置JAVA_HOME的路径：</p>
+<pre><code class="language-bash">export JAVA_6_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+export JAVA_7_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0.jdk/Contents/Home
+export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
+export JAVA_HOME=$JAVA_7_HOME
+</code></pre>
+<p>创建alias命令动态切换JAVA_HOME的配置</p>
+<pre><code class="language-bash">alias jdk8='export JAVA_HOME=$JAVA_8_HOME'
+alias jdk7='export JAVA_HOME=$JAVA_7_HOME'
+alias jdk6='export JAVA_HOME=$JAVA_6_HOME'
+</code></pre>
+<p><em>验证</em></p>
+<pre><code class="language-bash">CNxnliu:Versions xnliu$ java -version
+java version &quot;1.6.0_65&quot;
+Java(TM) SE Runtime Environment (build 1.6.0_65-b14-462-11M4609)
+Java HotSpot(TM) 64-Bit Server VM (build 20.65-b04-462, mixed mode)
+CNxnliu:Versions xnliu$ jdk8
+CNxnliu:Versions xnliu$ java -version
+java version &quot;1.8.0&quot;
+Java(TM) SE Runtime Environment (build 1.8.0-b132)
+Java HotSpot(TM) 64-Bit Server VM (build 25.0-b70, mixed mode)
+CNxnliu:Versions xnliu$
+</code></pre>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/20160101-7-%e5%8f%97%e7%94%a8%e4%b8%8d%e5%b0%bd%e7%9a%84Gradle%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95%e4%b8%8e%e6%8a%80%e5%b7%a7/">
+                    <h3 class="post-title">
+                        受用不尽的Gradle使用方法与技巧
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    Powered by &lt;a href=&#34;https://blog.coolcode.dev/&#34; target=&#34;_self&#34;&gt;酷码&lt;/a&gt;
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

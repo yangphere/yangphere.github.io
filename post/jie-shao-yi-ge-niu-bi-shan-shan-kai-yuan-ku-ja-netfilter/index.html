@@ -1,0 +1,268 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>介绍一个”牛逼闪闪”开源库：ja-netfilter | 酷码</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="介绍一个”牛逼闪闪”开源库：ja-netfilter | 酷码 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="ja-netfilter,Java,Javaagent" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件&amp;hellip;">
+<link rel="canonical" href="https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"介绍一个”牛逼闪闪”开源库：ja-netfilter","url":"https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/","description":"上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件\u0026hellip;","datePublished":"2025-10-31T18:13:13+08:00","dateModified":"2025-10-31T18:13:13+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/","name":"介绍一个”牛逼闪闪”开源库：ja-netfilter","position":2}]}</script>
+<meta property="og:title" content="介绍一个”牛逼闪闪”开源库：ja-netfilter">
+<meta property="og:description" content="上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件&amp;hellip;">
+<meta property="og:url" content="https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="酷码">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/">
+<meta name="twitter:title" content="介绍一个”牛逼闪闪”开源库：ja-netfilter">
+<meta name="twitter:description" content="上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
+    </a>
+    <h1 class="site-title">
+        酷码
+    </h1>
+    <p class="site-description">
+        个人技术博客
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/post" class="menu">
+            博客
+        </a>
+        
+        
+        
+        <a href="/memos" class="menu">
+            闪念
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="/links" class="menu">
+            友链
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        介绍一个”牛逼闪闪”开源库：ja-netfilter
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2025-10-31
+                        </span>
+                        <span>
+                            3 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/ja-netfilter/" class="post-tag">
+                            # ja-netfilter
+                        </a>
+                        
+                        <a href="/tag/java/" class="post-tag">
+                            # Java
+                        </a>
+                        
+                        <a href="/tag/javaagent/" class="post-tag">
+                            # Javaagent
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <p>上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件了！</p>
+<p>所以没错，IDE Eval Resetter这个项目我已经弃坑，因为我觉得我插件已经写得很好了（手动狗头，以下很多用词默认手动加了狗头），得玩点其他好玩的东西。</p>
+<p>这次要来玩个正经的、通用的、高大上的东西。</p>
+<p>0x0. 项目背景<br />
+首先还是基于上述内容。</p>
+<p>我们日常使用的软件中有很多有意或无意被加入网络访问的代码。有些并非恶意，有些则是。<br />
+并非恶意的像一些软件的在线激活验证，如dbeaver、smartgit等。<br />
+恶意的像有些软件本身就有盗取用户隐私数据的情况，有些软件则是被一些别有用心的人二次加工放入偷取用户数据的代码。</p>
+<p>我们通常会使用防火墙来阻断这些软件的恶意访问。但防火墙也不是万能的，比如：跨平台问题、https下无法精准阻断某个url访问、部分防火墙不能阻断dns访问。<br />
+于是就有了我今天开源的这个项目：通用的、针对java程序的、灵活的、精准基于规则的、基于AOP思想的牛逼哄哄防火墙（无数狗头）：ja-netfilter！</p>
+<p>0x1. 如何安装<br />
+1). 下载安装：<br />
+直接到项目仓库的Releases页面下载我打包好的文件包。<br />
+按照项目README.md所写的方式来配置-javaagent参数。某些软件像dbeaver和smartgit等软件都支持直接编辑配置文件来配置，你可以参考我之前写的agent帮助文件来配置，这里不赘述。<br />
+编辑config目录下的对应配置文件，配置希望阻断的规则。具体见下面的配置文件部分。<br />
+1). 编译安装：<br />
+直接到项目仓库页面下载源文件，编译出目标jar文件即可。<br />
+同下载安装部分。<br />
+0x2. 如何使用<br />
+按照上述安装配置好后直接启动目标程序即可。<br />
+你甚至能跟你的tomcat或jetty一起使用，来防止你项目依赖包中的一些恶意请求。<br />
+0x3. 如何更新<br />
+关注上述的开源项目即可获取最新的代码和编译好的包。<br />
+0x4. 配置文件<br />
+在ja-netfilter.jar同目录中有个conf文件夹，其内存放了所有插件的配置文件，命名为：插件名(小写).conf<br />
+至于配置文件的编写，项目帮助文档中已经写出，这里不再重复说明了。只是简单列举几个例子：</p>
+<h1 id="dbeaver--urlconf-">DBEaver 阻断激活验证的 url.conf 配置文件</h1>
+<p>[URL]<br />
+PREFIX,https://dbeaver.com/lmp/checkLicense</p>
+<h1 id="smartgit--urlconf-">SmartGit 的 url.conf 配置文件</h1>
+<p>[URL]<br />
+PREFIX,https://store.smartgit.com/check</p>
+<h1 id="jb--dnsconf-">jb 的 dns.conf 配置文件</h1>
+<p>[DNS]<br />
+EQUAL,jetbrains.com</p>
+<h1 id="jb--urlconf-">jb 的 url.conf 配置文件</h1>
+<p>[URL]<br />
+PREFIX,https://account.jetbrains.com/lservice/rpc/validateKey.action</p>
+<p>0x5. 开源信息<br />
+插件是学习研究项目，源代码是开放的。源码仓库地址：ja-netfilter。<br />
+这是个通用的软件包，配置文件灵活自由，请不要过度想象。<br />
+请不要试图结合IDE Eval Resetter一文中所说热心大佬的key来使用本项目。赶快入正！赶快入正！赶快入正！<br />
+如果你有更好的想法，欢迎给我提Pull Request来共同研究完善。<br />
+插件源码使用：GPL-3.0开源协议发布。<br />
+插件使用PHP编写，毕竟PHP是世界上最好的编程语言！<br />
+Telegram group: ja-netfilter<br />
+Telegram channel: ja-netfilter channel<br />
+QQ Group: 638451028<br />
+0x6. 支持的产品<br />
+本防火墙基于javaagent，所以目前只有基于java的程序能够使用。更通用的防火墙，等我学习更多知识。<br />
+0x7. 插件机制<br />
+新版本ja-netfilter已经支持插件机制，各位可以给它开发各种各样有趣的插件了。<br />
+插件开发请见这个脚手架项目。<br />
+插件丢进ja-netfilter.jar所在的plugins子目录即可加载。<br />
+Power插件应用：搞定YouTrack和Upsource<br />
+下面是国际惯例：</p>
+<p>本项目只做个人学习研究之用，不得用于商业用途！</p>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/jie-jue-host-key-verification-failed/">
+                    <h3 class="post-title">
+                        解决Host key verification failed
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    Powered by &lt;a href=&#34;https://blog.coolcode.dev/&#34; target=&#34;_self&#34;&gt;酷码&lt;/a&gt;
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

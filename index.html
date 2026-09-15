@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title></title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789444318">
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title=" - Atom Feed" href="/atom.xml">
@@ -37,7 +37,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789444318" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
     </a>
     <h1 class="site-title">
         酷码
@@ -237,12 +237,180 @@
         </div>
     </article>
     
+    <article class="post">
+        <a href="/post/gao-bie-terminalidea-ye-ke-yi-shuang-yong-claude-code-re/">
+            <h2 class="post-title">告别 Terminal！IDEA 也可以爽用 Claude Code 惹</h2>
+        </a>
+        <div class="post-info">
+            <span>
+                2025-12-26
+            </span>
+            <span>
+                5 分钟阅读
+            </span>
+            
+            <a href="/tag/ai/" class="post-tag">
+                # ai
+            </a>
+            
+            <a href="/tag/claude/" class="post-tag">
+                # claude
+            </a>
+            
+        </div>
+        
+        <div class="post-abstract">
+            <p>原文：https://linux.do/t/topic/1362218</p>
+<p>想必各位 Vide Coding Master 在使用 JetBrains 家 IDE 的时候总有一些苦恼： 如果想要使用 Claude Code、Codex、Gemini CLI 这类终端工具，就要在 IDEA 的命令行中使用它们， 这缺少了一些 UI 交互，也有很大概率会出现终端工具的内容疯狂闪屏的问题（点名批评 C&hellip;</p>
+
+        </div>
+    </article>
+    
+    <article class="post">
+        <a href="/post/claude-code-zhong-mcp-zai-windows-shang-jing-gao-xin-xi/">
+            <h2 class="post-title">Claude Code 中 MCP 在Windows上警告信息</h2>
+        </a>
+        <div class="post-info">
+            <span>
+                2025-12-21
+            </span>
+            <span>
+                1 分钟阅读
+            </span>
+            
+            <a href="/tag/claude/" class="post-tag">
+                # claude
+            </a>
+            
+        </div>
+        
+        <div class="post-abstract">
+            <h3 id="heading">问题说明</h3>
+<p>在 Windows 上,直接执行 npx 命令可能无法正常工作,需要通过 cmd /c 来包装执行</p>
+<h3 id="heading-1">解决方法</h3>
+<p>打开你的配置文件 C:\Users\rog.claude.json,将 MCP 服务器的配置修改为:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;context7&quot;: {
+      &quot;command&quot;: &quot;cmd&quot;,
+ ...
+</code></pre>
+
+        </div>
+    </article>
+    
+    <article class="post">
+        <a href="/post/ja-netfilter-gua-pei-java25/">
+            <h2 class="post-title">ja-netfilter 适配 Java25</h2>
+        </a>
+        <div class="post-info">
+            <span>
+                2025-10-31
+            </span>
+            <span>
+                2 分钟阅读
+            </span>
+            
+            <a href="/tag/ja-netfilter/" class="post-tag">
+                # ja-netfilter
+            </a>
+            
+            <a href="/tag/java/" class="post-tag">
+                # Java
+            </a>
+            
+            <a href="/tag/javaagent/" class="post-tag">
+                # Javaagent
+            </a>
+            
+        </div>
+        
+        <div class="post-abstract">
+            <p>咱们长话短说，Java 25 移除了内置的 ASM 包，所以 ja-netfilter 的有些插件在 Java 25 版本用不起了。</p>
+<p>解决起来也很简单，不用内置的 ASM 包就好了，把 ASM 包直接打进 ja-netfilter。如此各插件也就都能用上。</p>
+<p>这样做有一个额外的好处，不用添加额外的模块依赖，比如之前我们在 Java 17 加进去的：</p>
+<p>&ndash;add-opens=ja&hellip;</p>
+
+        </div>
+    </article>
+    
+    <article class="post">
+        <a href="/post/jetbrains-xin-ban-ben-qu-yu-xuan-ze-de-keng/">
+            <h2 class="post-title">JetBrains新版本区域选择的坑</h2>
+        </a>
+        <div class="post-info">
+            <span>
+                2025-10-31
+            </span>
+            <span>
+                1 分钟阅读
+            </span>
+            
+            <a href="/tag/ja-netfilter/" class="post-tag">
+                # ja-netfilter
+            </a>
+            
+            <a href="/tag/java/" class="post-tag">
+                # Java
+            </a>
+            
+            <a href="/tag/javaagent/" class="post-tag">
+                # Javaagent
+            </a>
+            
+        </div>
+        
+        <div class="post-abstract">
+            <p>好久不见啊，朋友们！</p>
+<p>JetBrains新版本(2024.2)在设置里添加了区域选择，具体在：Appearance &amp; Behavior -&gt; System Settings -&gt; Language and Region -&gt; Region 中设置。如果你选择 China Mainland 将会有一个比较坑的地方：激活许可验证走 account.jetbrains.com.cn 这个域名，而&hellip;</p>
+
+        </div>
+    </article>
+    
+    <article class="post">
+        <a href="/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/">
+            <h2 class="post-title">关于ja-netfilter适配Java17的问题</h2>
+        </a>
+        <div class="post-info">
+            <span>
+                2025-10-31
+            </span>
+            <span>
+                1 分钟阅读
+            </span>
+            
+            <a href="/tag/ja-netfilter/" class="post-tag">
+                # ja-netfilter
+            </a>
+            
+            <a href="/tag/java/" class="post-tag">
+                # Java
+            </a>
+            
+            <a href="/tag/javaagent/" class="post-tag">
+                # Javaagent
+            </a>
+            
+        </div>
+        
+        <div class="post-abstract">
+            <p>这两天总有人私信或评论跟我说：大事不好了，ja-netfilter在Java17里用不起了！</p>
+<p>这事听着就新鲜！我心想早在5月20日的提交中，我就兼容了Java17并且写在README里了。<br />
+所以，这个事情我本没当回事，直到问的人越来越多。细问之下，原来是JB家所有IDE2022.2版本默认启用Java17。<br />
+故有写此短文专门来解释一下。</p>
+<p>首先，请看项目的README.md，自认&hellip;</p>
+
+        </div>
+    </article>
+    
 </div>
 
 
             
 <div class="pagination-container">
     
+    
+    <a href="/page/2/" class="next-page">下一页</a>
     
 </div>
 

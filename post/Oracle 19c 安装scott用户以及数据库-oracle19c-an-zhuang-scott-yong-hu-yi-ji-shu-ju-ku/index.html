@@ -1,0 +1,240 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>Oracle 19c 安装scott用户以及数据库 | 酷码</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Oracle 19c 安装scott用户以及数据库 | 酷码 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="oracle" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="登录sys超级用户，查看PDB容器名 show pdbs SQL&amp;gt; show pdbs CON_ID CON_NAME OPEN MODE RESTRICTED ---------- ------------------------------ ---------- ---------- ...">
+<link rel="canonical" href="https://blog.coolcode.dev/post/Oracle 19c 安装scott用户以及数据库-oracle19c-an-zhuang-scott-yong-hu-yi-ji-shu-ju-ku/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Oracle 19c 安装scott用户以及数据库","url":"https://blog.coolcode.dev/post/Oracle 19c 安装scott用户以及数据库-oracle19c-an-zhuang-scott-yong-hu-yi-ji-shu-ju-ku/","description":"登录sys超级用户，查看PDB容器名 show pdbs SQL\u0026gt; show pdbs CON_ID CON_NAME OPEN MODE RESTRICTED ---------- ------------------------------ ---------- ---------- ...","datePublished":"2022-04-07T18:03:26+08:00","dateModified":"2022-04-07T18:03:26+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/Oracle 19c 安装scott用户以及数据库-oracle19c-an-zhuang-scott-yong-hu-yi-ji-shu-ju-ku/","name":"Oracle 19c 安装scott用户以及数据库","position":2}]}</script>
+<meta property="og:title" content="Oracle 19c 安装scott用户以及数据库">
+<meta property="og:description" content="登录sys超级用户，查看PDB容器名 show pdbs SQL&amp;gt; show pdbs CON_ID CON_NAME OPEN MODE RESTRICTED ---------- ------------------------------ ---------- ---------- ...">
+<meta property="og:url" content="https://blog.coolcode.dev/post/Oracle 19c 安装scott用户以及数据库-oracle19c-an-zhuang-scott-yong-hu-yi-ji-shu-ju-ku/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="酷码">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.coolcode.dev/post/Oracle 19c 安装scott用户以及数据库-oracle19c-an-zhuang-scott-yong-hu-yi-ji-shu-ju-ku/">
+<meta name="twitter:title" content="Oracle 19c 安装scott用户以及数据库">
+<meta name="twitter:description" content="登录sys超级用户，查看PDB容器名 show pdbs SQL&amp;gt; show pdbs CON_ID CON_NAME OPEN MODE RESTRICTED ---------- ------------------------------ ---------- ---------- ...">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
+    </a>
+    <h1 class="site-title">
+        酷码
+    </h1>
+    <p class="site-description">
+        个人技术博客
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/post" class="menu">
+            博客
+        </a>
+        
+        
+        
+        <a href="/memos" class="menu">
+            闪念
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="/links" class="menu">
+            友链
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        Oracle 19c 安装scott用户以及数据库
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2022-04-07
+                        </span>
+                        <span>
+                            1 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/oracle/" class="post-tag">
+                            # oracle
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <h3 id="syspdb">登录sys超级用户，查看PDB容器名</h3>
+<pre><code class="language-sql">show pdbs
+</code></pre>
+<pre><code>SQL&gt; show pdbs
+
+    CON_ID CON_NAME                       OPEN MODE  RESTRICTED
+---------- ------------------------------ ---------- ----------
+         3 ORCLPDB                        READ WRITE NO
+</code></pre>
+<p>比如显示<code>ORCLPDB</code></p>
+<h3 id="syspdb-1">使用sys用户登录到PDB</h3>
+<pre><code class="language-sql">conn sys/密码@localhost:1521/ORCLPDB as sysdba;
+</code></pre>
+<h3 id="scott">创建scott用户</h3>
+<pre><code class="language-sql">GRANT CONNECT,RESOURCE,UNLIMITED TABLESPACE TO SCOTT IDENTIFIED BY TIGER;
+ALTER USER SCOTT DEFAULT TABLESPACE USERS;
+ALTER USER SCOTT TEMPORARY TABLESPACE TEMP;
+</code></pre>
+<h3 id="scott-1">解锁scott用户：</h3>
+<pre><code class="language-sql">alter user scott account unlock;
+</code></pre>
+<h3 id="scott-2">登录scott用户</h3>
+<pre><code class="language-sql">conn scott /tiger@localhost:1521/ORCLPDB;
+</code></pre>
+<p>导入scott用户的表，找到WINDOWS.X64_193000_db_home\rdbms\admin\scott.sql文件里面的建表和数据SQL语句</p>
+<h3 id="heading">验证数据</h3>
+<pre><code class="language-sql">select * from emp;
+</code></pre>
+<h3 id="plsql-developerscott">PL/SQL Developer登录scott用户</h3>
+<pre><code>用户名：scott
+
+密码：tiger
+
+数据库：localhost:1521/ORCLPDB
+
+连接为：Normal
+</code></pre>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/%e9%85%8d%e7%bd%aeHTTPS%e5%8f%8a%e8%87%aa%e5%8a%a8%e7%bb%ad%e6%9c%9f-pei-zhi-https-ji-zi-dong-xu-qi/">
+                    <h3 class="post-title">
+                        配置HTTPS及自动续期
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    Powered by &lt;a href=&#34;https://blog.coolcode.dev/&#34; target=&#34;_self&#34;&gt;酷码&lt;/a&gt;
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

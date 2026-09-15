@@ -1,0 +1,211 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>从 JDK 11-JDK 20，谁修复的 issue 最多？ | 酷码</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="从 JDK 11-JDK 20，谁修复的 issue 最多？ | 酷码 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="java" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="JDK/Java 20 已正式 GA。根据 Oracle 披露的信息显示，&amp;hellip;">
+<link rel="canonical" href="https://blog.coolcode.dev/post/cong-jdk-11-jdk-20shui-xiu-fu-de-issue-zui-duo/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"从 JDK 11-JDK 20，谁修复的 issue 最多？","url":"https://blog.coolcode.dev/post/cong-jdk-11-jdk-20shui-xiu-fu-de-issue-zui-duo/","description":"JDK/Java 20 已正式 GA。根据 Oracle 披露的信息显示，\u0026hellip;","datePublished":"2023-03-24T22:17:35+08:00","dateModified":"2023-03-24T22:17:35+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/cong-jdk-11-jdk-20shui-xiu-fu-de-issue-zui-duo/","name":"从 JDK 11-JDK 20，谁修复的 issue 最多？","position":2}]}</script>
+<meta property="og:title" content="从 JDK 11-JDK 20，谁修复的 issue 最多？">
+<meta property="og:description" content="JDK/Java 20 已正式 GA。根据 Oracle 披露的信息显示，&amp;hellip;">
+<meta property="og:url" content="https://blog.coolcode.dev/post/cong-jdk-11-jdk-20shui-xiu-fu-de-issue-zui-duo/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="酷码">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.coolcode.dev/post/cong-jdk-11-jdk-20shui-xiu-fu-de-issue-zui-duo/">
+<meta name="twitter:title" content="从 JDK 11-JDK 20，谁修复的 issue 最多？">
+<meta name="twitter:description" content="JDK/Java 20 已正式 GA。根据 Oracle 披露的信息显示，&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
+    </a>
+    <h1 class="site-title">
+        酷码
+    </h1>
+    <p class="site-description">
+        个人技术博客
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/post" class="menu">
+            博客
+        </a>
+        
+        
+        
+        <a href="/memos" class="menu">
+            闪念
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="/links" class="menu">
+            友链
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        从 JDK 11-JDK 20，谁修复的 issue 最多？
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2023-03-24
+                        </span>
+                        <span>
+                            2 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/java/" class="post-tag">
+                            # java
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <p><a href="https://www.oschina.net/news/233548/jdk-20-ga">JDK/Java 20 已正式 GA</a>。根据 Oracle 披露的信息<a href="https://www.oschina.net/action/GoToLink?url=https%3A%2F%2Ftwitter.com%2FOpenJDK%2Fstatus%2F1638287657682755588">显示</a>，在为 JDK 20 修复的 issue 数量上，位列全球前五位的厂商分别为：甲骨文（Oracle）、红帽（Red Hat）、思爱普（SAP）、ARM 和腾讯（Tencent）。其中，来自国内的积极贡献厂商除腾讯外，还有阿里巴巴、华为和龙芯。</p>
+<p>“我们感谢许多审查提议更改的经验丰富的开发人员、尝试早期访问构建并报告问题的早期采用者，以及在 OpenJDK 邮件列表上提供反馈的敬业的专业人员。”</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303242218343.png" alt="img" /></p>
+<p>公告<a href="https://www.oschina.net/action/GoToLink?url=https%3A%2F%2Finside.java%2F2023%2F03%2F21%2Fthe-arrival-of-java-20%2F">指出</a>，在 Java 20 中，被标记为已修复的 2314 个 JIRA issue 里面，有 1595 个由 Oracle 的雇员修复，其余的 719 个由 Java 社区的其他个人开发者和组织开发者贡献修复。</p>
+<p>Oracle 感谢了阿里巴巴、亚马逊、ARM、谷歌、华为、IBM、英特尔、ISCAS、红帽、SAP 和腾讯等组织的开发者做出的显著贡献，以及来自 Bellsoft、龙芯等小型组织独立开发者的贡献，他们总计为 Java 20 中 7% 的 issue 贡献了修复。</p>
+<p>而从 Java 11 到 Java 20 GA 发布，在被标记为已修复的 21604 个 JIRA issue 中；Oracle 的雇员修复了 15420 个，剩余的 6184 个由个人开发者和其他组织的开发者贡献修复。其中，修复数量排在前五位的厂商分别为：Oracle、Red Hat、SAP、Google 和腾讯。通过检查 issue 并整理来自指派者结果的组织数据后，可以得出以下组织在 Java 中的开发贡献图表：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/yangphere/img-obj@main/img/202303242218391.png" alt="img" /></p>
+<p>此外，Oracle 还特别感谢了开发者 Rick Hillegas 和 Apache Derby 团队，“感谢他们多年来在每个 JDK 版本的抢先体验测试周期中提供的可靠且定期的反馈”。</p>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/20160213-29-%e4%bd%bf%e7%94%a8acme-tiny%e5%b7%a5%e5%85%b7%e7%94%9f%e6%88%90Let%27s%20Encrypt%e7%9a%84%e5%85%8d%e8%b4%b9SSL%e8%af%81%e4%b9%a6/">
+                    <h3 class="post-title">
+                        使用acme-tiny工具生成Let&#39;s Encrypt的免费SSL证书
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    Powered by &lt;a href=&#34;https://blog.coolcode.dev/&#34; target=&#34;_self&#34;&gt;酷码&lt;/a&gt;
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

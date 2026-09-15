@@ -1,0 +1,274 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>Mac系统爬取所有M3U8视频下载方法-FFmpeg | 酷码</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Mac系统爬取所有M3U8视频下载方法-FFmpeg | 酷码 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="mac" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="前言 由于有的网站不允许下载视频，到了有效期就不能看了，但是我想以后反复看，怎么办呢？ 前提准备 操作系统：Mac 浏览器：谷歌浏览器 抓取m3u8工具：猫爪 视频处理工具：ffmpeg 需要安装工具：homebrew 步骤 1、安装ffmpeg 安装命令ffmpeg： brew install ffmpeg 用brew命令&amp;hellip;">
+<link rel="canonical" href="https://blog.coolcode.dev/post/Mac系统爬取所有M3U8视频下载方法-FFmpeg-mac-xi-tong-pa-qu-suo-you-m3u8-shi-pin-xia-zai-fang-fa--ffmpeg/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Mac系统爬取所有M3U8视频下载方法-FFmpeg","url":"https://blog.coolcode.dev/post/Mac系统爬取所有M3U8视频下载方法-FFmpeg-mac-xi-tong-pa-qu-suo-you-m3u8-shi-pin-xia-zai-fang-fa--ffmpeg/","description":"前言 由于有的网站不允许下载视频，到了有效期就不能看了，但是我想以后反复看，怎么办呢？ 前提准备 操作系统：Mac 浏览器：谷歌浏览器 抓取m3u8工具：猫爪 视频处理工具：ffmpeg 需要安装工具：homebrew 步骤 1、安装ffmpeg 安装命令ffmpeg： brew install ffmpeg 用brew命令\u0026hellip;","datePublished":"2022-03-24T15:15:24+08:00","dateModified":"2022-03-24T15:15:24+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/Mac系统爬取所有M3U8视频下载方法-FFmpeg-mac-xi-tong-pa-qu-suo-you-m3u8-shi-pin-xia-zai-fang-fa--ffmpeg/","name":"Mac系统爬取所有M3U8视频下载方法-FFmpeg","position":2}]}</script>
+<meta property="og:title" content="Mac系统爬取所有M3U8视频下载方法-FFmpeg">
+<meta property="og:description" content="前言 由于有的网站不允许下载视频，到了有效期就不能看了，但是我想以后反复看，怎么办呢？ 前提准备 操作系统：Mac 浏览器：谷歌浏览器 抓取m3u8工具：猫爪 视频处理工具：ffmpeg 需要安装工具：homebrew 步骤 1、安装ffmpeg 安装命令ffmpeg： brew install ffmpeg 用brew命令&amp;hellip;">
+<meta property="og:url" content="https://blog.coolcode.dev/post/Mac系统爬取所有M3U8视频下载方法-FFmpeg-mac-xi-tong-pa-qu-suo-you-m3u8-shi-pin-xia-zai-fang-fa--ffmpeg/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="酷码">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.coolcode.dev/post/Mac系统爬取所有M3U8视频下载方法-FFmpeg-mac-xi-tong-pa-qu-suo-you-m3u8-shi-pin-xia-zai-fang-fa--ffmpeg/">
+<meta name="twitter:title" content="Mac系统爬取所有M3U8视频下载方法-FFmpeg">
+<meta name="twitter:description" content="前言 由于有的网站不允许下载视频，到了有效期就不能看了，但是我想以后反复看，怎么办呢？ 前提准备 操作系统：Mac 浏览器：谷歌浏览器 抓取m3u8工具：猫爪 视频处理工具：ffmpeg 需要安装工具：homebrew 步骤 1、安装ffmpeg 安装命令ffmpeg： brew install ffmpeg 用brew命令&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
+    </a>
+    <h1 class="site-title">
+        酷码
+    </h1>
+    <p class="site-description">
+        个人技术博客
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/post" class="menu">
+            博客
+        </a>
+        
+        
+        
+        <a href="/memos" class="menu">
+            闪念
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="/links" class="menu">
+            友链
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        Mac系统爬取所有M3U8视频下载方法-FFmpeg
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2022-03-24
+                        </span>
+                        <span>
+                            4 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/mac/" class="post-tag">
+                            # mac
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <h1 id="heading">前言</h1>
+<p>由于有的网站不允许下载视频，到了有效期就不能看了，但是我想以后反复看，怎么办呢？</p>
+<h1 id="heading-1">前提准备</h1>
+<ul>
+<li>操作系统：Mac</li>
+<li>浏览器：谷歌浏览器</li>
+<li>抓取m3u8工具：猫爪</li>
+<li>视频处理工具：ffmpeg</li>
+<li>需要安装工具：homebrew</li>
+</ul>
+<h1 id="heading-2">步骤</h1>
+<h2 id="1ffmpeg">1、安装ffmpeg</h2>
+<p>安装命令ffmpeg：</p>
+<pre><code>brew install ffmpeg
+</code></pre>
+<p>用brew命令，需要安装homebrew请参考下面的文章：</p>
+<p>《【Mac + Python】苹果系统之安装Python3.6.x环境》</p>
+<h2 id="2ffmpeg">2、查看ffmpeg安装信息</h2>
+<pre><code>brew info ffmpeg
+</code></pre>
+<p>有红叉的代表是没有这个库，有绿色的对勾的表示此库已经安装上了。</p>
+<h2 id="3m3u8">3、抓取M3U8地址</h2>
+<p>首先在谷歌浏览器中安装猫爪插件，具体安装步骤自行百度</p>
+<p>首先打开视频后，查看</p>
+<pre><code>https://1258712167.vod2.myqcloud.com/fb8e6c92vodtranscq1258712167/d2d290e45285890788294575847/drm/voddrm.token.dWluPTE0NDExNTIxMjI1NDUyMzk0OTt2b2RfdHlwZT0wO2NpZD0xNzc4Njc7dGVybV9pZD0xMDAyMDkyMTY7ZXh0PWM5MGNiZDExNDNkOWZjNTgzN2U5MjdlZDg4MjlhN2VlN2Q0YjRlNDZiZTc0OTdiMGU3MmI0MmRjZDZlYmM5NzdiMTlmMDgyYjM1NGJiYmIzNDY0MGFhYjFkNDZiYTEwN2YwYWRkMWVmNmQ4NTkwZDNiOGE3NGZlNjczYzYzODUyZGUzOWVjODAwOGUxYTYwZQ==.v.f30741.m3u8?exper=0&amp;sign=32c5411352762a9ad7716df57da546d3&amp;t=60672ebf&amp;us=8985634549565757842
+</code></pre>
+<h2 id="4">4、视频转换</h2>
+<p>输入命令：</p>
+<pre><code>ffmpeg -i  
+https://1258712167.vod2.myqcloud.com/fb8e6c92vodtranscq1258712167/d2d290e45285890788294575847/drm/voddrm.token.dWluPTE0NDExNTIxMjI1NDUyMzk0OTt2b2RfdHlwZT0wO2NpZD0xNzc4Njc7dGVybV9pZD0xMDAyMDkyMTY7ZXh0PWM5MGNiZDExNDNkOWZjNTgzN2U5MjdlZDg4MjlhN2VlN2Q0YjRlNDZiZTc0OTdiMGU3MmI0MmRjZDZlYmM5NzdiMTlmMDgyYjM1NGJiYmIzNDY0MGFhYjFkNDZiYTEwN2YwYWRkMWVmNmQ4NTkwZDNiOGE3NGZlNjczYzYzODUyZGUzOWVjODAwOGUxYTYwZQ==.v.f30741.m3u8?exper=0&amp;sign=32c5411352762a9ad7716df57da546d3&amp;t=60672ebf&amp;us=8985634549565757842 -c copy 【下载本地路径】/video.mp4
+</code></pre>
+<p>下载合成视频转换：</p>
+<p>最后下载成功啦~~~??ヽ(°▽°)ノ?</p>
+<p>还有一种情况，另一台Mac电脑上一直报错，安装不了，查询信息也出不来。</p>
+<p>参考如下方法即可解决：</p>
+<pre><code># 1）执行
+brew tap homebrew-ffmpeg/ffmpeg
+
+# 2）执行
+brew install homebrew-ffmpeg/ffmpeg/ffmpeg
+
+# 3）执行如下命令，看此仓库支持哪些options。
+brew options homebrew-ffmpeg/ffmpeg/ffmpeg
+
+# 4）根据第3）步得到的options，替换下面命令中的option,然后执行
+brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-&lt;option1&gt; --with-&lt;option2&gt; ...
+</code></pre>
+<p>运行完上述步骤后，即可安装ffmpeg成功。</p>
+<p>安装过程中，可能会出现下面的问题：</p>
+<p>brew安装报错 “cp: utimes: /usr/local/Cellar/jemalloc/.: Operation not permitted cp: chmod: /usr/local/C”</p>
+<pre><code>cp: utimes: /usr/local/Cellar/jemalloc/.: Operation not permitted 
+cp: chmod: /usr/local/Cellar/jemalloc/.: Operation not permitted
+</code></pre>
+<p>解决办法：</p>
+<pre><code>sudo chown -R $(whoami) /usr/local/Cellar
+</code></pre>
+<p>继续安装就可以成功了。</p>
+<p>输入命令：</p>
+<pre><code>ffmpeg
+</code></pre>
+<h1 id="heading-3">附录</h1>
+<p>①感谢阳光的大男孩儿的：《Mac 配置FFmpeg环境》*****</p>
+<p>②感谢花逢春Tim的：《转载：腾讯课堂直播视频下载》*****</p>
+<p>③感谢jameswhale的：《Mac OS上使用ffmpeg的“血泪”总结》*****</p>
+<p>④感谢芥焉丶的：《brew安装报错 “cp: utimes: /usr/local/Cellar/jemalloc/.: Operation not permitted cp: chmod: /usr/local/C”》***</p>
+<h1 id="heading-4">其他参考文章</h1>
+<p>①《[原创工具] M3U8多线程下载器 V1.0.3 ，支持Windows、MacOS》</p>
+<p>②《腾讯课堂在线视频下载》</p>
+<p>③《怎么下载腾讯课堂M3U8格式的视频》</p>
+<p>④kervias的文章：《Python爬虫下载腾讯课堂回放视频》</p>
+<p>⑤kervias的github：https://github.com/kerviasx</p>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/OpenJDK%20Providers%20and%20Comparison-openjdkprovidersandcomparison/">
+                    <h3 class="post-title">
+                        OpenJDK Providers and Comparison
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    Powered by &lt;a href=&#34;https://blog.coolcode.dev/&#34; target=&#34;_self&#34;&gt;酷码&lt;/a&gt;
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

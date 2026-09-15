@@ -1,0 +1,218 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.2">
+<title>JetBrains新版本区域选择的坑 | 酷码</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1789450885">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="JetBrains新版本区域选择的坑 | 酷码 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="ja-netfilter,Java,Javaagent" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="好久不见啊，朋友们！ JetBrains新版本(2024.2)在设置里添加了区域选择，具体在：Appearance &amp;amp; Behavior -&amp;gt; System Settings -&amp;gt; Language and Region -&amp;gt; Region 中设置。如果你选择 China Mainland 将会有一个比较坑的地方：激活许可验证走 account.jetbrains.com.cn 这个域名，而&amp;hellip;">
+<link rel="canonical" href="https://blog.coolcode.dev/post/jetbrains-xin-ban-ben-qu-yu-xuan-ze-de-keng/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"JetBrains新版本区域选择的坑","url":"https://blog.coolcode.dev/post/jetbrains-xin-ban-ben-qu-yu-xuan-ze-de-keng/","description":"好久不见啊，朋友们！ JetBrains新版本(2024.2)在设置里添加了区域选择，具体在：Appearance \u0026amp; Behavior -\u0026gt; System Settings -\u0026gt; Language and Region -\u0026gt; Region 中设置。如果你选择 China Mainland 将会有一个比较坑的地方：激活许可验证走 account.jetbrains.com.cn 这个域名，而\u0026hellip;","datePublished":"2025-10-31T18:16:00+08:00","dateModified":"2025-10-31T18:16:00+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/jetbrains-xin-ban-ben-qu-yu-xuan-ze-de-keng/","name":"JetBrains新版本区域选择的坑","position":2}]}</script>
+<meta property="og:title" content="JetBrains新版本区域选择的坑">
+<meta property="og:description" content="好久不见啊，朋友们！ JetBrains新版本(2024.2)在设置里添加了区域选择，具体在：Appearance &amp;amp; Behavior -&amp;gt; System Settings -&amp;gt; Language and Region -&amp;gt; Region 中设置。如果你选择 China Mainland 将会有一个比较坑的地方：激活许可验证走 account.jetbrains.com.cn 这个域名，而&amp;hellip;">
+<meta property="og:url" content="https://blog.coolcode.dev/post/jetbrains-xin-ban-ben-qu-yu-xuan-ze-de-keng/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="酷码">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.coolcode.dev/post/jetbrains-xin-ban-ben-qu-yu-xuan-ze-de-keng/">
+<meta name="twitter:title" content="JetBrains新版本区域选择的坑">
+<meta name="twitter:description" content="好久不见啊，朋友们！ JetBrains新版本(2024.2)在设置里添加了区域选择，具体在：Appearance &amp;amp; Behavior -&amp;gt; System Settings -&amp;gt; Language and Region -&amp;gt; Region 中设置。如果你选择 China Mainland 将会有一个比较坑的地方：激活许可验证走 account.jetbrains.com.cn 这个域名，而&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1789450885" alt="">
+    </a>
+    <h1 class="site-title">
+        酷码
+    </h1>
+    <p class="site-description">
+        个人技术博客
+    </p>
+    <div class="menu-container">
+        
+        
+        <a href="/" class="menu">
+            首页
+        </a>
+        
+        
+        
+        <a href="/post" class="menu">
+            博客
+        </a>
+        
+        
+        
+        <a href="/memos" class="menu">
+            闪念
+        </a>
+        
+        
+        
+        <a href="/archives" class="menu">
+            归档
+        </a>
+        
+        
+        
+        <a href="/tags" class="menu">
+            标签
+        </a>
+        
+        
+        
+        <a href="/links" class="menu">
+            友链
+        </a>
+        
+        
+        
+        <a href="/post/about" class="menu">
+            关于
+        </a>
+        
+        
+    </div>
+    <div class="social-container">
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        JetBrains新版本区域选择的坑
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2025-10-31
+                        </span>
+                        <span>
+                            1 分钟阅读
+                        </span>
+                        
+                        <a href="/tag/ja-netfilter/" class="post-tag">
+                            # ja-netfilter
+                        </a>
+                        
+                        <a href="/tag/java/" class="post-tag">
+                            # Java
+                        </a>
+                        
+                        <a href="/tag/javaagent/" class="post-tag">
+                            # Javaagent
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <p>好久不见啊，朋友们！</p>
+<p>JetBrains新版本(2024.2)在设置里添加了区域选择，具体在：Appearance &amp; Behavior -&gt; System Settings -&gt; Language and Region -&gt; Region 中设置。如果你选择 China Mainland 将会有一个比较坑的地方：激活许可验证走 account.jetbrains.com.cn 这个域名，而不是默认的 account.jetbrains.com 。<br />
+这将导致一个问题：热佬的整合包里，没有对这个域名的拦截，会联机然后发现许可被吊销。</p>
+<p>热佬可能打仗太忙，尚未发布新包。不过这个问题解决起来也很简单，找到你的jetbra目录，编辑 config-jetbrains\url.conf 文件，新增以下内容保存即可：</p>
+<p>[URL]<br />
+PREFIX,https://account.jetbrains.com.cn/lservice/rpc/validateKey.action<br />
+也就是把新的域名也拦截咯。</p>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/">
+                    <h3 class="post-title">
+                        关于ja-netfilter适配Java17的问题
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    Powered by &lt;a href=&#34;https://blog.coolcode.dev/&#34; target=&#34;_self&#34;&gt;酷码&lt;/a&gt;
+    <a class="rss" href="/atom.xml" target="_blank">
+        <i class="ri-rss-line"></i> RSS
+    </a>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: inotes v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>
