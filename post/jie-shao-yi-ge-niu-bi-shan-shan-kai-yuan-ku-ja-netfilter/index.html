@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>介绍一个”牛逼闪闪”开源库：ja-netfilter | 酷码</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452349">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="介绍一个”牛逼闪闪”开源库：ja-netfilter | 酷码 - Atom Feed" href="/atom.xml">
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
 <meta name="description" content="上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件&amp;hellip;">
-<link rel="canonical" href="https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"介绍一个”牛逼闪闪”开源库：ja-netfilter","url":"https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/","description":"上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件\u0026hellip;","datePublished":"2025-10-31T18:13:13+08:00","dateModified":"2025-10-31T18:13:13+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/","name":"介绍一个”牛逼闪闪”开源库：ja-netfilter","position":2}]}</script>
+<link rel="canonical" href="https://yangphere.github.io/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"介绍一个”牛逼闪闪”开源库：ja-netfilter","url":"https://yangphere.github.io/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/","description":"上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件\u0026hellip;","datePublished":"2025-10-31T18:13:13+08:00","dateModified":"2025-10-31T18:13:13+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yangphere.github.io","name":"酷码","position":1},{"@type":"ListItem","item":"https://yangphere.github.io/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/","name":"介绍一个”牛逼闪闪”开源库：ja-netfilter","position":2}]}</script>
 <meta property="og:title" content="介绍一个”牛逼闪闪”开源库：ja-netfilter">
 <meta property="og:description" content="上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件&amp;hellip;">
-<meta property="og:url" content="https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/">
+<meta property="og:url" content="https://yangphere.github.io/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="酷码">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.coolcode.dev/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/">
+<meta name="twitter:url" content="https://yangphere.github.io/post/jie-shao-yi-ge-niu-bi-shan-shan-kai-yuan-ku-ja-netfilter/">
 <meta name="twitter:title" content="介绍一个”牛逼闪闪”开源库：ja-netfilter">
 <meta name="twitter:description" content="上来先说点题外话，很多人最新私信我说我的开源项目IDE Eval Resetter不好用了。我就问他为什么不好用了，不好编译了吗？他说不是，是不能在IDE上重置了。我心说，这是个学习研究项目，重在学习插件写法，不能用也实在属于正常。于是我去测试了一下，得出了个结论：2021.2.2及以下版本很好用；2021.3以下（不含）堪堪能用，需要配合一些手法；2021.3版本开始正式失效，你可以卸载这个插件&amp;hellip;">
 <meta name="twitter:image" content="/images/avatar.png">
@@ -41,7 +41,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452349" alt="">
     </a>
     <h1 class="site-title">
         酷码

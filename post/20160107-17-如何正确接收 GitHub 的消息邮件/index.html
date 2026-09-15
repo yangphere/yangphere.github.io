@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>如何正确接收 GitHub 的消息邮件 | 酷码</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452349">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="如何正确接收 GitHub 的消息邮件 | 酷码 - Atom Feed" href="/atom.xml">
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
 <meta name="description" content="背景 我厂的开发流程通常都是基于 GitHub 的。在 GitHub 上 review 代码，也是我日常工作的重要组成部分。对我来说，在 code review 过程中最讨厌的莫过于，我在 pull request 或 commit 下面评论或 @ 人，往往石沉大海，没有回音。我事后追问当事人，他们的回复往往是 “不知道你 @ 我了呀～”。 这让我非常恼火。所以，我决定写篇文档给所有人看，避免他们漏看重要的 GitHub 消息。此后在 GitHub 不回复我的人，差不多也可以绝交了罢！">
-<link rel="canonical" href="https://blog.coolcode.dev/post/20160107-17-如何正确接收 GitHub 的消息邮件/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"如何正确接收 GitHub 的消息邮件","url":"https://blog.coolcode.dev/post/20160107-17-如何正确接收 GitHub 的消息邮件/","description":"背景 我厂的开发流程通常都是基于 GitHub 的。在 GitHub 上 review 代码，也是我日常工作的重要组成部分。对我来说，在 code review 过程中最讨厌的莫过于，我在 pull request 或 commit 下面评论或 @ 人，往往石沉大海，没有回音。我事后追问当事人，他们的回复往往是 “不知道你 @ 我了呀～”。 这让我非常恼火。所以，我决定写篇文档给所有人看，避免他们漏看重要的 GitHub 消息。此后在 GitHub 不回复我的人，差不多也可以绝交了罢！","datePublished":"2022-07-19T10:06:27+08:00","dateModified":"2022-07-19T10:06:27+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/20160107-17-如何正确接收 GitHub 的消息邮件/","name":"如何正确接收 GitHub 的消息邮件","position":2}]}</script>
+<link rel="canonical" href="https://yangphere.github.io/post/20160107-17-如何正确接收 GitHub 的消息邮件/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"如何正确接收 GitHub 的消息邮件","url":"https://yangphere.github.io/post/20160107-17-如何正确接收 GitHub 的消息邮件/","description":"背景 我厂的开发流程通常都是基于 GitHub 的。在 GitHub 上 review 代码，也是我日常工作的重要组成部分。对我来说，在 code review 过程中最讨厌的莫过于，我在 pull request 或 commit 下面评论或 @ 人，往往石沉大海，没有回音。我事后追问当事人，他们的回复往往是 “不知道你 @ 我了呀～”。 这让我非常恼火。所以，我决定写篇文档给所有人看，避免他们漏看重要的 GitHub 消息。此后在 GitHub 不回复我的人，差不多也可以绝交了罢！","datePublished":"2022-07-19T10:06:27+08:00","dateModified":"2022-07-19T10:06:27+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yangphere.github.io","name":"酷码","position":1},{"@type":"ListItem","item":"https://yangphere.github.io/post/20160107-17-如何正确接收 GitHub 的消息邮件/","name":"如何正确接收 GitHub 的消息邮件","position":2}]}</script>
 <meta property="og:title" content="如何正确接收 GitHub 的消息邮件">
 <meta property="og:description" content="背景 我厂的开发流程通常都是基于 GitHub 的。在 GitHub 上 review 代码，也是我日常工作的重要组成部分。对我来说，在 code review 过程中最讨厌的莫过于，我在 pull request 或 commit 下面评论或 @ 人，往往石沉大海，没有回音。我事后追问当事人，他们的回复往往是 “不知道你 @ 我了呀～”。 这让我非常恼火。所以，我决定写篇文档给所有人看，避免他们漏看重要的 GitHub 消息。此后在 GitHub 不回复我的人，差不多也可以绝交了罢！">
-<meta property="og:url" content="https://blog.coolcode.dev/post/20160107-17-如何正确接收 GitHub 的消息邮件/">
+<meta property="og:url" content="https://yangphere.github.io/post/20160107-17-如何正确接收 GitHub 的消息邮件/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="酷码">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.coolcode.dev/post/20160107-17-如何正确接收 GitHub 的消息邮件/">
+<meta name="twitter:url" content="https://yangphere.github.io/post/20160107-17-如何正确接收 GitHub 的消息邮件/">
 <meta name="twitter:title" content="如何正确接收 GitHub 的消息邮件">
 <meta name="twitter:description" content="背景 我厂的开发流程通常都是基于 GitHub 的。在 GitHub 上 review 代码，也是我日常工作的重要组成部分。对我来说，在 code review 过程中最讨厌的莫过于，我在 pull request 或 commit 下面评论或 @ 人，往往石沉大海，没有回音。我事后追问当事人，他们的回复往往是 “不知道你 @ 我了呀～”。 这让我非常恼火。所以，我决定写篇文档给所有人看，避免他们漏看重要的 GitHub 消息。此后在 GitHub 不回复我的人，差不多也可以绝交了罢！">
 <meta name="twitter:image" content="/images/avatar.png">
@@ -41,7 +41,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452349" alt="">
     </a>
     <h1 class="site-title">
         酷码

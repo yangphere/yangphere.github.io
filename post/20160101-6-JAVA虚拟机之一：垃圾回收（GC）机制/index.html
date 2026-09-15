@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>JAVA虚拟机之一：垃圾回收（GC）机制 | 酷码</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452349">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="JAVA虚拟机之一：垃圾回收（GC）机制 | 酷码 - Atom Feed" href="/atom.xml">
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
 <meta name="description" content="原文: http://alaric.iteye.com/blog/2262566 引言 java对于其它语言（c/c++）来说，创建一个对象使用后，不用显式的delete/free，且能在一定程度上保证系统内存资源及时回收，这要功归于java的自动垃圾回收机制（Garbage Collection，GC），但也是因为自动回收机制存在，一旦系统内泄漏或存溢出时，排查问题比较困难，因此java程序开发者深入理解java虚拟机GC机制变得重要。">
-<link rel="canonical" href="https://blog.coolcode.dev/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"JAVA虚拟机之一：垃圾回收（GC）机制","url":"https://blog.coolcode.dev/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/","description":"原文: http://alaric.iteye.com/blog/2262566 引言 java对于其它语言（c/c++）来说，创建一个对象使用后，不用显式的delete/free，且能在一定程度上保证系统内存资源及时回收，这要功归于java的自动垃圾回收机制（Garbage Collection，GC），但也是因为自动回收机制存在，一旦系统内泄漏或存溢出时，排查问题比较困难，因此java程序开发者深入理解java虚拟机GC机制变得重要。","datePublished":"2022-07-19T10:05:55+08:00","dateModified":"2022-07-19T10:05:55+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/","name":"JAVA虚拟机之一：垃圾回收（GC）机制","position":2}]}</script>
+<link rel="canonical" href="https://yangphere.github.io/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"JAVA虚拟机之一：垃圾回收（GC）机制","url":"https://yangphere.github.io/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/","description":"原文: http://alaric.iteye.com/blog/2262566 引言 java对于其它语言（c/c++）来说，创建一个对象使用后，不用显式的delete/free，且能在一定程度上保证系统内存资源及时回收，这要功归于java的自动垃圾回收机制（Garbage Collection，GC），但也是因为自动回收机制存在，一旦系统内泄漏或存溢出时，排查问题比较困难，因此java程序开发者深入理解java虚拟机GC机制变得重要。","datePublished":"2022-07-19T10:05:55+08:00","dateModified":"2022-07-19T10:05:55+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yangphere.github.io","name":"酷码","position":1},{"@type":"ListItem","item":"https://yangphere.github.io/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/","name":"JAVA虚拟机之一：垃圾回收（GC）机制","position":2}]}</script>
 <meta property="og:title" content="JAVA虚拟机之一：垃圾回收（GC）机制">
 <meta property="og:description" content="原文: http://alaric.iteye.com/blog/2262566 引言 java对于其它语言（c/c++）来说，创建一个对象使用后，不用显式的delete/free，且能在一定程度上保证系统内存资源及时回收，这要功归于java的自动垃圾回收机制（Garbage Collection，GC），但也是因为自动回收机制存在，一旦系统内泄漏或存溢出时，排查问题比较困难，因此java程序开发者深入理解java虚拟机GC机制变得重要。">
-<meta property="og:url" content="https://blog.coolcode.dev/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/">
+<meta property="og:url" content="https://yangphere.github.io/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="酷码">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.coolcode.dev/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/">
+<meta name="twitter:url" content="https://yangphere.github.io/post/20160101-6-JAVA虚拟机之一：垃圾回收（GC）机制/">
 <meta name="twitter:title" content="JAVA虚拟机之一：垃圾回收（GC）机制">
 <meta name="twitter:description" content="原文: http://alaric.iteye.com/blog/2262566 引言 java对于其它语言（c/c++）来说，创建一个对象使用后，不用显式的delete/free，且能在一定程度上保证系统内存资源及时回收，这要功归于java的自动垃圾回收机制（Garbage Collection，GC），但也是因为自动回收机制存在，一旦系统内泄漏或存溢出时，排查问题比较困难，因此java程序开发者深入理解java虚拟机GC机制变得重要。">
 <meta name="twitter:image" content="/images/avatar.png">
@@ -41,7 +41,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452349" alt="">
     </a>
     <h1 class="site-title">
         酷码

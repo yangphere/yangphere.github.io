@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>如何写就完美 Pull Request | 酷码</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452349">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="如何写就完美 Pull Request | 酷码 - Atom Feed" href="/atom.xml">
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
 <meta name="description" content="译注：Github Blog 发表了一篇文章 How to write the perfect pull request，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！ 随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。">
-<link rel="canonical" href="https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"如何写就完美 Pull Request","url":"https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/","description":"译注：Github Blog 发表了一篇文章 How to write the perfect pull request，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！ 随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。","datePublished":"2022-07-19T10:06:22+08:00","dateModified":"2022-07-19T10:06:22+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/","name":"如何写就完美 Pull Request","position":2}]}</script>
+<link rel="canonical" href="https://yangphere.github.io/post/20160107-15-如何写就完美 Pull Request/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"如何写就完美 Pull Request","url":"https://yangphere.github.io/post/20160107-15-如何写就完美 Pull Request/","description":"译注：Github Blog 发表了一篇文章 How to write the perfect pull request，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！ 随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。","datePublished":"2022-07-19T10:06:22+08:00","dateModified":"2022-07-19T10:06:22+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yangphere.github.io","name":"酷码","position":1},{"@type":"ListItem","item":"https://yangphere.github.io/post/20160107-15-如何写就完美 Pull Request/","name":"如何写就完美 Pull Request","position":2}]}</script>
 <meta property="og:title" content="如何写就完美 Pull Request">
 <meta property="og:description" content="译注：Github Blog 发表了一篇文章 How to write the perfect pull request，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！ 随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。">
-<meta property="og:url" content="https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/">
+<meta property="og:url" content="https://yangphere.github.io/post/20160107-15-如何写就完美 Pull Request/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="酷码">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.coolcode.dev/post/20160107-15-如何写就完美 Pull Request/">
+<meta name="twitter:url" content="https://yangphere.github.io/post/20160107-15-如何写就完美 Pull Request/">
 <meta name="twitter:title" content="如何写就完美 Pull Request">
 <meta name="twitter:description" content="译注：Github Blog 发表了一篇文章 How to write the perfect pull request，对书写 Pull Request 文案及相关话题给了些相当不错的建议，很适合开源协作，对使用 Github 的公司项目也有一些借鉴价值。祝愿大家都能写一手好文档，沟通愉快！ 随着公司规模增长，人和项目都在变化。在 Github，我们的经验是经常提醒自己沟通的目标非常有助于保持沟通的高效，为此我们最近提出了一份关于提交 Pull Request 的指南，帮助大家在使用 Pull Request 时能更好地协作。">
 <meta name="twitter:image" content="/images/avatar.png">
@@ -41,7 +41,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452349" alt="">
     </a>
     <h1 class="site-title">
         酷码

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>使用acme-tiny工具生成Let&#39;s Encrypt的免费SSL证书 | 酷码</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452349">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="使用acme-tiny工具生成Let&#39;s Encrypt的免费SSL证书 | 酷码 - Atom Feed" href="/atom.xml">
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
 <meta name="description" content="下载acme-tiny 下载地址：https://github.com/diafygi/acme-tiny 创建用户私钥和域名私钥 mkdir -p /etc/ssl/letsencrypt/ cd /etc/ssl/letsencrypt/ openssl genrsa 4096 &amp;gt; account.key openssl genrsa 4096 &amp;gt; domain.key">
-<link rel="canonical" href="https://blog.coolcode.dev/post/20160213-29-使用acme-tiny工具生成Let's Encrypt的免费SSL证书/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"使用acme-tiny工具生成Let's Encrypt的免费SSL证书","url":"https://blog.coolcode.dev/post/20160213-29-使用acme-tiny工具生成Let's Encrypt的免费SSL证书/","description":"下载acme-tiny 下载地址：https://github.com/diafygi/acme-tiny 创建用户私钥和域名私钥 mkdir -p /etc/ssl/letsencrypt/ cd /etc/ssl/letsencrypt/ openssl genrsa 4096 \u0026gt; account.key openssl genrsa 4096 \u0026gt; domain.key","datePublished":"2022-07-19T10:07:09+08:00","dateModified":"2022-07-19T10:07:09+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/20160213-29-使用acme-tiny工具生成Let's Encrypt的免费SSL证书/","name":"使用acme-tiny工具生成Let's Encrypt的免费SSL证书","position":2}]}</script>
+<link rel="canonical" href="https://yangphere.github.io/post/20160213-29-使用acme-tiny工具生成Let's Encrypt的免费SSL证书/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"使用acme-tiny工具生成Let's Encrypt的免费SSL证书","url":"https://yangphere.github.io/post/20160213-29-使用acme-tiny工具生成Let's Encrypt的免费SSL证书/","description":"下载acme-tiny 下载地址：https://github.com/diafygi/acme-tiny 创建用户私钥和域名私钥 mkdir -p /etc/ssl/letsencrypt/ cd /etc/ssl/letsencrypt/ openssl genrsa 4096 \u0026gt; account.key openssl genrsa 4096 \u0026gt; domain.key","datePublished":"2022-07-19T10:07:09+08:00","dateModified":"2022-07-19T10:07:09+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yangphere.github.io","name":"酷码","position":1},{"@type":"ListItem","item":"https://yangphere.github.io/post/20160213-29-使用acme-tiny工具生成Let's Encrypt的免费SSL证书/","name":"使用acme-tiny工具生成Let's Encrypt的免费SSL证书","position":2}]}</script>
 <meta property="og:title" content="使用acme-tiny工具生成Let's Encrypt的免费SSL证书">
 <meta property="og:description" content="下载acme-tiny 下载地址：https://github.com/diafygi/acme-tiny 创建用户私钥和域名私钥 mkdir -p /etc/ssl/letsencrypt/ cd /etc/ssl/letsencrypt/ openssl genrsa 4096 &amp;gt; account.key openssl genrsa 4096 &amp;gt; domain.key">
-<meta property="og:url" content="https://blog.coolcode.dev/post/20160213-29-使用acme-tiny工具生成Let's Encrypt的免费SSL证书/">
+<meta property="og:url" content="https://yangphere.github.io/post/20160213-29-使用acme-tiny工具生成Let's Encrypt的免费SSL证书/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="酷码">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.coolcode.dev/post/20160213-29-使用acme-tiny工具生成Let's Encrypt的免费SSL证书/">
+<meta name="twitter:url" content="https://yangphere.github.io/post/20160213-29-使用acme-tiny工具生成Let's Encrypt的免费SSL证书/">
 <meta name="twitter:title" content="使用acme-tiny工具生成Let's Encrypt的免费SSL证书">
 <meta name="twitter:description" content="下载acme-tiny 下载地址：https://github.com/diafygi/acme-tiny 创建用户私钥和域名私钥 mkdir -p /etc/ssl/letsencrypt/ cd /etc/ssl/letsencrypt/ openssl genrsa 4096 &amp;gt; account.key openssl genrsa 4096 &amp;gt; domain.key">
 <meta name="twitter:image" content="/images/avatar.png">
@@ -41,7 +41,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452349" alt="">
     </a>
     <h1 class="site-title">
         酷码

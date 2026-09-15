@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>防止重复发送 Ajax 请求的解决方案 | 酷码</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452349">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="防止重复发送 Ajax 请求的解决方案 | 酷码 - Atom Feed" href="/atom.xml">
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
 <meta name="description" content="问题描述 在页面中有多个按钮，点击该按钮可以异步的去服务端读取数据，然后在前端将数据展示出来。 每个按钮点击请求的页面都是同一个，但是请求的参数不同，所以返回的内容就不同。 在连续点击多个按钮的时候就会发出多个异步请求。那么根据请求返回的快慢(因为不同按钮参数不同，返回内容不同，所以会有快慢之分），数据会依次的展示出来，那么就会出现一个先点击的按钮，由于他请求的数据量比较大，导致数据被后显示出来。">
-<link rel="canonical" href="https://blog.coolcode.dev/post/20160114-25-防止重复发送 Ajax 请求的解决方案/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"防止重复发送 Ajax 请求的解决方案","url":"https://blog.coolcode.dev/post/20160114-25-防止重复发送 Ajax 请求的解决方案/","description":"问题描述 在页面中有多个按钮，点击该按钮可以异步的去服务端读取数据，然后在前端将数据展示出来。 每个按钮点击请求的页面都是同一个，但是请求的参数不同，所以返回的内容就不同。 在连续点击多个按钮的时候就会发出多个异步请求。那么根据请求返回的快慢(因为不同按钮参数不同，返回内容不同，所以会有快慢之分），数据会依次的展示出来，那么就会出现一个先点击的按钮，由于他请求的数据量比较大，导致数据被后显示出来。","datePublished":"2022-07-19T10:07:01+08:00","dateModified":"2022-07-19T10:07:01+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/20160114-25-防止重复发送 Ajax 请求的解决方案/","name":"防止重复发送 Ajax 请求的解决方案","position":2}]}</script>
+<link rel="canonical" href="https://yangphere.github.io/post/20160114-25-防止重复发送 Ajax 请求的解决方案/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"防止重复发送 Ajax 请求的解决方案","url":"https://yangphere.github.io/post/20160114-25-防止重复发送 Ajax 请求的解决方案/","description":"问题描述 在页面中有多个按钮，点击该按钮可以异步的去服务端读取数据，然后在前端将数据展示出来。 每个按钮点击请求的页面都是同一个，但是请求的参数不同，所以返回的内容就不同。 在连续点击多个按钮的时候就会发出多个异步请求。那么根据请求返回的快慢(因为不同按钮参数不同，返回内容不同，所以会有快慢之分），数据会依次的展示出来，那么就会出现一个先点击的按钮，由于他请求的数据量比较大，导致数据被后显示出来。","datePublished":"2022-07-19T10:07:01+08:00","dateModified":"2022-07-19T10:07:01+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yangphere.github.io","name":"酷码","position":1},{"@type":"ListItem","item":"https://yangphere.github.io/post/20160114-25-防止重复发送 Ajax 请求的解决方案/","name":"防止重复发送 Ajax 请求的解决方案","position":2}]}</script>
 <meta property="og:title" content="防止重复发送 Ajax 请求的解决方案">
 <meta property="og:description" content="问题描述 在页面中有多个按钮，点击该按钮可以异步的去服务端读取数据，然后在前端将数据展示出来。 每个按钮点击请求的页面都是同一个，但是请求的参数不同，所以返回的内容就不同。 在连续点击多个按钮的时候就会发出多个异步请求。那么根据请求返回的快慢(因为不同按钮参数不同，返回内容不同，所以会有快慢之分），数据会依次的展示出来，那么就会出现一个先点击的按钮，由于他请求的数据量比较大，导致数据被后显示出来。">
-<meta property="og:url" content="https://blog.coolcode.dev/post/20160114-25-防止重复发送 Ajax 请求的解决方案/">
+<meta property="og:url" content="https://yangphere.github.io/post/20160114-25-防止重复发送 Ajax 请求的解决方案/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="酷码">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.coolcode.dev/post/20160114-25-防止重复发送 Ajax 请求的解决方案/">
+<meta name="twitter:url" content="https://yangphere.github.io/post/20160114-25-防止重复发送 Ajax 请求的解决方案/">
 <meta name="twitter:title" content="防止重复发送 Ajax 请求的解决方案">
 <meta name="twitter:description" content="问题描述 在页面中有多个按钮，点击该按钮可以异步的去服务端读取数据，然后在前端将数据展示出来。 每个按钮点击请求的页面都是同一个，但是请求的参数不同，所以返回的内容就不同。 在连续点击多个按钮的时候就会发出多个异步请求。那么根据请求返回的快慢(因为不同按钮参数不同，返回内容不同，所以会有快慢之分），数据会依次的展示出来，那么就会出现一个先点击的按钮，由于他请求的数据量比较大，导致数据被后显示出来。">
 <meta name="twitter:image" content="/images/avatar.png">
@@ -41,7 +41,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452349" alt="">
     </a>
     <h1 class="site-title">
         酷码

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>前端进阶之路：点击事件绑定 | 酷码</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452349">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="前端进阶之路：点击事件绑定 | 酷码 - Atom Feed" href="/atom.xml">
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
 <meta name="description" content="引言 前端之所以被称为前端，是因为它是整个 Web 技术栈中距离用户最近、直接与用户进行交互的一环。而网页界面与用户的交互通常是通过各种事件来达成的；在各种事件之中，点击事件 往往又是最常见、最通用的一种界面事件。 本文将介绍我在 “点击事件绑定” 这一场景下的进阶之路。">
-<link rel="canonical" href="https://blog.coolcode.dev/post/20160107-16-前端进阶之路：点击事件绑定/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"前端进阶之路：点击事件绑定","url":"https://blog.coolcode.dev/post/20160107-16-前端进阶之路：点击事件绑定/","description":"引言 前端之所以被称为前端，是因为它是整个 Web 技术栈中距离用户最近、直接与用户进行交互的一环。而网页界面与用户的交互通常是通过各种事件来达成的；在各种事件之中，点击事件 往往又是最常见、最通用的一种界面事件。 本文将介绍我在 “点击事件绑定” 这一场景下的进阶之路。","datePublished":"2022-07-19T10:06:24+08:00","dateModified":"2022-07-19T10:06:24+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/20160107-16-前端进阶之路：点击事件绑定/","name":"前端进阶之路：点击事件绑定","position":2}]}</script>
+<link rel="canonical" href="https://yangphere.github.io/post/20160107-16-前端进阶之路：点击事件绑定/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"前端进阶之路：点击事件绑定","url":"https://yangphere.github.io/post/20160107-16-前端进阶之路：点击事件绑定/","description":"引言 前端之所以被称为前端，是因为它是整个 Web 技术栈中距离用户最近、直接与用户进行交互的一环。而网页界面与用户的交互通常是通过各种事件来达成的；在各种事件之中，点击事件 往往又是最常见、最通用的一种界面事件。 本文将介绍我在 “点击事件绑定” 这一场景下的进阶之路。","datePublished":"2022-07-19T10:06:24+08:00","dateModified":"2022-07-19T10:06:24+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yangphere.github.io","name":"酷码","position":1},{"@type":"ListItem","item":"https://yangphere.github.io/post/20160107-16-前端进阶之路：点击事件绑定/","name":"前端进阶之路：点击事件绑定","position":2}]}</script>
 <meta property="og:title" content="前端进阶之路：点击事件绑定">
 <meta property="og:description" content="引言 前端之所以被称为前端，是因为它是整个 Web 技术栈中距离用户最近、直接与用户进行交互的一环。而网页界面与用户的交互通常是通过各种事件来达成的；在各种事件之中，点击事件 往往又是最常见、最通用的一种界面事件。 本文将介绍我在 “点击事件绑定” 这一场景下的进阶之路。">
-<meta property="og:url" content="https://blog.coolcode.dev/post/20160107-16-前端进阶之路：点击事件绑定/">
+<meta property="og:url" content="https://yangphere.github.io/post/20160107-16-前端进阶之路：点击事件绑定/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="酷码">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.coolcode.dev/post/20160107-16-前端进阶之路：点击事件绑定/">
+<meta name="twitter:url" content="https://yangphere.github.io/post/20160107-16-前端进阶之路：点击事件绑定/">
 <meta name="twitter:title" content="前端进阶之路：点击事件绑定">
 <meta name="twitter:description" content="引言 前端之所以被称为前端，是因为它是整个 Web 技术栈中距离用户最近、直接与用户进行交互的一环。而网页界面与用户的交互通常是通过各种事件来达成的；在各种事件之中，点击事件 往往又是最常见、最通用的一种界面事件。 本文将介绍我在 “点击事件绑定” 这一场景下的进阶之路。">
 <meta name="twitter:image" content="/images/avatar.png">
@@ -41,7 +41,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452349" alt="">
     </a>
     <h1 class="site-title">
         酷码

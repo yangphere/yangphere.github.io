@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>java Servlet&#43;mysql 调用带有输入参数和返回值的存储过程 | 酷码</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452349">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="java Servlet&#43;mysql 调用带有输入参数和返回值的存储过程 | 酷码 - Atom Feed" href="/atom.xml">
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
 <meta name="description" content="原文:http://www.cnblogs.com/xiaoliao/p/5094151.html 这个数据访问的功能，我在.NET+Mysql .NET+Sqlserver PHP+Mysql上都实现过，并且都发布在了我博客园里面，因为我觉得这个功能实在是太重要，会让你少写很多SQL语句不说，还能提高程序的执行效率。 今天在JAVA+Mysql上也实现了这个功能下面我贴出代码，这次我会讲详细点，让看的朋友能更加清楚它的好处在哪里。">
-<link rel="canonical" href="https://blog.coolcode.dev/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"java Servlet+mysql 调用带有输入参数和返回值的存储过程","url":"https://blog.coolcode.dev/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/","description":"原文:http://www.cnblogs.com/xiaoliao/p/5094151.html 这个数据访问的功能，我在.NET+Mysql .NET+Sqlserver PHP+Mysql上都实现过，并且都发布在了我博客园里面，因为我觉得这个功能实在是太重要，会让你少写很多SQL语句不说，还能提高程序的执行效率。 今天在JAVA+Mysql上也实现了这个功能下面我贴出代码，这次我会讲详细点，让看的朋友能更加清楚它的好处在哪里。","datePublished":"2022-07-19T10:06:10+08:00","dateModified":"2022-07-19T10:06:10+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/","name":"java Servlet+mysql 调用带有输入参数和返回值的存储过程","position":2}]}</script>
+<link rel="canonical" href="https://yangphere.github.io/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"java Servlet+mysql 调用带有输入参数和返回值的存储过程","url":"https://yangphere.github.io/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/","description":"原文:http://www.cnblogs.com/xiaoliao/p/5094151.html 这个数据访问的功能，我在.NET+Mysql .NET+Sqlserver PHP+Mysql上都实现过，并且都发布在了我博客园里面，因为我觉得这个功能实在是太重要，会让你少写很多SQL语句不说，还能提高程序的执行效率。 今天在JAVA+Mysql上也实现了这个功能下面我贴出代码，这次我会讲详细点，让看的朋友能更加清楚它的好处在哪里。","datePublished":"2022-07-19T10:06:10+08:00","dateModified":"2022-07-19T10:06:10+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yangphere.github.io","name":"酷码","position":1},{"@type":"ListItem","item":"https://yangphere.github.io/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/","name":"java Servlet+mysql 调用带有输入参数和返回值的存储过程","position":2}]}</script>
 <meta property="og:title" content="java Servlet+mysql 调用带有输入参数和返回值的存储过程">
 <meta property="og:description" content="原文:http://www.cnblogs.com/xiaoliao/p/5094151.html 这个数据访问的功能，我在.NET+Mysql .NET+Sqlserver PHP+Mysql上都实现过，并且都发布在了我博客园里面，因为我觉得这个功能实在是太重要，会让你少写很多SQL语句不说，还能提高程序的执行效率。 今天在JAVA+Mysql上也实现了这个功能下面我贴出代码，这次我会讲详细点，让看的朋友能更加清楚它的好处在哪里。">
-<meta property="og:url" content="https://blog.coolcode.dev/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/">
+<meta property="og:url" content="https://yangphere.github.io/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="酷码">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.coolcode.dev/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/">
+<meta name="twitter:url" content="https://yangphere.github.io/post/20160102-8-java Servlet+mysql 调用带有输入参数和返回值的存储过程/">
 <meta name="twitter:title" content="java Servlet+mysql 调用带有输入参数和返回值的存储过程">
 <meta name="twitter:description" content="原文:http://www.cnblogs.com/xiaoliao/p/5094151.html 这个数据访问的功能，我在.NET+Mysql .NET+Sqlserver PHP+Mysql上都实现过，并且都发布在了我博客园里面，因为我觉得这个功能实在是太重要，会让你少写很多SQL语句不说，还能提高程序的执行效率。 今天在JAVA+Mysql上也实现了这个功能下面我贴出代码，这次我会讲详细点，让看的朋友能更加清楚它的好处在哪里。">
 <meta name="twitter:image" content="/images/avatar.png">
@@ -41,7 +41,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452349" alt="">
     </a>
     <h1 class="site-title">
         酷码

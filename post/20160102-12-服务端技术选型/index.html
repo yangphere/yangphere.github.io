@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>服务端技术选型 | 酷码</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452349">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="服务端技术选型 | 酷码 - Atom Feed" href="/atom.xml">
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
 <meta name="description" content="服务框架 MVC Framework：Rose 框架简单易用，并且我米内部服务和工具都优先支持 Rose 项目，默认使用 Rose 框架是很好的选择。文艺一点想做个异步化 web 服务，可以选择 Spring MVC 3.2 以上版本，并搭配高版本 Resin/Jetty 服务器，该方案已有线上服务使用，只是搭项目时会稍复杂些。 RPC：我们线上使用的是 Apache Thrift，是 0.5.0 版本。我们计划下一步升级并完善他。具体可以访问我们的 Thrift RoadMap 页面。 Javascript Library：随大流用 JQuery，也可以申请前端支持。 CSS Framework：用 Bootstrap。">
-<link rel="canonical" href="https://blog.coolcode.dev/post/20160102-12-服务端技术选型/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"服务端技术选型","url":"https://blog.coolcode.dev/post/20160102-12-服务端技术选型/","description":"服务框架 MVC Framework：Rose 框架简单易用，并且我米内部服务和工具都优先支持 Rose 项目，默认使用 Rose 框架是很好的选择。文艺一点想做个异步化 web 服务，可以选择 Spring MVC 3.2 以上版本，并搭配高版本 Resin/Jetty 服务器，该方案已有线上服务使用，只是搭项目时会稍复杂些。 RPC：我们线上使用的是 Apache Thrift，是 0.5.0 版本。我们计划下一步升级并完善他。具体可以访问我们的 Thrift RoadMap 页面。 Javascript Library：随大流用 JQuery，也可以申请前端支持。 CSS Framework：用 Bootstrap。","datePublished":"2022-07-19T10:06:07+08:00","dateModified":"2022-07-19T10:06:07+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/20160102-12-服务端技术选型/","name":"服务端技术选型","position":2}]}</script>
+<link rel="canonical" href="https://yangphere.github.io/post/20160102-12-服务端技术选型/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"服务端技术选型","url":"https://yangphere.github.io/post/20160102-12-服务端技术选型/","description":"服务框架 MVC Framework：Rose 框架简单易用，并且我米内部服务和工具都优先支持 Rose 项目，默认使用 Rose 框架是很好的选择。文艺一点想做个异步化 web 服务，可以选择 Spring MVC 3.2 以上版本，并搭配高版本 Resin/Jetty 服务器，该方案已有线上服务使用，只是搭项目时会稍复杂些。 RPC：我们线上使用的是 Apache Thrift，是 0.5.0 版本。我们计划下一步升级并完善他。具体可以访问我们的 Thrift RoadMap 页面。 Javascript Library：随大流用 JQuery，也可以申请前端支持。 CSS Framework：用 Bootstrap。","datePublished":"2022-07-19T10:06:07+08:00","dateModified":"2022-07-19T10:06:07+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yangphere.github.io","name":"酷码","position":1},{"@type":"ListItem","item":"https://yangphere.github.io/post/20160102-12-服务端技术选型/","name":"服务端技术选型","position":2}]}</script>
 <meta property="og:title" content="服务端技术选型">
 <meta property="og:description" content="服务框架 MVC Framework：Rose 框架简单易用，并且我米内部服务和工具都优先支持 Rose 项目，默认使用 Rose 框架是很好的选择。文艺一点想做个异步化 web 服务，可以选择 Spring MVC 3.2 以上版本，并搭配高版本 Resin/Jetty 服务器，该方案已有线上服务使用，只是搭项目时会稍复杂些。 RPC：我们线上使用的是 Apache Thrift，是 0.5.0 版本。我们计划下一步升级并完善他。具体可以访问我们的 Thrift RoadMap 页面。 Javascript Library：随大流用 JQuery，也可以申请前端支持。 CSS Framework：用 Bootstrap。">
-<meta property="og:url" content="https://blog.coolcode.dev/post/20160102-12-服务端技术选型/">
+<meta property="og:url" content="https://yangphere.github.io/post/20160102-12-服务端技术选型/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="酷码">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.coolcode.dev/post/20160102-12-服务端技术选型/">
+<meta name="twitter:url" content="https://yangphere.github.io/post/20160102-12-服务端技术选型/">
 <meta name="twitter:title" content="服务端技术选型">
 <meta name="twitter:description" content="服务框架 MVC Framework：Rose 框架简单易用，并且我米内部服务和工具都优先支持 Rose 项目，默认使用 Rose 框架是很好的选择。文艺一点想做个异步化 web 服务，可以选择 Spring MVC 3.2 以上版本，并搭配高版本 Resin/Jetty 服务器，该方案已有线上服务使用，只是搭项目时会稍复杂些。 RPC：我们线上使用的是 Apache Thrift，是 0.5.0 版本。我们计划下一步升级并完善他。具体可以访问我们的 Thrift RoadMap 页面。 Javascript Library：随大流用 JQuery，也可以申请前端支持。 CSS Framework：用 Bootstrap。">
 <meta name="twitter:image" content="/images/avatar.png">
@@ -41,7 +41,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452349" alt="">
     </a>
     <h1 class="site-title">
         酷码

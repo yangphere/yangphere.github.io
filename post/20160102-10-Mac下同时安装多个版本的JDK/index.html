@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>Mac下同时安装多个版本的JDK | 酷码</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452349">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Mac下同时安装多个版本的JDK | 酷码 - Atom Feed" href="/atom.xml">
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
 <meta name="description" content="JDK8 GA之后，小伙伴们喜大普奔，纷纷跃跃欲试，想体验一下Java8的Lambda等新特性，可是目前Java企业级应用的主打版本还是JDK6， JDK7。因此，我需要在我的电脑上同时有JDK8，JDK7，JDK6。JDK6和JDK7主要是做一些产品代码的验证，以及自己玩一些开源项目，JDK8则纯属尝鲜，谁叫咱是喜新厌旧的程序员呢。">
-<link rel="canonical" href="https://blog.coolcode.dev/post/20160102-10-Mac下同时安装多个版本的JDK/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Mac下同时安装多个版本的JDK","url":"https://blog.coolcode.dev/post/20160102-10-Mac下同时安装多个版本的JDK/","description":"JDK8 GA之后，小伙伴们喜大普奔，纷纷跃跃欲试，想体验一下Java8的Lambda等新特性，可是目前Java企业级应用的主打版本还是JDK6， JDK7。因此，我需要在我的电脑上同时有JDK8，JDK7，JDK6。JDK6和JDK7主要是做一些产品代码的验证，以及自己玩一些开源项目，JDK8则纯属尝鲜，谁叫咱是喜新厌旧的程序员呢。","datePublished":"2022-07-19T10:06:02+08:00","dateModified":"2022-07-19T10:06:02+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/20160102-10-Mac下同时安装多个版本的JDK/","name":"Mac下同时安装多个版本的JDK","position":2}]}</script>
+<link rel="canonical" href="https://yangphere.github.io/post/20160102-10-Mac下同时安装多个版本的JDK/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Mac下同时安装多个版本的JDK","url":"https://yangphere.github.io/post/20160102-10-Mac下同时安装多个版本的JDK/","description":"JDK8 GA之后，小伙伴们喜大普奔，纷纷跃跃欲试，想体验一下Java8的Lambda等新特性，可是目前Java企业级应用的主打版本还是JDK6， JDK7。因此，我需要在我的电脑上同时有JDK8，JDK7，JDK6。JDK6和JDK7主要是做一些产品代码的验证，以及自己玩一些开源项目，JDK8则纯属尝鲜，谁叫咱是喜新厌旧的程序员呢。","datePublished":"2022-07-19T10:06:02+08:00","dateModified":"2022-07-19T10:06:02+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yangphere.github.io","name":"酷码","position":1},{"@type":"ListItem","item":"https://yangphere.github.io/post/20160102-10-Mac下同时安装多个版本的JDK/","name":"Mac下同时安装多个版本的JDK","position":2}]}</script>
 <meta property="og:title" content="Mac下同时安装多个版本的JDK">
 <meta property="og:description" content="JDK8 GA之后，小伙伴们喜大普奔，纷纷跃跃欲试，想体验一下Java8的Lambda等新特性，可是目前Java企业级应用的主打版本还是JDK6， JDK7。因此，我需要在我的电脑上同时有JDK8，JDK7，JDK6。JDK6和JDK7主要是做一些产品代码的验证，以及自己玩一些开源项目，JDK8则纯属尝鲜，谁叫咱是喜新厌旧的程序员呢。">
-<meta property="og:url" content="https://blog.coolcode.dev/post/20160102-10-Mac下同时安装多个版本的JDK/">
+<meta property="og:url" content="https://yangphere.github.io/post/20160102-10-Mac下同时安装多个版本的JDK/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="酷码">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.coolcode.dev/post/20160102-10-Mac下同时安装多个版本的JDK/">
+<meta name="twitter:url" content="https://yangphere.github.io/post/20160102-10-Mac下同时安装多个版本的JDK/">
 <meta name="twitter:title" content="Mac下同时安装多个版本的JDK">
 <meta name="twitter:description" content="JDK8 GA之后，小伙伴们喜大普奔，纷纷跃跃欲试，想体验一下Java8的Lambda等新特性，可是目前Java企业级应用的主打版本还是JDK6， JDK7。因此，我需要在我的电脑上同时有JDK8，JDK7，JDK6。JDK6和JDK7主要是做一些产品代码的验证，以及自己玩一些开源项目，JDK8则纯属尝鲜，谁叫咱是喜新厌旧的程序员呢。">
 <meta name="twitter:image" content="/images/avatar.png">
@@ -41,7 +41,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452349" alt="">
     </a>
     <h1 class="site-title">
         酷码

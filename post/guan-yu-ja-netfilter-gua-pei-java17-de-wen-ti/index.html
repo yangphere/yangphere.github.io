@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>关于ja-netfilter适配Java17的问题 | 酷码</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1789452066">
+<link rel="shortcut icon" href="/favicon.ico?v=1789452349">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="关于ja-netfilter适配Java17的问题 | 酷码 - Atom Feed" href="/atom.xml">
@@ -19,17 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
 <meta name="description" content="这两天总有人私信或评论跟我说：大事不好了，ja-netfilter在Java17里用不起了！ 这事听着就新鲜！我心想早在5月20日的提交中，我就兼容了Java17并且写在README里了。 所以，这个事情我本没当回事，直到问的人越来越多。细问之下，原来是JB家所有IDE2022.2版本默认启用Java17。 故有写此短文专门来解释一下。 首先，请看项目的README.md，自认&amp;hellip;">
-<link rel="canonical" href="https://blog.coolcode.dev/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"关于ja-netfilter适配Java17的问题","url":"https://blog.coolcode.dev/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/","description":"这两天总有人私信或评论跟我说：大事不好了，ja-netfilter在Java17里用不起了！ 这事听着就新鲜！我心想早在5月20日的提交中，我就兼容了Java17并且写在README里了。 所以，这个事情我本没当回事，直到问的人越来越多。细问之下，原来是JB家所有IDE2022.2版本默认启用Java17。 故有写此短文专门来解释一下。 首先，请看项目的README.md，自认\u0026hellip;","datePublished":"2025-10-31T18:15:20+08:00","dateModified":"2025-10-31T18:15:20+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.coolcode.dev","name":"酷码","position":1},{"@type":"ListItem","item":"https://blog.coolcode.dev/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/","name":"关于ja-netfilter适配Java17的问题","position":2}]}</script>
+<link rel="canonical" href="https://yangphere.github.io/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"关于ja-netfilter适配Java17的问题","url":"https://yangphere.github.io/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/","description":"这两天总有人私信或评论跟我说：大事不好了，ja-netfilter在Java17里用不起了！ 这事听着就新鲜！我心想早在5月20日的提交中，我就兼容了Java17并且写在README里了。 所以，这个事情我本没当回事，直到问的人越来越多。细问之下，原来是JB家所有IDE2022.2版本默认启用Java17。 故有写此短文专门来解释一下。 首先，请看项目的README.md，自认\u0026hellip;","datePublished":"2025-10-31T18:15:20+08:00","dateModified":"2025-10-31T18:15:20+08:00","author":{"@type":"Person","name":"酷码"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"酷码"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://yangphere.github.io","name":"酷码","position":1},{"@type":"ListItem","item":"https://yangphere.github.io/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/","name":"关于ja-netfilter适配Java17的问题","position":2}]}</script>
 <meta property="og:title" content="关于ja-netfilter适配Java17的问题">
 <meta property="og:description" content="这两天总有人私信或评论跟我说：大事不好了，ja-netfilter在Java17里用不起了！ 这事听着就新鲜！我心想早在5月20日的提交中，我就兼容了Java17并且写在README里了。 所以，这个事情我本没当回事，直到问的人越来越多。细问之下，原来是JB家所有IDE2022.2版本默认启用Java17。 故有写此短文专门来解释一下。 首先，请看项目的README.md，自认&amp;hellip;">
-<meta property="og:url" content="https://blog.coolcode.dev/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/">
+<meta property="og:url" content="https://yangphere.github.io/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="酷码">
 <meta property="og:image" content="/images/avatar.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://blog.coolcode.dev/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/">
+<meta name="twitter:url" content="https://yangphere.github.io/post/guan-yu-ja-netfilter-gua-pei-java17-de-wen-ti/">
 <meta name="twitter:title" content="关于ja-netfilter适配Java17的问题">
 <meta name="twitter:description" content="这两天总有人私信或评论跟我说：大事不好了，ja-netfilter在Java17里用不起了！ 这事听着就新鲜！我心想早在5月20日的提交中，我就兼容了Java17并且写在README里了。 所以，这个事情我本没当回事，直到问的人越来越多。细问之下，原来是JB家所有IDE2022.2版本默认启用Java17。 故有写此短文专门来解释一下。 首先，请看项目的README.md，自认&amp;hellip;">
 <meta name="twitter:image" content="/images/avatar.png">
@@ -41,7 +41,7 @@
             
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1789452066" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1789452349" alt="">
     </a>
     <h1 class="site-title">
         酷码
